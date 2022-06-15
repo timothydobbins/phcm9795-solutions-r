@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 5: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 5: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 5: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 5: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-4-full-script.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-5-solutions-to-learning-activities.html"><a href="module-5-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 5: Solutions to Learning Activities</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-5-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 5: Solutions to Learning Activities<a href="module-5-solutions-to-learning-activities.html#module-5-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-5.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 5.1<a href="module-5-solutions-to-learning-activities.html#activity-5.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Indicate what type of t-test could be used to analyse the data from the following studies and provide reasons:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A total of 60 university students are randomly assigned to undergo either behaviour therapy or Gestalt therapy. After twenty therapeutic sessions, each student earns a score on a mental health questionnaire.</li>
+</ol>
+<blockquote>
+<p>An independent samples t-test could be used because the two groups (behaviour therapy vs Gestalt therapy) are independent. The mental health scores would need to be normally distributed in each group.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>A researcher wishes to determine whether attendance at a day care centre increases the scores of three year old twins on a motor skills test. Random assignment is used to decide which member from each of 30 pairs of twins attends the day care centre and which member stays at home.</li>
+</ol>
+<blockquote>
+<p>This is a twin pair study where one member of a twin is allocated to day care and the other member to stay at home. This is an example of an individually matched study and so a paired t-test is appropriate.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>A child psychologist assigns aggression scores to each of 10 children during two 60 minute observation periods separated by an intervening exposure to a series of violent TV cartoons.</li>
+</ol>
+<blockquote>
+<p>The same children are scored twice (before and after the intervention), thus it is a paired design and a paired t-test is appropriate.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>A marketing researcher measures 100 doctors’ reports of the number of their patients asking them about a particular drug during the month before and the month after a major advertising campaign.</li>
+</ol>
+<blockquote>
+<p>The doctors’ reports are paired because they report before and after an intervention. Therefore, a paired t-test is appropriate.</p>
+</blockquote>
+</div>
+<div id="activity-5.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 5.2<a href="module-5-solutions-to-learning-activities.html#activity-5.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A study was conducted to compare haemoglobin levels in the blood of children with and without cystic fibrosis. It is known that haemoglobin levels are normally distributed in children. The study results are given below:</p>
+<table>
+<caption>Table 1: Summary of haemoglobin (g/dL)</caption>
+<thead>
+<tr class="header">
+<th align="left">Statistic</th>
+<th align="left">Children without CF</th>
+<th align="left">Children with CF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">n</td>
+<td align="left">12</td>
+<td align="left">15</td>
+</tr>
+<tr class="even">
+<td align="left">Mean</td>
+<td align="left">19.9</td>
+<td align="left">13.9</td>
+</tr>
+<tr class="odd">
+<td align="left">SD (SE)</td>
+<td align="left">5.9 (1.7)</td>
+<td align="left">6.2 (1.6)</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>State the appropriate null hypothesis and alternate hypothesis</li>
+</ol>
+<blockquote>
+<p>The null hypothesis: The mean haemoglobin level of children with cystic fibrosis is the same as the mean haemoglobin level of children without cystic fibrosis.</p>
+</blockquote>
+<blockquote>
+<p>The alternative hypothesis: The mean haemoglobin level of children with cystic fibrosis is different to the mean haemoglobin level of children without cystic fibrosis.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use Stata to conduct an appropriate statistical test to evaluate the null hypothesis. Are the assumptions for the test met for this analysis to be valid?</li>
+</ol>
+<blockquote>
+<p>An independent samples t-test could be carried out to evaluate the study hypothesis because the data have been collected from 2 independent groups of children (children with and children without cystic fibrosis).</p>
+</blockquote>
+<blockquote>
+<p>The assumption of independence is met. The outcome variable is continuous and the data are approximately normally distributed in the underlying population (as mentioned in the question).</p>
+</blockquote>
+<blockquote>
+<p>We are provided with summarised data (i.e. means and standard deviations in each group), and not individual data. Therefore, we cannot use the standard <code>t.test()</code> function. The <code>BSDA</code> package has the <code>tsum.test()</code> function that can perform a t-test using summarised data.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-5-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If necessary, install the BSDA package:</span></span>
+<span id="cb2-2"><a href="module-5-solutions-to-learning-activities.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;BSDA&quot;)</span></span>
+<span id="cb2-3"><a href="module-5-solutions-to-learning-activities.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BSDA)</span></code></pre></div>
+<pre><code>## Loading required package: lattice</code></pre>
+<pre><code>## 
+## Attaching package: &#39;BSDA&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:datasets&#39;:
+## 
+##     Orange</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="module-5-solutions-to-learning-activities.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference in means by hand:</span></span>
+<span id="cb6-2"><a href="module-5-solutions-to-learning-activities.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fl">19.9</span> <span class="sc">-</span> <span class="fl">13.9</span></span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="module-5-solutions-to-learning-activities.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test assuming equal variance</span></span>
+<span id="cb8-2"><a href="module-5-solutions-to-learning-activities.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsum.test</span>(<span class="at">mean.x=</span><span class="fl">19.9</span>, <span class="at">s.x=</span><span class="fl">5.9</span>, <span class="at">n.x=</span><span class="dv">12</span>,</span>
+<span id="cb8-3"><a href="module-5-solutions-to-learning-activities.html#cb8-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean.y=</span><span class="fl">13.9</span>, <span class="at">s.y=</span><span class="fl">6.2</span>, <span class="at">n.y=</span><span class="dv">15</span>,</span>
+<span id="cb8-4"><a href="module-5-solutions-to-learning-activities.html#cb8-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mu=</span><span class="dv">0</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Standard Two-Sample t-Test
+## 
+## data:  Summarized x and y
+## t = 2.5523, df = 25, p-value = 0.01719
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   1.158367 10.841633
+## sample estimates:
+## mean of x mean of y 
+##      19.9      13.9</code></pre>
+<blockquote>
+<p>As the two standard deviations are similar, we can assume equal variances. There is evidence that the mean haemoglobin level is lower in children with cystic fibrosis (13.9 g/dL) than children without cystic fibrosis (19.9 g/dL; t=2.55 with 25 df, P=0.02). The difference in means is estimated as 6.0 g/dL (95% CI: 1.2 to 10.8).</p>
+</blockquote>
+</div>
+<div id="activity-5.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 5.3<a href="module-5-solutions-to-learning-activities.html#activity-5.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as shown in the Stata file <code>ActivityS5.3.dta</code>. In the community, hematocrit levels are normally distributed.</p>
+<ol style="list-style-type: lower-alpha">
+<li>State the research question and frame it as a null hypothesis.</li>
+</ol>
+<blockquote>
+<p>Research question: Do anaemic patients randomised to take a new supplement have different hematocrit values compared to the anaemic patients randomised to receive the usual care?</p>
+</blockquote>
+<blockquote>
+<p>Null hypothesis: There is no difference in the mean hematocrit value in patients randomised to take the new supplement and patients randomised to the control group.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use R to conduct an appropriate statistical test to answer the research question. Before using the test, check the data to see if the assumptions required for the test are met. Obtain a box plot to obtain an estimate of the centre and spread of the data for each group.</li>
+</ol>
+<blockquote>
+<p>The appropriate test is an independent sample t-test. The assumptions for independent sample t-test are:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>The two groups are independent</li>
+<li>The measurements are independent</li>
+<li>The outcome variable must be continuous and must be normally distributed in each group</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Based on the study design (RCT with 33 people in the intervention, 31 in the control group and the hematocrit level was measured only once per person) we can say that the first two assumptions are met.</p>
+</blockquote>
+<blockquote>
+<p>The outcome variable is the proportion of blood that is made up of red blood cells which can be assumed to be continuous.</p>
+</blockquote>
+<blockquote>
+<p>The histograms and box-plots in Figure 2 (below) show that the data are approximately normally distributed in the intervention group but there is a slight deviation from normality observed in the control group. This is indicated by some deviation from symmetry of the histogram, although there are no influential outliers.</p>
+</blockquote>
+<blockquote>
+<p>It is mentioned in the question that the outcome variable is normally distributed in the general population. Because the t-test is robust to some degree of non-normality with absence of influential outliers, we could say that the third assumption is also met.</p>
+</blockquote>
+<blockquote>
+<p>We obtained descriptive statistics for both the intervention and control groups using <code>descriptives()</code> function from the <code>jmv</code> package. From the descriptive statistics we can see that standard deviation of the intervention group (1.57) is slightly larger than in the control group (0.99). Inspection of Figures 1 and 2 also indicates more variability in the intervention group. Therefore, it may not be reasonable to assume that the variances are equal. In this case, we will use independent sample t-test based on unequal variance assumption.</p>
+</blockquote>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="module-5-solutions-to-learning-activities.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Activity 5.3</span></span>
+<span id="cb10-2"><a href="module-5-solutions-to-learning-activities.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb10-3"><a href="module-5-solutions-to-learning-activities.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="module-5-solutions-to-learning-activities.html#cb10-4" aria-hidden="true" tabindex="-1"></a>anaemia <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S5.3.rds&quot;</span>)</span>
+<span id="cb10-5"><a href="module-5-solutions-to-learning-activities.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="module-5-solutions-to-learning-activities.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Note - we can display histograms and boxplots within descriptives(): </span></span>
+<span id="cb10-7"><a href="module-5-solutions-to-learning-activities.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>anaemia, <span class="at">vars=</span>hematocrit,</span>
+<span id="cb10-8"><a href="module-5-solutions-to-learning-activities.html#cb10-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> group,</span>
+<span id="cb10-9"><a href="module-5-solutions-to-learning-activities.html#cb10-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">skew =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-10"><a href="module-5-solutions-to-learning-activities.html#cb10-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-11"><a href="module-5-solutions-to-learning-activities.html#cb10-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                                           
+##  ────────────────────────────────────────────────────── 
+##                           group            hematocrit   
+##  ────────────────────────────────────────────────────── 
+##    N                      Intervention             33   
+##                           Standard care            31   
+##    Missing                Intervention              0   
+##                           Standard care             0   
+##    Mean                   Intervention       32.43636   
+##                           Standard care      31.64516   
+##    Median                 Intervention       32.30000   
+##                           Standard care      31.80000   
+##    Standard deviation     Intervention       1.570991   
+##                           Standard care     0.9871976   
+##    Minimum                Intervention       29.60000   
+##                           Standard care      29.80000   
+##    Maximum                Intervention       36.10000   
+##                           Standard care      33.20000   
+##    Skewness               Intervention      0.2816846   
+##                           Standard care    -0.1638483   
+##    Std. error skewness    Intervention      0.4086354   
+##                           Standard care     0.4205365   
+##  ──────────────────────────────────────────────────────</code></pre>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="module-5-solutions-to-learning-activities.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, use the method from Module 2:</span></span>
+<span id="cb12-2"><a href="module-5-solutions-to-learning-activities.html#cb12-2" aria-hidden="true" tabindex="-1"></a>anaemia_i <span class="ot">&lt;-</span> <span class="fu">subset</span>(anaemia, group<span class="sc">==</span><span class="st">&quot;Intervention&quot;</span>)</span>
+<span id="cb12-3"><a href="module-5-solutions-to-learning-activities.html#cb12-3" aria-hidden="true" tabindex="-1"></a>anaemia_sc <span class="ot">&lt;-</span> <span class="fu">subset</span>(anaemia, group<span class="sc">==</span><span class="st">&quot;Standard care&quot;</span>)</span>
+<span id="cb12-4"><a href="module-5-solutions-to-learning-activities.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="module-5-solutions-to-learning-activities.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the graphics parameters to plot 2 rows and 2 columns:</span></span>
+<span id="cb12-6"><a href="module-5-solutions-to-learning-activities.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb12-7"><a href="module-5-solutions-to-learning-activities.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="module-5-solutions-to-learning-activities.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify each plot separately</span></span>
+<span id="cb12-9"><a href="module-5-solutions-to-learning-activities.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>)</span>
+<span id="cb12-10"><a href="module-5-solutions-to-learning-activities.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>)</span>
+<span id="cb12-11"><a href="module-5-solutions-to-learning-activities.html#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="module-5-solutions-to-learning-activities.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>)</span>
+<span id="cb12-13"><a href="module-5-solutions-to-learning-activities.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="module-5-solutions-to-learning-activities.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset graphics parameters</span></span>
+<span id="cb13-2"><a href="module-5-solutions-to-learning-activities.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Run your statistical test.</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="module-5-solutions-to-learning-activities.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb14-2"><a href="module-5-solutions-to-learning-activities.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="module-5-solutions-to-learning-activities.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Welch&#39;s t-test</span></span>
+<span id="cb14-4"><a href="module-5-solutions-to-learning-activities.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>anaemia, <span class="at">vars=</span>hematocrit, <span class="at">group=</span>group, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  INDEPENDENT SAMPLES T-TEST
+## 
+##  Independent Samples T-Test                                                                                                       
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                                 Statistic    df          p            Mean difference    SE difference    Lower        Upper      
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    hematocrit    Student&#39;s t     2.394370    62.00000    0.0196861          0.7912023        0.3304428    0.1306566    1.451748   
+##                  Welch&#39;s t       2.427577    54.31900    0.0185439          0.7912023        0.3259227    0.1378545    1.444550   
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Construct a table to show how you would report your results and write a conclusion.</li>
+</ol>
+<p>The results are summarised in Table 2.</p>
+<table style="width:100%;">
+<caption>Table 2: Mean hematocrit levels by study group</caption>
+<colgroup>
+<col width="20%" />
+<col width="13%" />
+<col width="14%" />
+<col width="29%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Intervention</th>
+<th>Standard care</th>
+<th>Difference in means (95% CI)</th>
+<th>t, df</th>
+<th>P value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>Mean (SD)</td>
+<td>Mean (SD)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Hematocrit level (%)</td>
+<td>32.44 (1.57)</td>
+<td>31.65 (0.99)</td>
+<td>0.79 (0.14, 1.44)</td>
+<td>2.43, 55.7df</td>
+<td>0.019</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion</strong></p>
+<blockquote>
+<p>The mean haematocrit level among the standard care group is 31.65 and among the intervention group is 32.44. There is evidence that the mean hematocrit level is different for the two study groups (P = 0.019, t= 2.43 with 55.7 df). The mean difference indicates that the mean hematocrit level was 0.79 units higher (95% CI: 0.14, 1.44) in the intervention group compared to the control group.</p>
+</blockquote>
+</div>
+<div id="activity-5.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 5.4<a href="module-5-solutions-to-learning-activities.html#activity-5.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A total of 41 babies aged 6 months to 2 years with haemangioma (birth mark) were enrolled in a study to test the effect of a new topical medication in reducing the volume of their haemangioma. Parents were asked to apply the medication twice daily. The volume (in mm3) of the haemangioma was measured at enrolment and again after 12 weeks of using the medication.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the research question in this study? State the null and alternative hypotheses.</li>
+</ol>
+<blockquote>
+<p>The research question is: does a 12 week application of new topical medication change the volume of haemangiomas among children aged 6 months to 2 years compared to the volume at baseline?</p>
+</blockquote>
+<blockquote>
+<p><strong>Null hypothesis</strong>: there is no change in the mean haemangioma volume among children aged 6 months to 2 years at baseline and after 12 weeks treatment with topical medication.</p>
+</blockquote>
+<blockquote>
+<p><strong>Alternative hypothesis</strong>: there is a change in the mean haemangioma volume among children aged 6 months to 2 years at baseline and after 12 weeks treatment with topical medication.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use the data in the Stata file <code>ActivityS5.4.dta</code> to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test in Stata and write your conclusion.</li>
+</ol>
+<blockquote>
+<p>A paired t-test is appropriate to test the null hypothesis. The measurement of haemangioma volume was made on each baby twice to compare the differences before and after the treatment, therefore, the study has a paired design. Because haemangioma volume is a continuous measurement (mm3), a paired t-test can be considered. The assumptions for a paired t-test are that the outcome variable is continuous, and differences of the measurements are normally distributed.</p>
+</blockquote>
+<blockquote>
+<p>To check the distribution of the differences between the measurements, we first need to calculate the differences. We then examine the distribution of the differences using a histogram as shown in Figure 3.</p>
+</blockquote>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="module-5-solutions-to-learning-activities.html#cb16-1" aria-hidden="true" tabindex="-1"></a>babies <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S5.4.rds&quot;</span>)</span>
+<span id="cb16-2"><a href="module-5-solutions-to-learning-activities.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="module-5-solutions-to-learning-activities.html#cb16-3" aria-hidden="true" tabindex="-1"></a>babies<span class="sc">$</span>diff <span class="ot">=</span> babies<span class="sc">$</span>week_12 <span class="sc">-</span> babies<span class="sc">$</span>baseline</span>
+<span id="cb16-4"><a href="module-5-solutions-to-learning-activities.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">&quot;Volume (mm3)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Difference in haemangioma volume&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<blockquote>
+<p>As we can see from the histogram, the differences in volume at the beginning and end of the study are reasonably symmetrically distributed. Although the distribution is very peaked, there are no influential outliers and the t-test is robust to the deviation of the normality assumption.</p>
+</blockquote>
+<blockquote>
+<p>To conduct the paired t-test in R, we use the <code>t.test()</code> function, specifying the two columns of haemangioma volume and <code>paired=TRUE</code>:</p>
+</blockquote>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="module-5-solutions-to-learning-activities.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using ttestPS from jmv</span></span>
+<span id="cb17-2"><a href="module-5-solutions-to-learning-activities.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>babies, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">&#39;baseline&#39;</span>, <span class="at">i2 =</span> <span class="st">&#39;week_12&#39;</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  PAIRED SAMPLES T-TEST
+## 
+##  Paired Samples T-Test                                                                                                                        
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                                          statistic    df          p            Mean difference    SE difference    Lower          Upper       
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    baseline    week_12    Student&#39;s t     1.959437    40.00000    0.0570564          0.4021951        0.2052605    -0.01265192    0.8170422   
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="module-5-solutions-to-learning-activities.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using t.test</span></span>
+<span id="cb19-2"><a href="module-5-solutions-to-learning-activities.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(babies<span class="sc">$</span>week_12, babies<span class="sc">$</span>baseline, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  babies$week_12 and babies$baseline
+## t = -1.9594, df = 40, p-value = 0.05706
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  -0.81704216  0.01265192
+## sample estimates:
+## mean difference 
+##      -0.4021951</code></pre>
+<blockquote>
+<p>The output shows that the mean volume at week 12 of 1.94 mm<sup>3</sup> was lower than the mean of 2.34 mm<sup>3</sup> at baseline. The mean decrease is 0.40 mm<sup>3</sup> (95% CI −0.01 to 0.82). From the paired t-test results, we can see that t = -1.96 with 40 df and P = 0.057. This P-value provides only weak evidence that the topical medication has an effect on haemangioma volume among children aged 6 months to 2 years. The P-value of 0.057 is consistent with the 95% CI just crossing the line of no difference (i.e. 0 mm3).</p>
+</blockquote>
+<blockquote>
+<p>[Note that the estimated difference and its confidence interval (-0.40: 95% CI from -0.82 to 0.01) is presented as if it were an increase from baseline to 12-weeks. As the mean difference is negative, we can interpreted the estimates as <em>reductions</em> by multiplying each value by -1.]</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>What are the limitations of this study?</li>
+</ol>
+<blockquote>
+<p>In a paired design, each subject serves as their own control (here by comparing the change in volume of the haemangioma at baseline and after 12 weeks of treatment). However, the reduction of −0.40 mm3 on average could have been due to the new medication or to the natural history of the condition. A better design would be a randomised controlled trial where subjects are randomised to the new treatment or the usual treatment and compare the volume between the 2 groups. More information on randomised controlled trials and other study designs is given in PHCM9794: Foundations of Epidemiology.</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-4-full-script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+# Module 3: Full script {.unnumbered}
+
+```{r eval=FALSE, include=TRUE}
+# Author: Timothy Dobbins
+# Date: June, 2022
+# Purpose: Learning activities for Module 3
+
+library(jmv)
+
+# Activity 3.2
+# i: n=25
+n <- 25
+se <- 85 / sqrt(n)
+se
+
+mle <- 1.96 * se
+mle
+
+# ii: n=100
+n <- 100
+se <- 85 / sqrt(n)
+se
+
+mle <- 1.96 * se
+mle
+
+# iii: n=625
+n <- 625
+se <- 85 / sqrt(n)
+se
+
+mle <- 1.96 * se
+mle
+
+# iv: n=3000
+n <- 3000
+se <- 85 / sqrt(n)
+se
+
+mle <- 1.96 * se
+mle
+
+
+# Activity 3.3
+dbp <- readRDS("data/activities/Activity_S1.4.rds")
+
+hist(dbp$diabp, 
+     main="Figure 3.1: Distribution of diastolic blood pressure", 
+     xlab="Diastolic blood pressure (mmHg)")
+
+descriptives(data=dbp, vars=diabp, se=TRUE)
+t.test(dbp$diabp)
+
+# Activity 3.4
+ci_mean <- function(n, mean, sd, width=0.95, digits=3){
+  lcl <- mean - qt(p=(1 - (1-width)/2), df=n-1) * sd/sqrt(n)
+  ucl <- mean + qt(p=(1 - (1-width)/2), df=n-1) * sd/sqrt(n)
+  
+  print(paste0(width*100, "%", " CI: ", 
+               format(round(lcl, digits=digits), nsmall = digits),
+               " to ", format(round(ucl, digits=digits), nsmall = digits) ))
+
+}
+
+ci_mean(n=81, mean=2.7, sd=0.9, width=0.95)
+```

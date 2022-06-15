@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 3: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 3: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 3: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 3: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-2-full-script.html"/>
+<link rel="next" href="module-3-full-script.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-3-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 3: Solutions to Learning Activities<a href="module-3-solutions-to-learning-activities.html#module-3-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-3.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 3.1<a href="module-3-solutions-to-learning-activities.html#activity-3.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An investigator wishes to study people living with agoraphobia (fear of open spaces). The investigator places an advertisement in a newspaper asking for volunteer participants. A total of 100 replies are received of which the investigator randomly selects 30. However, only 15 volunteers turn up for their interview.</p>
+<ol style="list-style-type: decimal">
+<li>Which of the following statements is true?
+<ol style="list-style-type: lower-alpha">
+<li>The final 15 participants are likely to be a representative sample of the population available to the investigator</li>
+<li>The final 15 participants are likely to be a representative sample of the population of people with agoraphobia</li>
+<li>The randomly selected 30 participants are likely to be a representative sample of people with agoraphobia who replied to the newspaper advertisement</li>
+<li>None of the above</li>
+</ol></li>
+</ol>
+<blockquote>
+<p>ANSWER: C</p>
+</blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>The basic problem confronted by the investigator is that:
+<ol style="list-style-type: lower-alpha">
+<li>The accessible population might be different from the target population</li>
+<li>The sample has been chosen using an unethical method</li>
+<li>The sample size was too small</li>
+<li>It is difficult to obtain a sample of people with agoraphobia in a scientific way</li>
+</ol></li>
+</ol>
+<blockquote>
+<p>ANSWER: A</p>
+</blockquote>
+</div>
+<div id="activity-3.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 3.2<a href="module-3-solutions-to-learning-activities.html#activity-3.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A dental epidemiologist wishes to estimate the mean weekly consumption of sweets among children of a given age in her area. After devising a method which enables her to determine the weekly consumption of sweets by a child, she conducted a pilot survey and found that the standard deviation of sweet consumption by the children per week is 85 gm (assuming this is the σ). She considers taking a random sample for the main survey of:</p>
+<ol style="list-style-type: lower-roman">
+<li>25 children, or</li>
+<li>100 children, or</li>
+<li>625 children or</li>
+<li>3,000 children.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Estimate the standard error and maximum likely (95% confidence) error of the sample mean for each of these four sample sizes.</li>
+</ol>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="module-3-solutions-to-learning-activities.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># i: n=25</span></span>
+<span id="cb71-2"><a href="module-3-solutions-to-learning-activities.html#cb71-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb71-3"><a href="module-3-solutions-to-learning-activities.html#cb71-3" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="dv">85</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb71-4"><a href="module-3-solutions-to-learning-activities.html#cb71-4" aria-hidden="true" tabindex="-1"></a>se</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="module-3-solutions-to-learning-activities.html#cb73-1" aria-hidden="true" tabindex="-1"></a>mle <span class="ot">&lt;-</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb73-2"><a href="module-3-solutions-to-learning-activities.html#cb73-2" aria-hidden="true" tabindex="-1"></a>mle</span></code></pre></div>
+<pre><code>## [1] 33.32</code></pre>
+<blockquote>
+<ol style="list-style-type: lower-roman">
+<li>The standard error of the mean for a sample of 25 = 85/√25 = 17 gm, and the maximum likely error = 1.96 × 17 = 33.32 gm.</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="module-3-solutions-to-learning-activities.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ii: n=100</span></span>
+<span id="cb75-2"><a href="module-3-solutions-to-learning-activities.html#cb75-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb75-3"><a href="module-3-solutions-to-learning-activities.html#cb75-3" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="dv">85</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb75-4"><a href="module-3-solutions-to-learning-activities.html#cb75-4" aria-hidden="true" tabindex="-1"></a>se</span></code></pre></div>
+<pre><code>## [1] 8.5</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="module-3-solutions-to-learning-activities.html#cb77-1" aria-hidden="true" tabindex="-1"></a>mle <span class="ot">&lt;-</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb77-2"><a href="module-3-solutions-to-learning-activities.html#cb77-2" aria-hidden="true" tabindex="-1"></a>mle</span></code></pre></div>
+<pre><code>## [1] 16.66</code></pre>
+<blockquote>
+<ol start="2" style="list-style-type: lower-roman">
+<li>The standard error of the mean for a sample of 100 = 85/√100 = 8.5 gm, and the maximum likely error =1.96 × 8.5 = 16.66 gm.</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="module-3-solutions-to-learning-activities.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iii: n=625</span></span>
+<span id="cb79-2"><a href="module-3-solutions-to-learning-activities.html#cb79-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">625</span></span>
+<span id="cb79-3"><a href="module-3-solutions-to-learning-activities.html#cb79-3" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="dv">85</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb79-4"><a href="module-3-solutions-to-learning-activities.html#cb79-4" aria-hidden="true" tabindex="-1"></a>se</span></code></pre></div>
+<pre><code>## [1] 3.4</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="module-3-solutions-to-learning-activities.html#cb81-1" aria-hidden="true" tabindex="-1"></a>mle <span class="ot">&lt;-</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb81-2"><a href="module-3-solutions-to-learning-activities.html#cb81-2" aria-hidden="true" tabindex="-1"></a>mle</span></code></pre></div>
+<pre><code>## [1] 6.664</code></pre>
+<blockquote>
+<ol start="3" style="list-style-type: lower-roman">
+<li>The standard error of the mean for a sample of 625 = 85/√625 = 3.4 gm, and the maximum likely error =1.96 × 3.4 = 6.66 gm.</li>
+</ol>
+</blockquote>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="module-3-solutions-to-learning-activities.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iv: n=3000</span></span>
+<span id="cb83-2"><a href="module-3-solutions-to-learning-activities.html#cb83-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">3000</span></span>
+<span id="cb83-3"><a href="module-3-solutions-to-learning-activities.html#cb83-3" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="dv">85</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb83-4"><a href="module-3-solutions-to-learning-activities.html#cb83-4" aria-hidden="true" tabindex="-1"></a>se</span></code></pre></div>
+<pre><code>## [1] 1.551881</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="module-3-solutions-to-learning-activities.html#cb85-1" aria-hidden="true" tabindex="-1"></a>mle <span class="ot">&lt;-</span> <span class="fl">1.96</span> <span class="sc">*</span> se</span>
+<span id="cb85-2"><a href="module-3-solutions-to-learning-activities.html#cb85-2" aria-hidden="true" tabindex="-1"></a>mle</span></code></pre></div>
+<pre><code>## [1] 3.041686</code></pre>
+<blockquote>
+<ol start="4" style="list-style-type: lower-roman">
+<li>The standard error of the mean for a sample of 3,000 = 85/√3000 = 1.55 gm, and the maximum likely error =1.96 × 1.551881 = 3.04 gm.</li>
+</ol>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What happens to the standard error as the sample size increases? What can you say about the precision of the sample mean as the sample size increases?</li>
+</ol>
+<blockquote>
+<p>When the sample size increases, the standard error of the mean (and hence the maximum likely error) decreases. Thus, sample means from larger samples are more precise than from smaller samples.</p>
+</blockquote>
+</div>
+<div id="activity-3.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 3.3<a href="module-3-solutions-to-learning-activities.html#activity-3.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dataset for this activity is the same as the one used in Activity 1.4 in Module 1. The file is Activity1.4.rds on Moodle.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Plot a histogram of diastolic BP and describe the distribution.</li>
+</ol>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="module-3-solutions-to-learning-activities.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb87-2"><a href="module-3-solutions-to-learning-activities.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="module-3-solutions-to-learning-activities.html#cb87-3" aria-hidden="true" tabindex="-1"></a>dbp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S1.4.rds&quot;</span>)</span>
+<span id="cb87-4"><a href="module-3-solutions-to-learning-activities.html#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="module-3-solutions-to-learning-activities.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dbp<span class="sc">$</span>diabp, </span>
+<span id="cb87-6"><a href="module-3-solutions-to-learning-activities.html#cb87-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Figure 3.1: Distribution of diastolic blood pressure&quot;</span>, </span>
+<span id="cb87-7"><a href="module-3-solutions-to-learning-activities.html#cb87-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Diastolic blood pressure (mmHg)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<blockquote>
+<p>The distribution is approximately symmetrical, centered about the mean.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use R to obtain an estimate of the mean, standard error of the mean and the 95% confidence interval for the mean diastolic blood pressure.</li>
+</ol>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="module-3-solutions-to-learning-activities.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>dbp, <span class="at">vars=</span>diabp, <span class="at">se=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                       
+##  ────────────────────────────────── 
+##                          diabp      
+##  ────────────────────────────────── 
+##    N                          100   
+##    Missing                      0   
+##    Mean                  82.23000   
+##    Std. error mean       1.301522   
+##    Median                83.00000   
+##    Standard deviation    13.01522   
+##    Minimum               56.00000   
+##    Maximum               118.0000   
+##  ──────────────────────────────────</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="module-3-solutions-to-learning-activities.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(dbp<span class="sc">$</span>diabp)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  dbp$diabp
+## t = 63.18, df = 99, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  79.6475 84.8125
+## sample estimates:
+## mean of x 
+##     82.23</code></pre>
+<blockquote>
+<p>The sample mean is estimated as 82.2 mmHg, and the standard error (SE) of the mean is 1.30 mmHg. The 95% confidence interval is from 79.6 to 84.8 mmHg.</p>
+</blockquote>
+<blockquote>
+<p><em>Note that the original data have one decimal place. While we could present the mean to two decimal places when reporting the mean, it seems a bit excessive to present a mean blood pressure to two decimal places. Thus we report the mean and 95% confidence interval for the mean with 1 decimal place.</em></p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>What can you say about the population mean from these results? (Include in you answer what is meant by the confidence interval of a mean).</li>
+</ol>
+<blockquote>
+<p>We are 95% confident that true mean of the population from which we sampled lies between 79.6 mmHg and 84.8 mmHg.</p>
+</blockquote>
+</div>
+<div id="activity-3.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 3.4<a href="module-3-solutions-to-learning-activities.html#activity-3.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose that a random sample of 81 newborn babies delivered in a hospital located in a poor neighbourhood during the last year had a mean birth weight of 2.7 kg and a standard deviation of 0.9 kg. Calculate the 95% confidence interval for the unknown population mean. Interpret the 95% confidence interval.</p>
+<blockquote>
+<p>This question asks for a confidence interval to be calculated from summarised data. R does not have an in-built function to do this, but we can use the code presented in the R notes to complete this activitiy.</p>
+</blockquote>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="module-3-solutions-to-learning-activities.html#cb92-1" aria-hidden="true" tabindex="-1"></a>ci_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mean, sd, <span class="at">width=</span><span class="fl">0.95</span>, <span class="at">digits=</span><span class="dv">3</span>){</span>
+<span id="cb92-2"><a href="module-3-solutions-to-learning-activities.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  lcl <span class="ot">&lt;-</span> mean <span class="sc">-</span> <span class="fu">qt</span>(<span class="at">p=</span>(<span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span><span class="sc">-</span>width)<span class="sc">/</span><span class="dv">2</span>), <span class="at">df=</span>n<span class="dv">-1</span>) <span class="sc">*</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb92-3"><a href="module-3-solutions-to-learning-activities.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  ucl <span class="ot">&lt;-</span> mean <span class="sc">+</span> <span class="fu">qt</span>(<span class="at">p=</span>(<span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span><span class="sc">-</span>width)<span class="sc">/</span><span class="dv">2</span>), <span class="at">df=</span>n<span class="dv">-1</span>) <span class="sc">*</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb92-4"><a href="module-3-solutions-to-learning-activities.html#cb92-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb92-5"><a href="module-3-solutions-to-learning-activities.html#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(width<span class="sc">*</span><span class="dv">100</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot; CI: &quot;</span>, </span>
+<span id="cb92-6"><a href="module-3-solutions-to-learning-activities.html#cb92-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">format</span>(<span class="fu">round</span>(lcl, <span class="at">digits=</span>digits), <span class="at">nsmall =</span> digits),</span>
+<span id="cb92-7"><a href="module-3-solutions-to-learning-activities.html#cb92-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">&quot; to &quot;</span>, <span class="fu">format</span>(<span class="fu">round</span>(ucl, <span class="at">digits=</span>digits), <span class="at">nsmall =</span> digits) ))</span>
+<span id="cb92-8"><a href="module-3-solutions-to-learning-activities.html#cb92-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-9"><a href="module-3-solutions-to-learning-activities.html#cb92-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb92-10"><a href="module-3-solutions-to-learning-activities.html#cb92-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-11"><a href="module-3-solutions-to-learning-activities.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ci_mean</span>(<span class="at">n=</span><span class="dv">81</span>, <span class="at">mean=</span><span class="fl">2.7</span>, <span class="at">sd=</span><span class="fl">0.9</span>, <span class="at">width=</span><span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;95% CI: 2.501 to 2.899&quot;</code></pre>
+<blockquote>
+<p>We are 95% confident that the true mean birthweight in the hospital located in a poor neighbourhood lies between 2.5 kg and 2.9 kg.</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-2-full-script.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-3-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

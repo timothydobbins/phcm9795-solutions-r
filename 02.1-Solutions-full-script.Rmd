@@ -1,0 +1,125 @@
+# Module 2: Full script {.unnumbered}
+
+```{r eval=FALSE, include=TRUE}
+# Author: Timothy Dobbins
+# Date: May, 2022
+# Purpose: Learning activities for Module 2
+
+library(jmv)
+library(readxl)
+
+### Activity 2.1
+
+pbinom(q=59, size=90, prob=0.5, lower.tail = FALSE)
+
+
+### Activity 2.2
+
+dbinom(x=0, size=5, prob=0.35)
+dbinom(x=2, size=5, prob=0.35)
+dbinom(x=5, size=5, prob=0.35)
+pbinom(q=3, size=5, prob=0.35)
+
+
+### Activity 2.3
+A <- pnorm(75, mean=87, sd=8, lower.tail=TRUE)
+A
+
+C <- pnorm(95, mean=87, sd=8, lower.tail=FALSE)   
+C
+
+B <- 1 - A - C
+B
+
+
+### Activity 2.4
+
+survey <- read_excel("data/examples/health-survey.xlsx")
+summary(survey)
+
+survey$sex <- factor(survey$sex, level=c(1,2), labels=c("Male", "Female"))
+
+survey$bmi = survey$weight / (survey$height^2)
+hist(survey$bmi, main="Histogram of BMI", xlab="BMI (kg/m2)")
+boxplot(survey$bmi, main="Boxplot of BMI", ylab="BMI (kg/m2)")
+
+subset(survey, bmi<15)
+subset(survey, bmi>45)
+
+survey$bmi_cat <- cut(survey$bmi, c(0, 18.5, 25, 30, 35, 40, 100), right=FALSE)
+summary(survey$bmi_cat)
+
+contTables(data=survey,
+           rows = bmi_cat,
+           cols = sex)
+
+contTables(data=survey,
+           rows = bmi_cat,
+           cols = sex,
+           pcCol = TRUE)
+
+### Activity 2.5
+babies <- readRDS("data/activities/Activity_S2.5-LengthOfStay.rds")
+summary(babies)
+
+hist(babies$BirthWt, main="Histogram of birth weights",
+     xlab="Birth weight (kg)")
+
+# We can specify our own cutpoints using the breaks command, with the seq() function:
+hist(babies$BirthWt, main="Histogram of birth weights",
+     xlab="Birth weight (kg)",
+     breaks=seq(from=1500, to=4000, by=250))
+
+hist(babies$LengthStay, main="Histogram of lengths of stay",
+     xlab="Length of stay (days)")
+
+hist(babies$LengthStay, main="Histogram of lengths of stay",
+     xlab="Length of stay (days)",
+     breaks=seq(from=0, to=250, by=25))
+
+descriptives(data = babies,
+             vars = c(BirthWt, LengthStay),
+             pc = TRUE,
+             skew = TRUE,
+             kurt = TRUE)
+
+hospstay <- read.csv("data/activities/Activity_S2.5.csv")
+
+summary(hospstay)
+
+# Define female as a factor
+hospstay$female <- factor(hospstay$female, levels=c(0,1), labels=c("Male", "Female"))
+summary(hospstay$female)
+
+hist(hospstay$los, main="Histogram of hospital stay", xlab="Length of stay (days)")
+boxplot(hospstay$los, main="Boxplot of hospital stay", ylab="Length of stay (days)")
+
+hospstay_males <- subset(hospstay, female=="Male")
+hospstay_females <- subset(hospstay, female=="Female")
+
+# Set the graphics parameters to plot 2 rows and 2 columns:
+par(mfrow=c(2,2))
+
+# Specify each plot separately
+hist(hospstay_males$los, xlab="Length of stay (days)", main="Males")
+hist(hospstay_females$los, xlab="Length of stay (days)", main="Females")
+
+boxplot(hospstay_males$los, ylab="Length of stay (days)", main="Males")
+boxplot(hospstay_females$los, ylab="Length of stay (days)", main="Females")
+
+# Reset graphics parameters
+par(mfrow=c(1,1))
+
+descriptives(data = hospstay,
+             vars = los,
+             pc = TRUE,
+             skew = TRUE,
+             kurt = TRUE)
+
+descriptives(data = hospstay,
+             vars = los,
+             splitBy = female,
+             pc = TRUE,
+             skew = TRUE,
+             kurt = TRUE)
+```

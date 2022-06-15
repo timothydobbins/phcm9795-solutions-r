@@ -1,0 +1,17 @@
+# Module 4: Full script {.unnumbered}
+
+```{r eval=FALSE, include=TRUE}
+# Author: Timothy Dobbins
+# Date: June, 2022
+# Purpose: Learning activities for Module 4
+
+library(readxl)
+library(jmv)
+
+pilot <- read_excel("data/activities/Activity_S4.3.xls")
+hist(pilot$Energy, main="Daily energy intake of pilot participants", xlab="Energy (kJ)")
+
+descriptives(pilot)
+
+t.test(pilot$Energy, mu=7750)
+```

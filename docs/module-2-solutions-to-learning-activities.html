@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 2: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 2: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 2: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 2: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-1-full-script.html"/>
+<link rel="next" href="module-2-full-script.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-2-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 2: Solutions to Learning Activities<a href="module-2-solutions-to-learning-activities.html#module-2-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-2.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 2.1<a href="module-2-solutions-to-learning-activities.html#activity-2.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In a Randomised Controlled Trial, the preference of a new drug was tested against an established drug by giving both drugs to each of 90 people. Assume that the two drugs are equally preferred, that is, the probability that a patient prefers either of the drugs is equal (50%). Use one of the binomial functions in R to compute the probability that 60 or more patients would prefer the new drug. In completing this question, determine:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The number of trials (n)</li>
+</ol>
+<blockquote>
+<p>Here, each participant represents a ‘trial’, so n is 90.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The number of successes we are interested in (k)</li>
+</ol>
+<blockquote>
+<p>We are interested in determining the probability that 60 or more participants prefer the new drug, so k is 60.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The probability of success for each trial (p)</li>
+</ol>
+<blockquote>
+<p>We are told to assume that the two drugs are equally preferred, so p is 0.5.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>The form of the R function: dbinom or pbinom</li>
+</ol>
+<blockquote>
+<p>We need to calculate the probability that 60 or more participants prefer the new drug. The two R functions can be interpreted as follows:
+- the <code>dbinom</code> function gives the probability of observing 60 successes;
+- the <code>pbinom</code> function gives the probability of observing 60 or fewer successes;
+- the <code>pbinom</code> function with <code>lower.tail=FALSE</code> gives the probability of observing <em>more than</em> 60 successes.</p>
+</blockquote>
+<blockquote>
+<p>We therefore want to use <code>pbinom</code> function with <code>lower.tail=FALSE</code> here.</p>
+</blockquote>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>The final probability.</li>
+</ol>
+<blockquote>
+<p>To calculate the probability of obtaining 60 or more successes, we need to calculate the probabibility of observing <em>more than</em> 59 successes. So the function we use is:</p>
+</blockquote>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="module-2-solutions-to-learning-activities.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="at">q=</span><span class="dv">59</span>, <span class="at">size=</span><span class="dv">90</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.001030133</code></pre>
+<blockquote>
+<p>Therefore, the probability that 60 or more patients would prefer the new drug is 0.001 or 0.1%.</p>
+</blockquote>
+</div>
+<div id="activity-2.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 2.2<a href="module-2-solutions-to-learning-activities.html#activity-2.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A case of Schistosomiasis is identified by the detection of schistosome ova in a faecal sample. In patients with a low level of infection, a field technique of faecal examination has a probability of 0.35 of detecting ova in any one faecal sample. If five samples are routinely examined for each patient, use R to compute the probability that a patient with a low level of infection:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Will not be identified?</li>
+</ol>
+<blockquote>
+<p>In all of these questions, <code>size</code> is 5 and <code>prob</code> is 0.35. Here we need to calculate the probability of P(X=0), and we can use the <code>dbinom</code> function:</p>
+</blockquote>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="module-2-solutions-to-learning-activities.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.35</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1160291</code></pre>
+<blockquote>
+<p>The probability P(X=0) = 0.116 or 11.6%.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Will be identified in two of the samples?</li>
+</ol>
+<blockquote>
+<p>The probability P(X=2)= 0. 336 or 33.6%:</p>
+</blockquote>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="module-2-solutions-to-learning-activities.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">2</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.35</span>)</span></code></pre></div>
+<pre><code>## [1] 0.3364156</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Will be identified in all the samples?</li>
+</ol>
+<p>The probability P(X=5) = .005 or 0.5%:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="module-2-solutions-to-learning-activities.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="at">x=</span><span class="dv">5</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.35</span>)</span></code></pre></div>
+<pre><code>## [1] 0.005252187</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Will be identified in at most 3 of the samples?</li>
+</ol>
+<blockquote>
+<p>“At most 3 samples” is the same as 3 or fewer samples, so we can use the pbinom function. The probability P(X≤3) = .946 or 94.6%:</p>
+</blockquote>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="module-2-solutions-to-learning-activities.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="at">q=</span><span class="dv">3</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.35</span>)</span></code></pre></div>
+<pre><code>## [1] 0.9459775</code></pre>
+</div>
+<div id="activity-2.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 2.3<a href="module-2-solutions-to-learning-activities.html#activity-2.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If weights of men are Normally distributed with a population mean <span class="math inline">\(\mu\)</span> = 87, and a population standard deviation, <span class="math inline">\(\sigma\)</span> = 8 kg:</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the probability that a man will weigh 95 kg or more? Draw a Normal curve of the area represented by this probability in the population (i.e. with <span class="math inline">\(\mu\)</span> = 87 kg and <span class="math inline">\(\sigma\)</span> = 8 kg).</li>
+</ol>
+<blockquote>
+<p>The curve representing the desired probability is drawn below, with the region above 95kg shaded to represent the probability of interest. Note that this curve was generated by a computer: a hand-drawn figure is completely acceptable. A hand-drawn figure will probably look much less tidy, but the main thing to notice is that the shaded area looks like it would represent less than 50% of the total curve. Therefore, our final probability should be less than 0.5.</p>
+</blockquote>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-18-1.png" alt="Probability that a man will weigh 95kg or more" width="672" />
+<p class="caption">
+Figure 1: Probability that a man will weigh 95kg or more
+</p>
+</div>
+<blockquote>
+<p>The probability is calculated as:</p>
+</blockquote>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="module-2-solutions-to-learning-activities.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability:</span></span>
+<span id="cb31-2"><a href="module-2-solutions-to-learning-activities.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">95</span>, <span class="at">mean=</span><span class="dv">87</span>, <span class="at">sd=</span><span class="dv">8</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1586553</code></pre>
+<blockquote>
+<p>Therefore, the probability that a man from this population weighs 95 kg or more is 0.16 or 16%.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What is the probability that a man will weigh more than 75 kg but less than 95 kg? Draw the area represented by this probability on a standardised Normal curve.</li>
+</ol>
+<blockquote>
+<p>The curve to represent this probability is shown below. To obtain the probability represented by the shaded region, we again use the fact that the total area under a Normal curve must add to 1. Let’s break the curve into three parts, which we will call A, B and C.</p>
+</blockquote>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<blockquote>
+<p>We use that fact that A+B+C=1 to derive that B = 1– A – C. We have already calculated C in Part (a) of this question. To calculate A:</p>
+</blockquote>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="module-2-solutions-to-learning-activities.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">75</span>, <span class="at">mean=</span><span class="dv">87</span>, <span class="at">sd=</span><span class="dv">8</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.0668072</code></pre>
+<p>P(Weight &lt; 75) = 0.0668.</p>
+<blockquote>
+<p>The region B is calculated as: 1 - 0.1587 - 0.0668 = 0.7745.</p>
+</blockquote>
+<blockquote>
+<p>So the probability that a man will weigh more than 75 kg but less than 95 kg is 0.77, or 77%.</p>
+</blockquote>
+</div>
+<div id="activity-2.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 2.4<a href="module-2-solutions-to-learning-activities.html#activity-2.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using the health survey data described in the R notes of this module, create a new variable, BMI, which is equal to a person’s weight (in kg) divided by their height (in metres) squared (i.e. <span class="math inline">\(\text{BMI} = \frac{\text{weight (kg)}}{\text{[height (m)]}^2}\)</span>. Categorise BMI using the WHO categories provided in the R notes. Create a two-way table to display the distribution of BMI categories by sex (sex: 1 = respondent identifies as male; 2 = respondent identifies as female). Does there appear to be a difference in categorised BMI between males and females?</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="module-2-solutions-to-learning-activities.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb35-2"><a href="module-2-solutions-to-learning-activities.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb35-3"><a href="module-2-solutions-to-learning-activities.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="module-2-solutions-to-learning-activities.html#cb35-4" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/examples/health-survey.xlsx&quot;</span>)</span>
+<span id="cb35-5"><a href="module-2-solutions-to-learning-activities.html#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey)</span></code></pre></div>
+<pre><code>##       sex           height          weight      
+##  Min.   :1.00   Min.   :1.220   Min.   : 22.70  
+##  1st Qu.:1.00   1st Qu.:1.630   1st Qu.: 68.00  
+##  Median :2.00   Median :1.700   Median : 79.40  
+##  Mean   :1.55   Mean   :1.698   Mean   : 81.19  
+##  3rd Qu.:2.00   3rd Qu.:1.780   3rd Qu.: 90.70  
+##  Max.   :2.00   Max.   :2.010   Max.   :213.20</code></pre>
+<blockquote>
+<p>After reading in the data, we define sex as a factor, and create BMI:</p>
+</blockquote>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="module-2-solutions-to-learning-activities.html#cb37-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(survey<span class="sc">$</span>sex, <span class="at">level=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>))</span>
+<span id="cb37-2"><a href="module-2-solutions-to-learning-activities.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="module-2-solutions-to-learning-activities.html#cb37-3" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>bmi <span class="ot">=</span> survey<span class="sc">$</span>weight <span class="sc">/</span> (survey<span class="sc">$</span>height<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<blockquote>
+<p>After creating BMI, we should examine its distribution using a histogram and/or a boxplot:</p>
+</blockquote>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="module-2-solutions-to-learning-activities.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(survey<span class="sc">$</span>bmi, <span class="at">main=</span><span class="st">&quot;Histogram of BMI&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Body mass index (kg/m2)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="module-2-solutions-to-learning-activities.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(survey<span class="sc">$</span>bmi, <span class="at">main=</span><span class="st">&quot;Boxplot of BMI&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Body mass index (kg/m2)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
+<blockquote>
+<p>The boxplot in particular shows that there are some extreme values of BMI. We can examine these records by viewing records with BMI less than, say 15, or greater than 45:</p>
+</blockquote>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="module-2-solutions-to-learning-activities.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(survey, bmi<span class="sc">&lt;</span><span class="dv">15</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 4
+##   sex    height weight   bmi
+##   &lt;fct&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1 Female   1.57   22.7  9.21
+## 2 Female   1.65   40.8 15.0</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="module-2-solutions-to-learning-activities.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(survey, bmi<span class="sc">&gt;</span><span class="dv">45</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 16 × 4
+##    sex    height weight   bmi
+##    &lt;fct&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+##  1 Female   1.52  105    45.4
+##  2 Male     1.85  174.   50.8
+##  3 Female   1.22   74.8  50.3
+##  4 Male     1.93  213.   57.2
+##  5 Female   1.63  127    47.8
+##  6 Female   1.55  115.   48.0
+##  7 Female   1.65  131.   48.2
+##  8 Female   1.55  109.   45.3
+##  9 Male     1.78  143.   45.1
+## 10 Female   1.65  127    46.6
+## 11 Female   1.63  132.   49.5
+## 12 Female   1.7   152    52.6
+## 13 Female   1.6   127    49.6
+## 14 Female   1.5   106.   47.2
+## 15 Female   1.73  154.   51.5
+## 16 Female   1.6   116.   45.4</code></pre>
+<blockquote>
+<p>The smallest BMI of 9.2 kg/m2 is very low, with a weight of 22.7 kg. We should check the recorded height and weight values against the original data (paper records, survey responses) if they were available. However, as a weight of 22.7kg is not impossible, this record will not be deleted. An alternative approach would be to analyse the data including the very low BMI and again excluding the very low BMI as a sensitivity analysis.
+The largest BMI values are based on participants with large weights, and none of these seem biologically implausible. Therefore, no changes will be made to participants with small or large values of BMI.</p>
+</blockquote>
+<blockquote>
+<p>We can use the <code>cut()</code> function to create the BMI categories. The WHO cutpoints are inclusive of the lower-bound, so we use <code>right=FALSE</code>. After creating the categories, it is good practice to check the resulting categories using <code>summary()</code>:</p>
+</blockquote>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="module-2-solutions-to-learning-activities.html#cb44-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>bmi_cat <span class="ot">&lt;-</span> <span class="fu">cut</span>(survey<span class="sc">$</span>bmi, <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">100</span>), <span class="at">right=</span><span class="cn">FALSE</span>)</span>
+<span id="cb44-2"><a href="module-2-solutions-to-learning-activities.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey<span class="sc">$</span>bmi_cat)</span></code></pre></div>
+<pre><code>##  [0,18.5) [18.5,25)   [25,30)   [30,35)   [35,40)  [40,100) 
+##        18       362       411       201       101        47</code></pre>
+<blockquote>
+<p>Finally, we can create a two-way table using the <code>contTables()</code> function within the <code>jmv</code> package. We can define the rows by BMI category, and the columns by sex:</p>
+</blockquote>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="module-2-solutions-to-learning-activities.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>survey,</span>
+<span id="cb46-2"><a href="module-2-solutions-to-learning-activities.html#cb46-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> bmi_cat,</span>
+<span id="cb46-3"><a href="module-2-solutions-to-learning-activities.html#cb46-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cols =</span> sex)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                       
+##  ──────────────────────────────────────── 
+##    bmi_cat      Male    Female    Total   
+##  ──────────────────────────────────────── 
+##    [0,18.5)        6        12       18   
+##    [18.5,25)     134       228      362   
+##    [25,30)       216       195      411   
+##    [30,35)        95       106      201   
+##    [35,40)        46        55      101   
+##    [40,100)       16        31       47   
+##    Total         513       627     1140   
+##  ──────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    22.49802     5    0.0004209   
+##    N         1140                      
+##  ─────────────────────────────────────</code></pre>
+<blockquote>
+<p>To assess whether there is a difference in BMI between males and females, we should look at the within-sex relative frequencies. In other words, column percents (for this table), by specifying <code>pcCol = TRUE</code>:</p>
+</blockquote>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="module-2-solutions-to-learning-activities.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>survey,</span>
+<span id="cb48-2"><a href="module-2-solutions-to-learning-activities.html#cb48-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> bmi_cat,</span>
+<span id="cb48-3"><a href="module-2-solutions-to-learning-activities.html#cb48-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cols =</span> sex,</span>
+<span id="cb48-4"><a href="module-2-solutions-to-learning-activities.html#cb48-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">pcCol =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                      
+##  ─────────────────────────────────────────────────────────────────────── 
+##    bmi_cat                         Male         Female       Total       
+##  ─────────────────────────────────────────────────────────────────────── 
+##    [0,18.5)     Observed                   6           12           18   
+##                 % within column      1.16959      1.91388      1.57895   
+##                                                                          
+##    [18.5,25)    Observed                 134          228          362   
+##                 % within column     26.12086     36.36364     31.75439   
+##                                                                          
+##    [25,30)      Observed                 216          195          411   
+##                 % within column     42.10526     31.10048     36.05263   
+##                                                                          
+##    [30,35)      Observed                  95          106          201   
+##                 % within column     18.51852     16.90590     17.63158   
+##                                                                          
+##    [35,40)      Observed                  46           55          101   
+##                 % within column      8.96686      8.77193      8.85965   
+##                                                                          
+##    [40,100)     Observed                  16           31           47   
+##                 % within column      3.11891      4.94418      4.12281   
+##                                                                          
+##    Total        Observed                 513          627         1140   
+##                 % within column    100.00000    100.00000    100.00000   
+##  ─────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    22.49802     5    0.0004209   
+##    N         1140                      
+##  ─────────────────────────────────────</code></pre>
+<blockquote>
+<p>From this health survey, it appears that men are more likely to have BMIs indicating Pre-Obesity (men 42% vs women 31%) and Obesity Class I (men 19% vs women 17%), compared to women who are more likely to have BMIs indicating Normal weight (women 36% vs men 26%).</p>
+</blockquote>
+</div>
+<div id="activity-2.5" class="section level3 unnumbered hasAnchor">
+<h3>Activity 2.5<a href="module-2-solutions-to-learning-activities.html#activity-2.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The data in the file <code>Activity_S2.5.rds</code> (available on Moodle) has information about birth weight and length of stay collected from 117 babies admitted consecutively to a hospital for surgery. For each variable:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Create a histogram to inspect the distribution of the variable;</li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="module-2-solutions-to-learning-activities.html#cb50-1" aria-hidden="true" tabindex="-1"></a>babies <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S2.5-LengthOfStay.rds&quot;</span>)</span>
+<span id="cb50-2"><a href="module-2-solutions-to-learning-activities.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(babies)</span></code></pre></div>
+<pre><code>##        ID          Sex        BirthWt        GestAge        LengthStay    
+##  Min.   : 25   female:55   Min.   :1500   Min.   :31.00   Min.   :  0.00  
+##  1st Qu.: 54   male  :62   1st Qu.:2012   1st Qu.:35.75   1st Qu.: 21.00  
+##  Median : 83               Median :2438   Median :36.00   Median : 30.00  
+##  Mean   : 83               Mean   :2451   Mean   :36.56   Mean   : 41.08  
+##  3rd Qu.:112               3rd Qu.:2830   3rd Qu.:38.00   3rd Qu.: 43.00  
+##  Max.   :141               Max.   :3545   Max.   :41.00   Max.   :244.00  
+##                            NA&#39;s   :1      NA&#39;s   :5</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="module-2-solutions-to-learning-activities.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>BirthWt, <span class="at">main=</span><span class="st">&quot;Histogram of birth weights&quot;</span>,</span>
+<span id="cb52-2"><a href="module-2-solutions-to-learning-activities.html#cb52-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Birth weight (kg)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="module-2-solutions-to-learning-activities.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can specify our own cutpoints using the breaks command, with the seq() function:</span></span>
+<span id="cb53-2"><a href="module-2-solutions-to-learning-activities.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>BirthWt, <span class="at">main=</span><span class="st">&quot;Histogram of birth weights&quot;</span>,</span>
+<span id="cb53-3"><a href="module-2-solutions-to-learning-activities.html#cb53-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Birth weight (kg)&quot;</span>,</span>
+<span id="cb53-4"><a href="module-2-solutions-to-learning-activities.html#cb53-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1500</span>, <span class="at">to=</span><span class="dv">4000</span>, <span class="at">by=</span><span class="dv">250</span>))</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="module-2-solutions-to-learning-activities.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>LengthStay, <span class="at">main=</span><span class="st">&quot;Histogram of lengths of stay&quot;</span>,</span>
+<span id="cb54-2"><a href="module-2-solutions-to-learning-activities.html#cb54-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Length of stay (days)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-29-3.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="module-2-solutions-to-learning-activities.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>LengthStay, <span class="at">main=</span><span class="st">&quot;Histogram of lengths of stay&quot;</span>,</span>
+<span id="cb55-2"><a href="module-2-solutions-to-learning-activities.html#cb55-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Length of stay (days)&quot;</span>,</span>
+<span id="cb55-3"><a href="module-2-solutions-to-learning-activities.html#cb55-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">250</span>, <span class="at">by=</span><span class="dv">25</span>))</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-29-4.png" width="672" /></p>
+<blockquote>
+<p>The histogram for birthweight shows a roughly symmetric distribution. The histogram for length of stay shows a highly skewed distribution (skewed to the right).</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Complete the following summary statistics for each variable:
+<ul>
+<li>mean and median;</li>
+<li>standard deviation and interquartile range;</li>
+<li>skewness and kurtosis.</li>
+</ul></li>
+</ol>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="module-2-solutions-to-learning-activities.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> babies,</span>
+<span id="cb56-2"><a href="module-2-solutions-to-learning-activities.html#cb56-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> <span class="fu">c</span>(BirthWt, LengthStay),</span>
+<span id="cb56-3"><a href="module-2-solutions-to-learning-activities.html#cb56-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">pc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb56-4"><a href="module-2-solutions-to-learning-activities.html#cb56-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">skew =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb56-5"><a href="module-2-solutions-to-learning-activities.html#cb56-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">kurt =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                                        
+##  ─────────────────────────────────────────────────── 
+##                           BirthWt       LengthStay   
+##  ─────────────────────────────────────────────────── 
+##    N                             116           117   
+##    Missing                         1             0   
+##    Mean                     2451.207      41.07692   
+##    Median                   2437.500      30.00000   
+##    Standard deviation       504.8221      36.92984   
+##    Minimum                  1500.000      0.000000   
+##    Maximum                  3545.000      244.0000   
+##    Skewness                0.3548827      3.090351   
+##    Std. error skewness     0.2245612     0.2236233   
+##    Kurtosis               -0.7448547      11.56803   
+##    Std. error kurtosis     0.4455276     0.4436951   
+##    25th percentile          2012.000      21.00000   
+##    50th percentile          2437.500      30.00000   
+##    75th percentile          2830.000      43.00000   
+##  ───────────────────────────────────────────────────</code></pre>
+<p>Make a decision about whether each variable is symmetric or not, and which measure of central tendency and variability should be reported.</p>
+<blockquote>
+<p>As birthweight follows a roughly symmetric distribution, we should present the mean and standard deviation as the appropriate measures of central tendency and spread. Notice that the mean and median are similar, which is to be expected for a symmetric distribution.</p>
+</blockquote>
+<blockquote>
+<p>Length of stay is highly skewed. In this case, the median and interquartile range are the appropriate measures to present. Notice that the mean is higher than the median, which is typical for distributions that are skewed to the right.</p>
+</blockquote>
+</div>
+<div id="activity-2.6" class="section level3 unnumbered hasAnchor">
+<h3>Activity 2.6<a href="module-2-solutions-to-learning-activities.html#activity-2.6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The data set of hospital stay data for 1323 hypothetical patients is available on Moodle in csv format (<code>Activity2.6.csv</code>). Import this dataset into R There are two variables in this dataset:</p>
+<ul>
+<li>female: female=1; male=0</li>
+<li>los: length of stay in days</li>
+</ul>
+<ol style="list-style-type: lower-alpha">
+<li>Use R to examine the distribution of length of stay: overall; and separately for females and males. Comment on the distributions.</li>
+</ol>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="module-2-solutions-to-learning-activities.html#cb58-1" aria-hidden="true" tabindex="-1"></a>hospstay <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/activities/Activity_S2.5.csv&quot;</span>)</span>
+<span id="cb58-2"><a href="module-2-solutions-to-learning-activities.html#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="module-2-solutions-to-learning-activities.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hospstay)</span></code></pre></div>
+<pre><code>##      female            los        
+##  Min.   :0.0000   Min.   :  0.00  
+##  1st Qu.:0.0000   1st Qu.:  4.00  
+##  Median :0.0000   Median :  9.00  
+##  Mean   :0.1104   Mean   : 12.52  
+##  3rd Qu.:0.0000   3rd Qu.: 17.00  
+##  Max.   :1.0000   Max.   :106.00</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="module-2-solutions-to-learning-activities.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define female as a factor</span></span>
+<span id="cb60-2"><a href="module-2-solutions-to-learning-activities.html#cb60-2" aria-hidden="true" tabindex="-1"></a>hospstay<span class="sc">$</span>female <span class="ot">&lt;-</span> <span class="fu">factor</span>(hospstay<span class="sc">$</span>female, <span class="at">levels=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>))</span>
+<span id="cb60-3"><a href="module-2-solutions-to-learning-activities.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hospstay<span class="sc">$</span>female)</span></code></pre></div>
+<pre><code>##   Male Female 
+##   1177    146</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="module-2-solutions-to-learning-activities.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hospstay<span class="sc">$</span>los, <span class="at">main=</span><span class="st">&quot;Histogram of hospital stay&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Length of stay (days)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="module-2-solutions-to-learning-activities.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hospstay<span class="sc">$</span>los, <span class="at">main=</span><span class="st">&quot;Boxplot of hospital stay&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Length of stay (days)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-31-2.png" width="672" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="module-2-solutions-to-learning-activities.html#cb64-1" aria-hidden="true" tabindex="-1"></a>hospstay_males <span class="ot">&lt;-</span> <span class="fu">subset</span>(hospstay, female<span class="sc">==</span><span class="st">&quot;Male&quot;</span>)</span>
+<span id="cb64-2"><a href="module-2-solutions-to-learning-activities.html#cb64-2" aria-hidden="true" tabindex="-1"></a>hospstay_females <span class="ot">&lt;-</span> <span class="fu">subset</span>(hospstay, female<span class="sc">==</span><span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb64-3"><a href="module-2-solutions-to-learning-activities.html#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="module-2-solutions-to-learning-activities.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the graphics parameters to plot 2 rows and 2 columns:</span></span>
+<span id="cb64-5"><a href="module-2-solutions-to-learning-activities.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb64-6"><a href="module-2-solutions-to-learning-activities.html#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="module-2-solutions-to-learning-activities.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify each plot separately</span></span>
+<span id="cb64-8"><a href="module-2-solutions-to-learning-activities.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hospstay_males<span class="sc">$</span>los, <span class="at">xlab=</span><span class="st">&quot;Length of stay (days)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Males&quot;</span>)</span>
+<span id="cb64-9"><a href="module-2-solutions-to-learning-activities.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hospstay_females<span class="sc">$</span>los, <span class="at">xlab=</span><span class="st">&quot;Length of stay (days)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Females&quot;</span>)</span>
+<span id="cb64-10"><a href="module-2-solutions-to-learning-activities.html#cb64-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-11"><a href="module-2-solutions-to-learning-activities.html#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hospstay_males<span class="sc">$</span>los, <span class="at">ylab=</span><span class="st">&quot;Length of stay (days)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Males&quot;</span>)</span>
+<span id="cb64-12"><a href="module-2-solutions-to-learning-activities.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hospstay_females<span class="sc">$</span>los, <span class="at">ylab=</span><span class="st">&quot;Length of stay (days)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Females&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-31-3.png" width="672" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="module-2-solutions-to-learning-activities.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset graphics parameters</span></span>
+<span id="cb65-2"><a href="module-2-solutions-to-learning-activities.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<blockquote>
+<p>The histograms for overall length of stay and length of stay by gender all show that length of stay is heavily skewed (skewed to the right).</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use R to calculate measures of central tendency for hospital stay to obtain information about the average duration of hospital stay. Which summary statistics should you report and why? Report the appropriate statistics of the spread and measure of central tendency chosen.</li>
+</ol>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="module-2-solutions-to-learning-activities.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> hospstay,</span>
+<span id="cb66-2"><a href="module-2-solutions-to-learning-activities.html#cb66-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> los,</span>
+<span id="cb66-3"><a href="module-2-solutions-to-learning-activities.html#cb66-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">pc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb66-4"><a href="module-2-solutions-to-learning-activities.html#cb66-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">skew =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb66-5"><a href="module-2-solutions-to-learning-activities.html#cb66-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">kurt =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                          
+##  ───────────────────────────────────── 
+##                           los          
+##  ───────────────────────────────────── 
+##    N                            1323   
+##    Missing                         0   
+##    Mean                     12.51550   
+##    Median                          9   
+##    Standard deviation       12.59933   
+##    Minimum                         0   
+##    Maximum                       106   
+##    Skewness                 1.947803   
+##    Std. error skewness    0.06726732   
+##    Kurtosis                 5.166837   
+##    Std. error kurtosis     0.1344336   
+##    25th percentile          4.000000   
+##    50th percentile          9.000000   
+##    75th percentile          17.00000   
+##  ─────────────────────────────────────</code></pre>
+<blockquote>
+<p>As the distribution of length of stay is highly skewed, the median and interquartile range should be presented. These can be calculated in the usual way, using the <code>descriptives()</code> function. The median length of stay is 9 days, with an interquartile range of 4 to 17 days.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Calculate the measures of central tendency for hospital duration separately for males and females. What can you conclude from comparing these measures for males and females?</li>
+</ol>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="module-2-solutions-to-learning-activities.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data =</span> hospstay,</span>
+<span id="cb68-2"><a href="module-2-solutions-to-learning-activities.html#cb68-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">vars =</span> los,</span>
+<span id="cb68-3"><a href="module-2-solutions-to-learning-activities.html#cb68-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> female,</span>
+<span id="cb68-4"><a href="module-2-solutions-to-learning-activities.html#cb68-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">pc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb68-5"><a href="module-2-solutions-to-learning-activities.html#cb68-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">skew =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb68-6"><a href="module-2-solutions-to-learning-activities.html#cb68-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">kurt =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                                    
+##  ─────────────────────────────────────────────── 
+##                           female    los          
+##  ─────────────────────────────────────────────── 
+##    N                      Male            1177   
+##                           Female           146   
+##    Missing                Male               0   
+##                           Female             0   
+##    Mean                   Male        12.75531   
+##                           Female      10.58219   
+##    Median                 Male               9   
+##                           Female      7.500000   
+##    Standard deviation     Male        12.83475   
+##                           Female      10.34625   
+##    Minimum                Male               0   
+##                           Female             0   
+##    Maximum                Male             106   
+##                           Female            53   
+##    Skewness               Male        1.943967   
+##                           Female      1.697009   
+##    Std. error skewness    Male      0.07130745   
+##                           Female     0.2006795   
+##    Kurtosis               Male        5.128450   
+##                           Female      3.067601   
+##    Std. error kurtosis    Male       0.1424946   
+##                           Female     0.3987670   
+##    25th percentile        Male        4.000000   
+##                           Female      3.000000   
+##    50th percentile        Male        9.000000   
+##                           Female      7.500000   
+##    75th percentile        Male        18.00000   
+##                           Female      14.00000   
+##  ───────────────────────────────────────────────</code></pre>
+<blockquote>
+<p>Lengths of stay are similar for men (median: 9 days, interquartile range: 4 to 18 days) and women (median: 8 days, interquartile range: 3 to 14 days).</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-1-full-script.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-2-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

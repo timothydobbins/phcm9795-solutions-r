@@ -1,0 +1,6 @@
+book_filename: "phcm9795-solutions-R"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Module "
+output_dir: "docs"

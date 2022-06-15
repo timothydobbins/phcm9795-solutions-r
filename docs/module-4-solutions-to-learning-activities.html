@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 4: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 4: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 4: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 4: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-3-full-script.html"/>
+<link rel="next" href="module-4-full-script.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-4-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 4: Solutions to Learning Activities<a href="module-4-solutions-to-learning-activities.html#module-4-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-4.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 4.1<a href="module-4-solutions-to-learning-activities.html#activity-4.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In each of the following situations, what decision should be made about the null hypothesis if the researcher indicates that:</p>
+<ol style="list-style-type: lower-alpha">
+<li>P &lt; 0.01</li>
+</ol>
+<blockquote>
+<p>There is strong evidence against the null hypothesis.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>P &gt; 0.05</li>
+</ol>
+<blockquote>
+<p>There is weak or little evidence against the null hypothesis - but the researchers should be advised to provide the actual P-value, not just P &gt; 0.05.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>‘ns’ indicating not significant</li>
+</ol>
+<blockquote>
+<p>Traditionally, ‘ns’ stands for not significant (for the set level of significance mentioned in the study, usually 0.05). You might still come across this term in some journal articles but this is not best practice for most journals these days. Researchers should always state the P-value (not just whether or not it was significant).</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>significant differences exist</li>
+</ol>
+<blockquote>
+<p>This would imply that the P-value is less than the set level of significance mentioned in the study (usually, 0.05). As such, we would conclude that there was evidence against the null hypothesis. However, the researchers should be advised to always state the P-value (not just whether or not it was significant).</p>
+</blockquote>
+</div>
+<div id="activity-4.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 4.2<a href="module-4-solutions-to-learning-activities.html#activity-4.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For the following hypothetical situations, formulate the null hypothesis and alternative hypothesis and write a conclusion about the study results:</p>
+<ol style="list-style-type: lower-alpha">
+<li>A study was conducted to investigate whether the mean systolic blood pressure of males aged 40 to 60 years was different to the mean systolic blood pressure of females aged 40 to 60 years. The result of the study was that the mean systolic blood pressure was higher in males by 5.1 mmHg (95% CI 2.4 to 7.6; P = 0.008).</li>
+</ol>
+<blockquote>
+<p>H<sub>0</sub>: There is no difference in the mean systolic blood pressure between males aged 40-60 years and females aged 40-60 years.</p>
+</blockquote>
+<blockquote>
+<p>H<sub>A</sub>: There is a difference in the mean systolic blood pressure between males aged 40-60 years and females aged 40 to 60 years.</p>
+</blockquote>
+<blockquote>
+<p>Conclusion: The mean SBP was 5.1 mmHg (95% CI: 2.4 to 7.6 mmHg) higher in males aged 40-60 years compared to females aged 40-60 years. The P value is 0.008 which provides strong evidence against the null hypothesis. Therefore, we can conclude that there is a difference in the mean SBP of males and females aged 40-60 years.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>A case-control study was conducted to investigate the association between obesity and breast cancer. The researchers found an OR of 3.21 (95% CI 1.15 to 8.47; P = 0.03).</li>
+</ol>
+<blockquote>
+<p>H<sub>0</sub>: There is no association between obesity and breast cancer.
+[A more formal way of saying this is that there is no difference in the odds of exposure to obesity among cases of breast cancer and controls i.e. OR = 1].</p>
+</blockquote>
+<blockquote>
+<p>H<sub>A</sub>: There is an association between obesity and breast cancer.
+[A more formal way of saying this is that there is a difference in the odds of exposure to obesity among cases and controls i.e. OR ≠ 1].</p>
+</blockquote>
+<blockquote>
+<p>Conclusion: The odds ratio is estimated as 3.21, indicating a positive association between the study factor of obesity and the outcome of breast cancer. The 95% CI is 1.15 to 8.47 and excludes the null value of no association (i.e. OR = 1). The P value is 0.03 which provides evidence against the null hypothesis. Therefore, we can conclude that there is a positive association between obesity and breast cancer.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>A cohort study investigated the relationship between eating a healthy diet and the incidence of influenza infection among adults aged 20 to 60 years. The results were RR = 0.88 (95% CI 0.65 to 1.50; P = 0.2).</li>
+</ol>
+<blockquote>
+<p>H<sub>0</sub>: There is no association between influenza infection and a healthy diet among adults aged 20-60 years.
+[A more formal way of saying this is that there is no difference in the risk of influenza infection among adults aged 20-60 years who have a healthy diet compared to those who do not have a healthy diet. i.e. RR = 1].</p>
+</blockquote>
+<blockquote>
+<p>H<sub>A</sub>: There is an association between influenza infection and a healthy diet among adults aged 20-60 years.
+[A more formal way of saying this is that there is a difference in the risk of influenza infection among adults aged 20-60 years who have a healthy diet compared to those who do not have a healthy diet. i.e. RR ≠ 1].</p>
+</blockquote>
+<blockquote>
+<p>Conclusion: The relative risk is estimated as 0.88, indicating a protective association between the study factor of healthy diet and the outcome factor of influenza infection among adults aged 20 to 60 years. However, the 95% confidence interval includes the null value of 1.0 (no association). The P value is 0.2, which means there is no evidence against the null hypothesis. Thus, we can conclude that there is no evidence of an association between a healthy diet and influenza infection among adults aged 20 to 60 years.</p>
+</blockquote>
+</div>
+<div id="activity-4.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 4.3<a href="module-4-solutions-to-learning-activities.html#activity-4.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A pilot study was conducted to compare the mean daily energy intake of women aged 25 to 30 years with the recommended intake of 7750 kJ/day. In this study, the average daily energy intake over 10 days was recorded for 12 healthy women of that age group. The data are in the Excel file Activity_4.3.xls. Import the file into R for this activity.</p>
+<ol style="list-style-type: lower-alpha">
+<li>State the research question</li>
+</ol>
+<blockquote>
+<p>Is the mean daily energy intake of women aged 25-30 years different to the recommended daily intake of 7750 kJ/day?</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Formulate the null hypothesis</li>
+</ol>
+<blockquote>
+<p>H<sub>0</sub>: the mean daily energy intake of women aged 25-30 years is the same as the recommended daily intake of 7750 kJ/day.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Formulate the alternative hypothesis</li>
+</ol>
+<blockquote>
+<p>H<sub>A</sub>: the mean daily energy intake of women aged 25-30 years is not same as the recommended daily intake of 7750 kJ/day.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Analyse the data and report your conclusions</li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="module-4-solutions-to-learning-activities.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb95-2"><a href="module-4-solutions-to-learning-activities.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb95-3"><a href="module-4-solutions-to-learning-activities.html#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-4"><a href="module-4-solutions-to-learning-activities.html#cb95-4" aria-hidden="true" tabindex="-1"></a>pilot <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/activities/Activity_S4.3.xls&quot;</span>)</span>
+<span id="cb95-5"><a href="module-4-solutions-to-learning-activities.html#cb95-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pilot)</span></code></pre></div>
+<pre><code>##      Energy    
+##  Min.   :5260  
+##  1st Qu.:6045  
+##  Median :6674  
+##  Mean   :6856  
+##  3rd Qu.:7642  
+##  Max.   :8770</code></pre>
+<blockquote>
+<p>As we are comparing a continuous distribution to a hypothesised mean, we will use a one-sample t-test to conduct this analysis. As the one-sample t-test assumes our data follow a Normal distribution, we should assess this using a histogram.</p>
+</blockquote>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="module-4-solutions-to-learning-activities.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pilot<span class="sc">$</span>Energy, <span class="at">main=</span><span class="st">&quot;Daily energy intake of pilot participants&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Energy (kJ)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<blockquote>
+<p>It is very difficult to assess the shape of a distribution with only 12 observations, but here we can see that the distribution looks roughly symmetric. In this case, we will assume Normality.</p>
+</blockquote>
+<blockquote>
+<p>The one-sample t-test is conducted as below, to compare the variable Energy to the hypothesised mean of 7750 kJ/day:</p>
+</blockquote>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="module-4-solutions-to-learning-activities.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pilot<span class="sc">$</span>Energy, <span class="at">mu=</span><span class="dv">7750</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  pilot$Energy
+## t = -2.7141, df = 11, p-value = 0.02014
+## alternative hypothesis: true mean is not equal to 7750
+## 95 percent confidence interval:
+##  6131.023 7580.977
+## sample estimates:
+## mean of x 
+##      6856</code></pre>
+<blockquote>
+<p>The one-sample t-test output shows that the mean daily energy intake of the 12 women is 6856 kJ (95% CI: 6131 to 7581 kJ). There is evidence (t = −2.71 with 11 DF, P = 0.02) that the mean daily energy intake of women aged 25-30 years is lower than the recommended daily intake of 7750 kJ/day.</p>
+</blockquote>
+</div>
+<div id="activity-4.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 4.4<a href="module-4-solutions-to-learning-activities.html#activity-4.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Which procedure gives the researcher the better chance of rejecting a null hypothesis?</p>
+<ol style="list-style-type: lower-alpha">
+<li>comparing the data-based p-value with the level of significance at 5%</li>
+<li>comparing the 95% CI with a nominated value</li>
+<li>neither procedure</li>
+</ol>
+<blockquote>
+<p>Both ‘a’ and ‘b’ would give the same chance to reject the null hypothesis. This is because both ‘a’ and ‘b’ are giving you the same information in a different way. In ‘a’ you will get the probability of observing the difference you see in your data by chance and if it is &lt;0.05 you will reject the null hypothesis at the 5% level. Whereas in ‘b’ you will see whether the null value (value of no difference) lies within the range which you are 95% confident contains the true value. If the null value falls outside the 95% CI, you would have less than 5% (100-95 = 5%) probability seeing the observed difference in your data if there were no difference.</p>
+</blockquote>
+</div>
+<div id="activity-4.5" class="section level3 unnumbered hasAnchor">
+<h3>Activity 4.5<a href="module-4-solutions-to-learning-activities.html#activity-4.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Setting the significance level at P &lt; 0.10 instead of the more usual P &lt; 0.05 increases the likelihood of:</p>
+<ol style="list-style-type: lower-alpha">
+<li>a Type I error</li>
+<li>a Type II error</li>
+<li>rejecting the null hypothesis</li>
+<li>Not rejecting the null hypothesis</li>
+</ol>
+<blockquote>
+<p>Setting the significance level cut-off at 0.10 instead of the more usual 0.05 increases the likelihood of
+<strong>a. a Type I error</strong> and <strong>c. rejecting the null hypothesis</strong>.</p>
+</blockquote>
+<blockquote>
+<p>The cut-off of 0.10 increases the chance of a type I error from 5% to 10% (the chance of making a Type I error is the same as the significance level). If the significance level is higher, then there higher probability of rejecting the null hypothesis if there no effect in reality.</p>
+</blockquote>
+</div>
+<div id="activity-4.6" class="section level3 unnumbered hasAnchor">
+<h3>Activity 4.6<a href="module-4-solutions-to-learning-activities.html#activity-4.6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For a fixed sample size setting the significance level at a very extreme cut-off such as P &lt; 0.001 increases the chances of:</p>
+<ol style="list-style-type: lower-alpha">
+<li>obtaining a significant result</li>
+<li>rejecting the null hypothesis</li>
+<li>a Type I error</li>
+<li>a Type II error</li>
+</ol>
+<blockquote>
+<p>Setting the significance level at a very extreme cut-off (such as 0.001) increases the chances of: <strong>d. a Type II error</strong>.</p>
+</blockquote>
+<blockquote>
+<p>For a given sample, if the significance level is set very small it will make it harder to find evidence against the null hypothesis. In other words, it will be difficult to detect an effect if an effect exists in reality. In other words, the probability of type II error will increase: you will not be able to reject the null hypothesis when a real difference exists.</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-3-full-script.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-4-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

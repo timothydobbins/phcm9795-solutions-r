@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 1: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 1: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 1: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 1: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="module-1-full-script.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-1-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 1: Solutions to Learning Activities<a href="module-1-solutions-to-learning-activities.html#module-1-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-1.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.1<a href="module-1-solutions-to-learning-activities.html#activity-1.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>25 participants were enrolled in a 3-week weight loss programme. The following data present the weight loss (in grams) of the participants:</p>
+<pre><code>   255   198   283   312   283
+   57    85    312   142   113
+   227   283   255   340   142
+   113   312   227    85   170
+   255   198   113   227   255</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Enter these data into R.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-1-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a>weightloss <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">255</span>, <span class="dv">198</span>, <span class="dv">283</span>, <span class="dv">312</span>, <span class="dv">283</span>, <span class="dv">57</span>,  <span class="dv">85</span>, <span class="dv">312</span>, <span class="dv">142</span>, <span class="dv">113</span>,</span>
+<span id="cb2-2"><a href="module-1-solutions-to-learning-activities.html#cb2-2" aria-hidden="true" tabindex="-1"></a>                <span class="dv">227</span>, <span class="dv">283</span>, <span class="dv">255</span>, <span class="dv">340</span>, <span class="dv">142</span>, <span class="dv">113</span>, <span class="dv">312</span>, <span class="dv">227</span>,  <span class="dv">85</span>, <span class="dv">170</span>,</span>
+<span id="cb2-3"><a href="module-1-solutions-to-learning-activities.html#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="dv">255</span>, <span class="dv">198</span>, <span class="dv">113</span>, <span class="dv">227</span>, <span class="dv">255</span>)</span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What type of data are these?</li>
+</ol>
+<blockquote>
+<p>These are continuous numeric data.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Construct an appropriate graph to display the relative frequency of participants’ weight loss. Your graph should start at 50 grams, with weight loss grouped into 50 gram bins. Provide appropriate labels for the axes and give the graph an appropriate title.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="module-1-solutions-to-learning-activities.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the default histogram:</span></span>
+<span id="cb3-2"><a href="module-1-solutions-to-learning-activities.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weightloss)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="module-1-solutions-to-learning-activities.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The default values look ok, so let&#39;s add labels and titles</span></span>
+<span id="cb4-2"><a href="module-1-solutions-to-learning-activities.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(weightloss, <span class="at">xlab=</span><span class="st">&quot;Weight loss (g)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Weight loss for 25 participants&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p>Note that the question requests <strong>relative frequencies</strong>, so we can use the code in Section 1.12 to amend this graph:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="module-1-solutions-to-learning-activities.html#cb5-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(weightloss, <span class="at">plot=</span><span class="cn">FALSE</span>)</span>
+<span id="cb5-2"><a href="module-1-solutions-to-learning-activities.html#cb5-2" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>density <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb5-3"><a href="module-1-solutions-to-learning-activities.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">freq=</span><span class="cn">FALSE</span>, </span>
+<span id="cb5-4"><a href="module-1-solutions-to-learning-activities.html#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Weight loss (g)&quot;</span>, </span>
+<span id="cb5-5"><a href="module-1-solutions-to-learning-activities.html#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Relative frequency (%)&quot;</span>,</span>
+<span id="cb5-6"><a href="module-1-solutions-to-learning-activities.html#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Fig 1.1: Weight loss for 25 participants&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="activity-1.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.2<a href="module-1-solutions-to-learning-activities.html#activity-1.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Researchers at a maternity hospital in the 1970s conducted a study of low birth weight babies. Low birth weight is classified as a weight of 2,500g or less at birth. Data were collected on age and smoking status of mothers and the birth weight of their babies. The file <code>Activity_S1.2.rds</code> contains data on the participants in the study. The file is located on Moodle in the Learning Activities section.</p>
+<p>Use R to create a 2 by 2 table to show the proportions of low birth weight babies born to mothers who smoked during pregnancy and those that did not smoke during pregnancy.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="module-1-solutions-to-learning-activities.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb6-2"><a href="module-1-solutions-to-learning-activities.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="module-1-solutions-to-learning-activities.html#cb6-3" aria-hidden="true" tabindex="-1"></a>babies <span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S1.2.rds&quot;</span>)</span>
+<span id="cb6-4"><a href="module-1-solutions-to-learning-activities.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="module-1-solutions-to-learning-activities.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine the first six rows of data</span></span>
+<span id="cb6-6"><a href="module-1-solutions-to-learning-activities.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(babies)</span></code></pre></div>
+<pre><code>##   AGE    AgeGrp  BWT                 LOW SMOKE
+## 1  14 &lt;20 years 2466    Low birth weight   Yes
+## 2  14 &lt;20 years 2495    Low birth weight    No
+## 3  14 &lt;20 years 3941 Normal birth weight    No
+## 4  15 &lt;20 years 2353    Low birth weight    No
+## 5  15 &lt;20 years 2381    Low birth weight    No
+## 6  15 &lt;20 years 2778 Normal birth weight    No</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="module-1-solutions-to-learning-activities.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a two-way table showing row percents</span></span>
+<span id="cb8-2"><a href="module-1-solutions-to-learning-activities.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>babies, <span class="at">rows=</span>SMOKE, <span class="at">cols=</span>LOW, <span class="at">pcRow=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                                
+##  ───────────────────────────────────────────────────────────────────────────────── 
+##    SMOKE                    Low birth weight    Normal birth weight    Total       
+##  ───────────────────────────────────────────────────────────────────────────────── 
+##    Yes      Observed                      30                     44           74   
+##             % within row            40.54054               59.45946    100.00000   
+##                                                                                    
+##    No       Observed                      29                     86          115   
+##             % within row            25.21739               74.78261    100.00000   
+##                                                                                    
+##    Total    Observed                      59                    130          189   
+##             % within row            31.21693               68.78307    100.00000   
+##  ───────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.923705     1    0.0264906   
+##    N          189                      
+##  ─────────────────────────────────────</code></pre>
+<p>Answer the following questions:</p>
+<ol style="list-style-type: lower-alpha">
+<li>What was the total number of mothers who smoked during pregnancy?</li>
+</ol>
+<blockquote>
+<p>There were 74 mothers who smoked during pregancy.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What proportion of mothers who smoked gave birth to low birth weight babies? What proportion of non-smoking mothers gave birth to low birth weight babies?</li>
+</ol>
+<blockquote>
+<p>41% of mothers who smoked and 25% of non-smoking mothers gave birth to low birth weight babies.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Use R to construct a stacked bar chart of the data to examine if there a difference in the proportion of babies born with a low birth weight in relation to mother’s age? Provide appropriate labels for the axes and give the graph an appropriate title.</li>
+</ol>
+<blockquote>
+<p>We follow the instructions for creating a stacked bar chart in Module 1. First we create a table of low birth weight by mothers’ age-group, and create a stacked bar chart (to check that we’re on the right track):</p>
+</blockquote>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="module-1-solutions-to-learning-activities.html#cb10-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">table</span>(babies<span class="sc">$</span>LOW, babies<span class="sc">$</span>AgeGrp)</span>
+<span id="cb10-2"><a href="module-1-solutions-to-learning-activities.html#cb10-2" aria-hidden="true" tabindex="-1"></a>counts</span></code></pre></div>
+<pre><code>##                      
+##                       &lt;20 years 20-24 years 25-29 years 30-34 years
+##   Low birth weight           15          25          15           4
+##   Normal birth weight        36          44          27          18
+##                      
+##                       35 or more years
+##   Low birth weight                   0
+##   Normal birth weight                5</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="module-1-solutions-to-learning-activities.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, </span>
+<span id="cb12-2"><a href="module-1-solutions-to-learning-activities.html#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;Fig 1.2: Frequency of low birth weight by mother&#39;s age group&quot;</span>,</span>
+<span id="cb12-3"><a href="module-1-solutions-to-learning-activities.html#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">rownames</span>(counts), <span class="at">beside=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<blockquote>
+<p>We then calculate the <em>relative frequency</em> of low-birth weight by mothers’ age group</p>
+</blockquote>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="module-1-solutions-to-learning-activities.html#cb13-1" aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(counts, <span class="at">margin=</span><span class="dv">2</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb13-2"><a href="module-1-solutions-to-learning-activities.html#cb13-2" aria-hidden="true" tabindex="-1"></a>percent</span></code></pre></div>
+<pre><code>##                      
+##                       &lt;20 years 20-24 years 25-29 years 30-34 years
+##   Low birth weight     29.41176    36.23188    35.71429    18.18182
+##   Normal birth weight  70.58824    63.76812    64.28571    81.81818
+##                      
+##                       35 or more years
+##   Low birth weight             0.00000
+##   Normal birth weight        100.00000</code></pre>
+<blockquote>
+<p>and use the <code>barplot()</code> command, as per the notes:</p>
+</blockquote>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="module-1-solutions-to-learning-activities.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(percent, </span>
+<span id="cb15-2"><a href="module-1-solutions-to-learning-activities.html#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;Fig 1.3: Relative frequency of low birth weight by mother&#39;s age group&quot;</span>,</span>
+<span id="cb15-3"><a href="module-1-solutions-to-learning-activities.html#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">rownames</span>(percent), <span class="at">beside=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Using your answers to the question a) and b), write a brief conclusion about the relationship of low birth weight and mother’s age and smoking status.</li>
+</ol>
+<blockquote>
+<p>In the study, the greatest number of babies were born to mothers in the 20-24 years age group, with the number of babies born declining with increasing maternal age for mothers older than 20-24 years (Figure 1.2). A larger proportion of mothers in the &lt;20 years, 20-24 years and 25-29 years age groups gave birth to low birth weight babies compared to mothers aged 30-34 years. No low birth weight babies were born to mothers aged 35 or more (Figure 1.3).</p>
+</blockquote>
+<blockquote>
+<p>A larger proportion of mothers who smoked during pregnancy gave birth to low birth weight babies compared to mothers who did not smoke during pregnancy.</p>
+</blockquote>
+<blockquote>
+<p>NB: You will revisit two-way tables in Module 7 where you will conduct statistical tests to determine if the proportions are statistically different to each other.</p>
+</blockquote>
+<p><strong>Note: </strong> Coding graphs, particularly clustered and stacked bar graphs can be difficult! The site <a href="https://r-graph-gallery.com/" class="uri">https://r-graph-gallery.com/</a> gives excellent instructions on constructing different types of graphs in R.</p>
+</div>
+<div id="activity-1.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.3<a href="module-1-solutions-to-learning-activities.html#activity-1.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using R, estimate the mean, median, mode, standard deviation, range and interquartile range for the data Activity_S1.3.rds, available on Moodle.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="module-1-solutions-to-learning-activities.html#cb16-1" aria-hidden="true" tabindex="-1"></a>act1_3 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S1.3.rds&quot;</span>)</span>
+<span id="cb16-2"><a href="module-1-solutions-to-learning-activities.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="module-1-solutions-to-learning-activities.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(act1_3, <span class="at">mode=</span><span class="cn">TRUE</span>, <span class="at">iqr=</span><span class="cn">TRUE</span>, <span class="at">pc=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                         
+##  ──────────────────────────────────── 
+##                          Lead_concn   
+##  ──────────────────────────────────── 
+##    N                             15   
+##    Missing                        0   
+##    Mean                    1.500000   
+##    Median                  1.500000   
+##    Mode                    1.900000   
+##    Standard deviation     0.8434623   
+##    IQR                    1.0000000   
+##    Minimum                0.1000000   
+##    Maximum                 3.200000   
+##    25th percentile        0.9500000   
+##    50th percentile         1.500000   
+##    75th percentile         1.950000   
+##  ────────────────────────────────────</code></pre>
+<blockquote>
+<p>We can use the <code>descriptives()</code> function to obtain summary statistics. Examining the help entry for <code>descriptives()</code> shows we can request the mode using <code>mode=TRUE</code>, the interquartile range using <code>iqr=TRUE</code> and the percentiles (by default, the quartiles) using <code>pc=TRUE</code>.
+The mean is estimated as 1.50, the median is 1.5 and the mode is 1.9. The standard deviation is estimated as 0.843, the range is from 0.1 to 3.2, and the inter-quartile range is from 1.0 to 2.0 (both rounded to 1 decimal place).</p>
+</blockquote>
+<blockquote>
+<p>Note: no units were provided for the data used in this question. Summary statistics must be presented with their units where the units are available.</p>
+</blockquote>
+</div>
+<div id="activity-1.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.4<a href="module-1-solutions-to-learning-activities.html#activity-1.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data of diastolic blood pressure (BP) of a sample of study participants are provided in the dataset Activity_S1.4.rds. Compute the mean, median, range and SD of diastolic BP.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="module-1-solutions-to-learning-activities.html#cb18-1" aria-hidden="true" tabindex="-1"></a>act1_4 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S1.4.rds&quot;</span>)</span>
+<span id="cb18-2"><a href="module-1-solutions-to-learning-activities.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="module-1-solutions-to-learning-activities.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(act1_4)</span></code></pre></div>
+<pre><code>## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                       
+##  ────────────────────────────────── 
+##                          diabp      
+##  ────────────────────────────────── 
+##    N                          100   
+##    Missing                      0   
+##    Mean                  82.23000   
+##    Median                83.00000   
+##    Standard deviation    13.01522   
+##    Minimum               56.00000   
+##    Maximum               118.0000   
+##  ──────────────────────────────────</code></pre>
+<blockquote>
+<p>The mean is 82.2 mmHg and the median is 83.0 mmHg. The range is 56.0 to 118.0 mmHg (62.0 mmHg) and the standard deviation is 13.02 mmHg.</p>
+</blockquote>
+<blockquote>
+<p><em>Note that the original data have one decimal place, so we can report the median with one decimal place. Although we are justified in presenting the mean to two decimal places (1 extra than the original data), and the standard deviation with three decimal places (1 more than the mean), there is little to be gained in this level of precision when presenting summary statistics for blood pressure.</em></p>
+</blockquote>
+</div>
+<div id="activity-1.5" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.5<a href="module-1-solutions-to-learning-activities.html#activity-1.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In a study of 100 participants data were missing for 5 people. The missing data points were coded as ‘99’. The mean of the data was estimated as 45.0 with a standard deviation of 5.6; the smallest and greatest values are 16 and 65 respectively.</p>
+<p>If the researcher analysed the data as if the 99s were real data, would it make the following statistics larger, smaller, or stay the same?</p>
+<ol style="list-style-type: lower-alpha">
+<li>Mean</li>
+</ol>
+<blockquote>
+<p>The mean will be larger.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Standard Deviation</li>
+</ol>
+<blockquote>
+<p>The standard deviation will be larger.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Range</li>
+</ol>
+<blockquote>
+<p>The range will be larger. The smallest value is still 16, but the largest is 99, and so the range is 99 − 16 = 83.</p>
+</blockquote>
+</div>
+<div id="activity-1.6" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.6<a href="module-1-solutions-to-learning-activities.html#activity-1.6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Which of the following statements are true? The more dispersed, or spread out, a set of observations are:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The smaller the mean value</li>
+</ol>
+<blockquote>
+<p>This is not true because the mean is not influenced by the spread of the values (if the distribution is symmetrical around the mean value)</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>The larger the standard deviation</li>
+</ol>
+<blockquote>
+<p>This is true. The larger the spread, the larger the deviations from the mean. Hence the standard deviation will be larger.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>The smaller the variance</li>
+</ol>
+<blockquote>
+<p>This is not true. The variance will be larger if the deviations from the mean are larger.</p>
+</blockquote>
+</div>
+<div id="activity-1.7" class="section level3 unnumbered hasAnchor">
+<h3>Activity 1.7<a href="module-1-solutions-to-learning-activities.html#activity-1.7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If the variance for a set of scores is equal to 9, what is the standard deviation?</p>
+<blockquote>
+<p>SD = <span class="math inline">\(\sqrt{variance} = \sqrt{9} = 3\)</span>.</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-1-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

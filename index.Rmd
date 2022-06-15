@@ -1,0 +1,47 @@
+---
+title: "PHCM9795 Foundations of Biostatistics"
+author: "Learning activity solutions: R version"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+site: bookdown::bookdown_site
+documentclass: memoir
+mainfont: Roboto
+sansfont: Clancy
+monofontoptions: 'Scale=0.9'
+monofont: Roboto Mono
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+```
+
+# Introduction {.unnumbered}
+
+These notes provide R-based solutions to the learning activities in Foundations of Biostatistics.
+
+These notes are currently under development, with sections being added and revised as the course progresses.
+
+This is the first year that R has been offered as an option. I am keen to receive feedback about the notes and your experience learning R. Please [get in touch](mailto:t.dobbins@unsw.edu.au) if anything is unclear, or you have any questions or suggestions.
+
+### Changelog {-}
+
+**2022-06-12**
+[Added]
+
+- Module 3: Initial release
+- Module 4: Initial release
+
+
+**2022-06-06**
+[Added]
+
+- Module 2: Initial release
+
+[Changed]
+
+- Various typos
+
+**2022-05-30**
+
+[Added]
+
+- Module 1: Initial release
