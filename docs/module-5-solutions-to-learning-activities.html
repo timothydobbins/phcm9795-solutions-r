@@ -469,15 +469,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To conduct the paired t-test in R, we use the <code>t.test()</code> function, specifying the two columns of haemangioma volume and <code>paired=TRUE</code>:</p>
 </blockquote>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="module-5-solutions-to-learning-activities.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using ttestPS from jmv</span></span>
-<span id="cb17-2"><a href="module-5-solutions-to-learning-activities.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>babies, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">&#39;baseline&#39;</span>, <span class="at">i2 =</span> <span class="st">&#39;week_12&#39;</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb17-2"><a href="module-5-solutions-to-learning-activities.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>babies, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">&#39;week_12&#39;</span>, <span class="at">i2 =</span> <span class="st">&#39;baseline&#39;</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  PAIRED SAMPLES T-TEST
 ## 
 ##  Paired Samples T-Test                                                                                                                        
 ##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
-##                                          statistic    df          p            Mean difference    SE difference    Lower          Upper       
+##                                          statistic    df          p            Mean difference    SE difference    Lower         Upper        
 ##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
-##    baseline    week_12    Student&#39;s t     1.959437    40.00000    0.0570564          0.4021951        0.2052605    -0.01265192    0.8170422   
+##    week_12    baseline    Student&#39;s t    -1.959437    40.00000    0.0570564         -0.4021951        0.2052605    -0.8170422    0.01265192   
 ##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="module-5-solutions-to-learning-activities.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using t.test</span></span>
 <span id="cb19-2"><a href="module-5-solutions-to-learning-activities.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(babies<span class="sc">$</span>week_12, babies<span class="sc">$</span>baseline, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
@@ -496,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The output shows that the mean volume at week 12 of 1.94 mm<sup>3</sup> was lower than the mean of 2.34 mm<sup>3</sup> at baseline. The mean decrease is 0.40 mm<sup>3</sup> (95% CI −0.01 to 0.82). From the paired t-test results, we can see that t = -1.96 with 40 df and P = 0.057. This P-value provides only weak evidence that the topical medication has an effect on haemangioma volume among children aged 6 months to 2 years. The P-value of 0.057 is consistent with the 95% CI just crossing the line of no difference (i.e. 0 mm3).</p>
 </blockquote>
 <blockquote>
-<p>[Note that the estimated difference and its confidence interval (-0.40: 95% CI from -0.82 to 0.01) is presented as if it were an increase from baseline to 12-weeks. As the mean difference is negative, we can interpreted the estimates as <em>reductions</em> by multiplying each value by -1.]</p>
+<p>[Note that the estimated difference and its confidence interval (-0.40: 95% CI from -0.82 to 0.01) is presented as if it were an <em>increase</em> from baseline to 12-weeks. As the mean difference is negative, we can interpreted the estimates as <em>reductions</em> by multiplying each value by -1.]</p>
 </blockquote>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>What are the limitations of this study?</li>
