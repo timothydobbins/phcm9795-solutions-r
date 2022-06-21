@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="module-4-full-script.html"/>
-
+<link rel="next" href="module-5-full-script.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,6 +145,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
 <li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
 <li class="chapter" data-level="" data-path="module-5-solutions-to-learning-activities.html"><a href="module-5-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 5: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-5-full-script.html"><a href="module-5-full-script.html"><i class="fa fa-check"></i>Module 5: Full script</a></li>
 </ul>
 
       </nav>
@@ -232,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The alternative hypothesis: The mean haemoglobin level of children with cystic fibrosis is different to the mean haemoglobin level of children without cystic fibrosis.</p>
 </blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Use Stata to conduct an appropriate statistical test to evaluate the null hypothesis. Are the assumptions for the test met for this analysis to be valid?</li>
+<li>Use R to conduct an appropriate statistical test to evaluate the null hypothesis. Are the assumptions for the test met for this analysis to be valid?</li>
 </ol>
 <blockquote>
 <p>An independent samples t-test could be carried out to evaluate the study hypothesis because the data have been collected from 2 independent groups of children (children with and children without cystic fibrosis).</p>
@@ -243,22 +244,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>We are provided with summarised data (i.e. means and standard deviations in each group), and not individual data. Therefore, we cannot use the standard <code>t.test()</code> function. The <code>BSDA</code> package has the <code>tsum.test()</code> function that can perform a t-test using summarised data.</p>
 </blockquote>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-5-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If necessary, install the BSDA package:</span></span>
-<span id="cb2-2"><a href="module-5-solutions-to-learning-activities.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;BSDA&quot;)</span></span>
-<span id="cb2-3"><a href="module-5-solutions-to-learning-activities.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BSDA)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="module-5-solutions-to-learning-activities.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If necessary, install the BSDA package:</span></span>
+<span id="cb101-2"><a href="module-5-solutions-to-learning-activities.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;BSDA&quot;)</span></span>
+<span id="cb101-3"><a href="module-5-solutions-to-learning-activities.html#cb101-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BSDA)</span></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;BSDA&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:datasets&#39;:
 ## 
 ##     Orange</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="module-5-solutions-to-learning-activities.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference in means by hand:</span></span>
-<span id="cb6-2"><a href="module-5-solutions-to-learning-activities.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fl">19.9</span> <span class="sc">-</span> <span class="fl">13.9</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="module-5-solutions-to-learning-activities.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate difference in means by hand:</span></span>
+<span id="cb105-2"><a href="module-5-solutions-to-learning-activities.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fl">19.9</span> <span class="sc">-</span> <span class="fl">13.9</span></span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="module-5-solutions-to-learning-activities.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test assuming equal variance</span></span>
-<span id="cb8-2"><a href="module-5-solutions-to-learning-activities.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsum.test</span>(<span class="at">mean.x=</span><span class="fl">19.9</span>, <span class="at">s.x=</span><span class="fl">5.9</span>, <span class="at">n.x=</span><span class="dv">12</span>,</span>
-<span id="cb8-3"><a href="module-5-solutions-to-learning-activities.html#cb8-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean.y=</span><span class="fl">13.9</span>, <span class="at">s.y=</span><span class="fl">6.2</span>, <span class="at">n.y=</span><span class="dv">15</span>,</span>
-<span id="cb8-4"><a href="module-5-solutions-to-learning-activities.html#cb8-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mu=</span><span class="dv">0</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="module-5-solutions-to-learning-activities.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t-test assuming equal variance</span></span>
+<span id="cb107-2"><a href="module-5-solutions-to-learning-activities.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tsum.test</span>(<span class="at">mean.x=</span><span class="fl">19.9</span>, <span class="at">s.x=</span><span class="fl">5.9</span>, <span class="at">n.x=</span><span class="dv">12</span>,</span>
+<span id="cb107-3"><a href="module-5-solutions-to-learning-activities.html#cb107-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean.y=</span><span class="fl">13.9</span>, <span class="at">s.y=</span><span class="fl">6.2</span>, <span class="at">n.y=</span><span class="dv">15</span>,</span>
+<span id="cb107-4"><a href="module-5-solutions-to-learning-activities.html#cb107-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mu=</span><span class="dv">0</span>, <span class="at">alternative=</span><span class="st">&quot;two.sided&quot;</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Standard Two-Sample t-Test
 ## 
@@ -276,7 +277,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="activity-5.3" class="section level3 unnumbered hasAnchor">
 <h3>Activity 5.3<a href="module-5-solutions-to-learning-activities.html#activity-5.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as shown in the Stata file <code>ActivityS5.3.dta</code>. In the community, hematocrit levels are normally distributed.</p>
+<p>A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as shown in the R file <code>ActivityS5.3.rds</code>. In the community, hematocrit levels are normally distributed.</p>
 <ol style="list-style-type: lower-alpha">
 <li>State the research question and frame it as a null hypothesis.</li>
 </ol>
@@ -312,19 +313,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is mentioned in the question that the outcome variable is normally distributed in the general population. Because the t-test is robust to some degree of non-normality with absence of influential outliers, we could say that the third assumption is also met.</p>
 </blockquote>
 <blockquote>
-<p>We obtained descriptive statistics for both the intervention and control groups using <code>descriptives()</code> function from the <code>jmv</code> package. From the descriptive statistics we can see that standard deviation of the intervention group (1.57) is slightly larger than in the control group (0.99). Inspection of Figures 1 and 2 also indicates more variability in the intervention group. Therefore, it may not be reasonable to assume that the variances are equal. In this case, we will use independent sample t-test based on unequal variance assumption.</p>
+<p>We obtained descriptive statistics for both the intervention and control groups using <code>descriptives()</code> function from the <code>jmv</code> package. From the descriptive statistics we can see that standard deviation of the intervention group (1.57) is slightly larger than in the control group (0.99). Inspection of Figures <a href="module-5-solutions-to-learning-activities.html#fig:haemplot-1">2</a> and <a href="module-5-solutions-to-learning-activities.html#fig:haemplot-2">3</a> also indicates more variability in the intervention group. Therefore, it may not be reasonable to assume that the variances are equal. In this case, we will use independent sample t-test based on unequal variance assumption.</p>
 </blockquote>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="module-5-solutions-to-learning-activities.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Activity 5.3</span></span>
-<span id="cb10-2"><a href="module-5-solutions-to-learning-activities.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
-<span id="cb10-3"><a href="module-5-solutions-to-learning-activities.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="module-5-solutions-to-learning-activities.html#cb10-4" aria-hidden="true" tabindex="-1"></a>anaemia <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S5.3.rds&quot;</span>)</span>
-<span id="cb10-5"><a href="module-5-solutions-to-learning-activities.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="module-5-solutions-to-learning-activities.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Note - we can display histograms and boxplots within descriptives(): </span></span>
-<span id="cb10-7"><a href="module-5-solutions-to-learning-activities.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>anaemia, <span class="at">vars=</span>hematocrit,</span>
-<span id="cb10-8"><a href="module-5-solutions-to-learning-activities.html#cb10-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> group,</span>
-<span id="cb10-9"><a href="module-5-solutions-to-learning-activities.html#cb10-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">skew =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-10"><a href="module-5-solutions-to-learning-activities.html#cb10-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-11"><a href="module-5-solutions-to-learning-activities.html#cb10-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">box =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="module-5-solutions-to-learning-activities.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Activity 5.3</span></span>
+<span id="cb109-2"><a href="module-5-solutions-to-learning-activities.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb109-3"><a href="module-5-solutions-to-learning-activities.html#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="module-5-solutions-to-learning-activities.html#cb109-4" aria-hidden="true" tabindex="-1"></a>anaemia <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S5.3.rds&quot;</span>)</span>
+<span id="cb109-5"><a href="module-5-solutions-to-learning-activities.html#cb109-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-6"><a href="module-5-solutions-to-learning-activities.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>anaemia, <span class="at">vars=</span>hematocrit,</span>
+<span id="cb109-7"><a href="module-5-solutions-to-learning-activities.html#cb109-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">splitBy =</span> group,</span>
+<span id="cb109-8"><a href="module-5-solutions-to-learning-activities.html#cb109-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">skew =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  DESCRIPTIVES
 ## 
@@ -351,30 +349,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##    Std. error skewness    Intervention      0.4086354   
 ##                           Standard care     0.4205365   
 ##  ──────────────────────────────────────────────────────</code></pre>
-<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="module-5-solutions-to-learning-activities.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, use the method from Module 2:</span></span>
-<span id="cb12-2"><a href="module-5-solutions-to-learning-activities.html#cb12-2" aria-hidden="true" tabindex="-1"></a>anaemia_i <span class="ot">&lt;-</span> <span class="fu">subset</span>(anaemia, group<span class="sc">==</span><span class="st">&quot;Intervention&quot;</span>)</span>
-<span id="cb12-3"><a href="module-5-solutions-to-learning-activities.html#cb12-3" aria-hidden="true" tabindex="-1"></a>anaemia_sc <span class="ot">&lt;-</span> <span class="fu">subset</span>(anaemia, group<span class="sc">==</span><span class="st">&quot;Standard care&quot;</span>)</span>
-<span id="cb12-4"><a href="module-5-solutions-to-learning-activities.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="module-5-solutions-to-learning-activities.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the graphics parameters to plot 2 rows and 2 columns:</span></span>
-<span id="cb12-6"><a href="module-5-solutions-to-learning-activities.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb12-7"><a href="module-5-solutions-to-learning-activities.html#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="module-5-solutions-to-learning-activities.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify each plot separately</span></span>
-<span id="cb12-9"><a href="module-5-solutions-to-learning-activities.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>)</span>
-<span id="cb12-10"><a href="module-5-solutions-to-learning-activities.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>)</span>
-<span id="cb12-11"><a href="module-5-solutions-to-learning-activities.html#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="module-5-solutions-to-learning-activities.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>)</span>
-<span id="cb12-13"><a href="module-5-solutions-to-learning-activities.html#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>)</span></code></pre></div>
-<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="module-5-solutions-to-learning-activities.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset graphics parameters</span></span>
-<span id="cb13-2"><a href="module-5-solutions-to-learning-activities.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="module-5-solutions-to-learning-activities.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting by group using the method from Module 2:</span></span>
+<span id="cb111-2"><a href="module-5-solutions-to-learning-activities.html#cb111-2" aria-hidden="true" tabindex="-1"></a>anaemia_i <span class="ot">&lt;-</span> <span class="fu">subset</span>(anaemia, group<span class="sc">==</span><span class="st">&quot;Intervention&quot;</span>)</span>
+<span id="cb111-3"><a href="module-5-solutions-to-learning-activities.html#cb111-3" aria-hidden="true" tabindex="-1"></a>anaemia_sc <span class="ot">&lt;-</span> <span class="fu">subset</span>(anaemia, group<span class="sc">==</span><span class="st">&quot;Standard care&quot;</span>)</span>
+<span id="cb111-4"><a href="module-5-solutions-to-learning-activities.html#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="module-5-solutions-to-learning-activities.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the graphics parameters to plot 2 rows and 2 columns:</span></span>
+<span id="cb111-6"><a href="module-5-solutions-to-learning-activities.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb111-7"><a href="module-5-solutions-to-learning-activities.html#cb111-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-8"><a href="module-5-solutions-to-learning-activities.html#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify each plot separately</span></span>
+<span id="cb111-9"><a href="module-5-solutions-to-learning-activities.html#cb111-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>)</span>
+<span id="cb111-10"><a href="module-5-solutions-to-learning-activities.html#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>)</span>
+<span id="cb111-11"><a href="module-5-solutions-to-learning-activities.html#cb111-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-12"><a href="module-5-solutions-to-learning-activities.html#cb111-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>)</span>
+<span id="cb111-13"><a href="module-5-solutions-to-learning-activities.html#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:haemplot-1"></span>
+<img src="phcm9795-solutions-R_files/figure-html/haemplot-1-1.png" alt="Graphical summaries of hematocrit by treatment group" width="672" />
+<p class="caption">
+Figure 2: Graphical summaries of hematocrit by treatment group
+</p>
+</div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="module-5-solutions-to-learning-activities.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset graphics parameters</span></span>
+<span id="cb112-2"><a href="module-5-solutions-to-learning-activities.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p>Note that the histograms and boxplots use different scales. We can standardise the scale limits using “xlim” and “ylim” by specifying the lower and upper bounds of the x- and y-axis:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="module-5-solutions-to-learning-activities.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb113-2"><a href="module-5-solutions-to-learning-activities.html#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-3"><a href="module-5-solutions-to-learning-activities.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>,</span>
+<span id="cb113-4"><a href="module-5-solutions-to-learning-activities.html#cb113-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">38</span>))</span>
+<span id="cb113-5"><a href="module-5-solutions-to-learning-activities.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">xlab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>,</span>
+<span id="cb113-6"><a href="module-5-solutions-to-learning-activities.html#cb113-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">38</span>))</span>
+<span id="cb113-7"><a href="module-5-solutions-to-learning-activities.html#cb113-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-8"><a href="module-5-solutions-to-learning-activities.html#cb113-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_i<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Intervention&quot;</span>,</span>
+<span id="cb113-9"><a href="module-5-solutions-to-learning-activities.html#cb113-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">38</span>))</span>
+<span id="cb113-10"><a href="module-5-solutions-to-learning-activities.html#cb113-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(anaemia_sc<span class="sc">$</span>hematocrit, <span class="at">ylab=</span><span class="st">&quot;Hematocrit&quot;</span>, <span class="at">main=</span><span class="st">&quot;Standard care&quot;</span>,</span>
+<span id="cb113-11"><a href="module-5-solutions-to-learning-activities.html#cb113-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">38</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:haemplot-2"></span>
+<img src="phcm9795-solutions-R_files/figure-html/haemplot-2-1.png" alt="Graphical summaries of hematocrit by treatment group" width="672" />
+<p class="caption">
+Figure 3: Graphical summaries of hematocrit by treatment group
+</p>
+</div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="module-5-solutions-to-learning-activities.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset graphics parameters</span></span>
+<span id="cb114-2"><a href="module-5-solutions-to-learning-activities.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Run your statistical test.</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="module-5-solutions-to-learning-activities.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb14-2"><a href="module-5-solutions-to-learning-activities.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="module-5-solutions-to-learning-activities.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Welch&#39;s t-test</span></span>
-<span id="cb14-4"><a href="module-5-solutions-to-learning-activities.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>anaemia, <span class="at">vars=</span>hematocrit, <span class="at">group=</span>group, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="module-5-solutions-to-learning-activities.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Welch&#39;s t-test</span></span>
+<span id="cb115-2"><a href="module-5-solutions-to-learning-activities.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestIS</span>(<span class="at">data=</span>anaemia, <span class="at">vars=</span>hematocrit, <span class="at">group=</span>group, <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">welchs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  INDEPENDENT SAMPLES T-TEST
 ## 
@@ -449,7 +469,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Alternative hypothesis</strong>: there is a change in the mean haemangioma volume among children aged 6 months to 2 years at baseline and after 12 weeks treatment with topical medication.</p>
 </blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>Use the data in the Stata file <code>ActivityS5.4.dta</code> to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test in Stata and write your conclusion.</li>
+<li>Use the data in the R file <code>ActivityS5.4.rds</code> to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test in R and write your conclusion.</li>
 </ol>
 <blockquote>
 <p>A paired t-test is appropriate to test the null hypothesis. The measurement of haemangioma volume was made on each baby twice to compare the differences before and after the treatment, therefore, the study has a paired design. Because haemangioma volume is a continuous measurement (mm3), a paired t-test can be considered. The assumptions for a paired t-test are that the outcome variable is continuous, and differences of the measurements are normally distributed.</p>
@@ -457,19 +477,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>To check the distribution of the differences between the measurements, we first need to calculate the differences. We then examine the distribution of the differences using a histogram as shown in Figure 3.</p>
 </blockquote>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="module-5-solutions-to-learning-activities.html#cb16-1" aria-hidden="true" tabindex="-1"></a>babies <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S5.4.rds&quot;</span>)</span>
-<span id="cb16-2"><a href="module-5-solutions-to-learning-activities.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="module-5-solutions-to-learning-activities.html#cb16-3" aria-hidden="true" tabindex="-1"></a>babies<span class="sc">$</span>diff <span class="ot">=</span> babies<span class="sc">$</span>week_12 <span class="sc">-</span> babies<span class="sc">$</span>baseline</span>
-<span id="cb16-4"><a href="module-5-solutions-to-learning-activities.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">&quot;Volume (mm3)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Difference in haemangioma volume&quot;</span>)</span></code></pre></div>
-<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="module-5-solutions-to-learning-activities.html#cb117-1" aria-hidden="true" tabindex="-1"></a>babies <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S5.4.rds&quot;</span>)</span>
+<span id="cb117-2"><a href="module-5-solutions-to-learning-activities.html#cb117-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-3"><a href="module-5-solutions-to-learning-activities.html#cb117-3" aria-hidden="true" tabindex="-1"></a>babies<span class="sc">$</span>diff <span class="ot">=</span> babies<span class="sc">$</span>week_12 <span class="sc">-</span> babies<span class="sc">$</span>baseline</span>
+<span id="cb117-4"><a href="module-5-solutions-to-learning-activities.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(babies<span class="sc">$</span>diff, <span class="at">xlab=</span><span class="st">&quot;Volume (mm3)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Difference in haemangioma volume&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 <blockquote>
 <p>As we can see from the histogram, the differences in volume at the beginning and end of the study are reasonably symmetrically distributed. Although the distribution is very peaked, there are no influential outliers and the t-test is robust to the deviation of the normality assumption.</p>
 </blockquote>
 <blockquote>
 <p>To conduct the paired t-test in R, we use the <code>t.test()</code> function, specifying the two columns of haemangioma volume and <code>paired=TRUE</code>:</p>
 </blockquote>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="module-5-solutions-to-learning-activities.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using ttestPS from jmv</span></span>
-<span id="cb17-2"><a href="module-5-solutions-to-learning-activities.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>babies, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">&#39;week_12&#39;</span>, <span class="at">i2 =</span> <span class="st">&#39;baseline&#39;</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="module-5-solutions-to-learning-activities.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using ttestPS from jmv</span></span>
+<span id="cb118-2"><a href="module-5-solutions-to-learning-activities.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttestPS</span>(<span class="at">data=</span>babies, <span class="at">pairs=</span><span class="fu">list</span>(<span class="fu">list</span>(<span class="at">i1 =</span> <span class="st">&#39;week_12&#39;</span>, <span class="at">i2 =</span> <span class="st">&#39;baseline&#39;</span>)), <span class="at">meanDiff=</span><span class="cn">TRUE</span>, <span class="at">ci=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  PAIRED SAMPLES T-TEST
 ## 
@@ -479,8 +499,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
 ##    week_12    baseline    Student&#39;s t    -1.959437    40.00000    0.0570564         -0.4021951        0.2052605    -0.8170422    0.01265192   
 ##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="module-5-solutions-to-learning-activities.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using t.test</span></span>
-<span id="cb19-2"><a href="module-5-solutions-to-learning-activities.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(babies<span class="sc">$</span>week_12, babies<span class="sc">$</span>baseline, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p>The code for the <code>ttestPS()</code> function is quite cumbersome. You may want to use the <code>t.test()</code> function:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="module-5-solutions-to-learning-activities.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using t.test</span></span>
+<span id="cb120-2"><a href="module-5-solutions-to-learning-activities.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(babies<span class="sc">$</span>week_12, babies<span class="sc">$</span>baseline, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -512,8 +533,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="module-4-full-script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="module-4-full-script.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-5-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -567,6 +588,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

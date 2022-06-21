@@ -38,7 +38,7 @@ a) State the appropriate null hypothesis and alternate hypothesis
 
 > The alternative hypothesis: The mean haemoglobin level of children with cystic fibrosis is different to the mean haemoglobin level of children without cystic fibrosis.
 
-b) Use Stata to conduct an appropriate statistical test to evaluate the null hypothesis. Are the assumptions for the test met for this analysis to be valid?
+b) Use R to conduct an appropriate statistical test to evaluate the null hypothesis. Are the assumptions for the test met for this analysis to be valid?
 
 > An independent samples t-test could be carried out to evaluate the study hypothesis because the data have been collected from 2 independent groups of children (children with and children without cystic fibrosis).
 
@@ -63,7 +63,7 @@ tsum.test(mean.x=19.9, s.x=5.9, n.x=12,
 > As the two standard deviations are similar, we can assume equal variances. There is evidence that the mean haemoglobin level is lower in children with cystic fibrosis (13.9 g/dL) than children without cystic fibrosis (19.9 g/dL; t=2.55 with 25 df, P=0.02). The difference in means is estimated as 6.0 g/dL (95% CI: 1.2 to 10.8).
 
 ### Activity 5.3 {-}
-A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as shown in the Stata file `ActivityS5.3.dta`. In the community, hematocrit levels are normally distributed.
+A randomised controlled trial (RCT) was carried out to investigate the effect of a new tablet supplement in increasing the hematocrit (%) value in anaemic participants. In the study, hematocrit was measured as the proportion of blood that is made up of red blood cells. Hematocrit levels are often lower in anaemic people who do not have sufficient healthy red blood cells. In the RCT, 33 people in the intervention group received the new supplement and 31 people in the control group received standard care (i.e. the usual supplement was given). After 4 weeks, hematocrit values were measured as shown in the R file `ActivityS5.3.rds`. In the community, hematocrit levels are normally distributed.
 
 a) State the research question and frame it as a null hypothesis.
 
@@ -87,7 +87,7 @@ b) Use R to conduct an appropriate statistical test to answer the research quest
 
 > It is mentioned in the question that the outcome variable is normally distributed in the general population. Because the t-test is robust to some degree of non-normality with absence of influential outliers, we could say that the third assumption is also met.
 
-> We obtained descriptive statistics for both the intervention and control groups using `descriptives()` function from the `jmv` package. From the descriptive statistics we can see that standard deviation of the intervention group (1.57) is slightly larger than in the control group (0.99). Inspection of Figures 1 and 2 also indicates more variability in the intervention group. Therefore, it may not be reasonable to assume that the variances are equal. In this case, we will use independent sample t-test based on unequal variance assumption.
+> We obtained descriptive statistics for both the intervention and control groups using `descriptives()` function from the `jmv` package. From the descriptive statistics we can see that standard deviation of the intervention group (1.57) is slightly larger than in the control group (0.99). Inspection of Figures \@ref(fig:haemplot-1) and \@ref(fig:haemplot-2) also indicates more variability in the intervention group. Therefore, it may not be reasonable to assume that the variances are equal. In this case, we will use independent sample t-test based on unequal variance assumption.
 
 ```{r}
 # Activity 5.3
@@ -95,14 +95,13 @@ library(jmv)
 
 anaemia <- readRDS("data/activities/Activity_S5.3.rds")
 
-# Note - we can display histograms and boxplots within descriptives(): 
 descriptives(data=anaemia, vars=hematocrit,
              splitBy = group,
-             skew = TRUE,
-             hist = TRUE,
-             box = TRUE)
+             skew = TRUE)
+```
 
-# Alternatively, use the method from Module 2:
+```{r haemplot-1, fig.cap="Graphical summaries of hematocrit by treatment group"}
+# Plotting by group using the method from Module 2:
 anaemia_i <- subset(anaemia, group=="Intervention")
 anaemia_sc <- subset(anaemia, group=="Standard care")
 
@@ -120,11 +119,30 @@ boxplot(anaemia_sc$hematocrit, ylab="Hematocrit", main="Standard care")
 par(mfrow=c(1,1))
 ```
 
+Note that the histograms and boxplots use different scales. We can standardise the scale limits using "xlim" and "ylim" by specifying the lower and upper bounds of the x- and y-axis:
+
+```{r haemplot-2, fig.cap="Graphical summaries of hematocrit by treatment group"}
+par(mfrow=c(2,2))
+
+hist(anaemia_i$hematocrit, xlab="Hematocrit", main="Intervention",
+     xlim=c(28, 38))
+hist(anaemia_sc$hematocrit, xlab="Hematocrit", main="Standard care",
+     xlim=c(28, 38))
+
+boxplot(anaemia_i$hematocrit, ylab="Hematocrit", main="Intervention",
+        ylim=c(28, 38))
+boxplot(anaemia_sc$hematocrit, ylab="Hematocrit", main="Standard care",
+        ylim=c(28, 38))
+
+
+# Reset graphics parameters
+par(mfrow=c(1,1))
+```
+
+
 c) Run your statistical test. 
 
 ```{r}
-library(broom)
-
 # Welch's t-test
 ttestIS(data=anaemia, vars=hematocrit, group=group, meanDiff=TRUE, ci=TRUE, welchs=TRUE)
 
@@ -157,7 +175,7 @@ a) What is the research question in this study? State the null and alternative h
 > **Alternative hypothesis**: there is a change in the mean haemangioma volume among children aged 6 months to 2 years at baseline and after 12 weeks treatment with topical medication.
 
 
-b) Use the data in the Stata file `ActivityS5.4.dta` to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test in Stata and write your conclusion.
+b) Use the data in the R file `ActivityS5.4.rds` to answer the research question. Which statistical test is appropriate to answer the research question and why? Conduct the test in R and write your conclusion.
 
 > A paired t-test is appropriate to test the null hypothesis. The measurement of haemangioma volume was made on each baby twice to compare the differences before and after the treatment, therefore, the study has a paired design. Because haemangioma volume is a continuous measurement (mm3), a paired t-test can be considered. The assumptions for a paired t-test are that the outcome variable is continuous, and differences of the measurements are normally distributed.
 
@@ -177,7 +195,11 @@ hist(babies$diff, xlab="Volume (mm3)", main="Difference in haemangioma volume")
 ```{r}
 # Using ttestPS from jmv
 ttestPS(data=babies, pairs=list(list(i1 = 'week_12', i2 = 'baseline')), meanDiff=TRUE, ci=TRUE)
+```
 
+The code for the `ttestPS()` function is quite cumbersome. You may want to use the `t.test()` function:
+
+```{r}
 # Using t.test
 t.test(babies$week_12, babies$baseline, paired=TRUE)
 ```

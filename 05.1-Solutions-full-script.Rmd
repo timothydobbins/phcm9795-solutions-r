@@ -1,0 +1,72 @@
+# Module 5: Full script {.unnumbered}
+
+```{r eval=FALSE, include=TRUE}
+# Author: Timothy Dobbins
+# Date: June, 2022
+# Purpose: Learning activities for Module 5
+
+# If necessary, install the BSDA package:
+# install.packages("BSDA")
+library(BSDA)
+library(jmv)
+
+# Activity 5.2
+# Calculate difference in means by hand:
+19.9 - 13.9
+
+# t-test assuming equal variance
+tsum.test(mean.x=19.9, s.x=5.9, n.x=12,
+          mean.y=13.9, s.y=6.2, n.y=15,
+          mu=0, alternative="two.sided", var.equal = TRUE)
+
+# Activity 5.3
+anaemia <- readRDS("data/activities/Activity_S5.3.rds")
+
+descriptives(data=anaemia, vars=hematocrit,
+             splitBy = group,
+             skew = TRUE)
+
+# Plotting by group using the method from Module 2:
+anaemia_i <- subset(anaemia, group=="Intervention")
+anaemia_sc <- subset(anaemia, group=="Standard care")
+
+# Set the graphics parameters to plot 2 rows and 2 columns:
+par(mfrow=c(2,2))
+
+# Specify each plot separately
+hist(anaemia_i$hematocrit, xlab="Hematocrit", main="Intervention")
+hist(anaemia_sc$hematocrit, xlab="Hematocrit", main="Standard care")
+
+boxplot(anaemia_i$hematocrit, ylab="Hematocrit", main="Intervention")
+boxplot(anaemia_sc$hematocrit, ylab="Hematocrit", main="Standard care")
+
+
+# Create plots using common axis limits
+hist(anaemia_i$hematocrit, xlab="Hematocrit", main="Intervention",
+     xlim=c(28, 38))
+hist(anaemia_sc$hematocrit, xlab="Hematocrit", main="Standard care",
+     xlim=c(28, 38))
+
+boxplot(anaemia_i$hematocrit, ylab="Hematocrit", main="Intervention",
+        ylim=c(28, 38))
+boxplot(anaemia_sc$hematocrit, ylab="Hematocrit", main="Standard care",
+        ylim=c(28, 38))
+
+# Reset graphics parameters
+par(mfrow=c(1,1))
+
+# Welch's t-test
+ttestIS(data=anaemia, vars=hematocrit, group=group, meanDiff=TRUE, ci=TRUE, welchs=TRUE)
+
+# Activity 5.4
+babies <- readRDS("data/activities/Activity_S5.4.rds")
+
+babies$diff = babies$week_12 - babies$baseline
+hist(babies$diff, xlab="Volume (mm3)", main="Difference in haemangioma volume")
+
+# Using ttestPS from jmv
+ttestPS(data=babies, pairs=list(list(i1 = 'week_12', i2 = 'baseline')), meanDiff=TRUE, ci=TRUE)
+
+# Using t.test
+t.test(babies$week_12, babies$baseline, paired=TRUE)
+```
