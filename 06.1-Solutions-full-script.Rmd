@@ -1,0 +1,70 @@
+# Module 6: Full script {.unnumbered}
+
+```{r eval=FALSE, include=TRUE}
+# Author: Timothy Dobbins
+# Date: June, 2022
+# Purpose: Learning activities for Module 6
+
+# Activity 6.1
+
+library(DescTools)
+
+# BinomCI from DescTools calculates a Wilson confidence interval:
+BinomCI(90, n=150, method="wilson")
+
+# The default binom.test calculates a Wald confidence interval
+binom.test(90, n=150, p=0.7)
+
+alcohol <- readRDS("data/activities/Activity_S6.1.rds")
+table(alcohol$Drinking_Status)
+
+binom.test(90, n=150, p=0.7)
+
+# Activity 6.2
+
+library(jmv)
+asthma <- readRDS("data/activities/Activity_S6.2.rds")
+
+summary(asthma$Asthma)
+summary(asthma$Gender)
+
+contTables(data=asthma, rows=Gender, cols=Asthma,
+          pcRow = TRUE, relRisk = TRUE)
+
+contTables(data=asthma, rows=Gender, cols=Asthma,
+          odds = TRUE)
+
+asthma_summary <- data.frame(
+  Gender = c("Male", "Male", "Female", "Female"),
+  Asthma = c("Yes", "No", "Yes", "No"),
+  Number = c(70, 188, 46, 196))
+
+asthma_summary$Gender <- factor(asthma_summary$Gender,
+                                levels = c("Male", "Female"))
+
+asthma_summary$Asthma <- factor(asthma_summary$Asthma,
+                                levels = c("Yes", "No"))
+
+contTables(data=asthma_summary,
+           rows = Gender, cols = Asthma,
+           counts = Number,
+           relRisk = TRUE)
+
+
+# Activity 6.3
+mortality <- data.frame(
+  HeartAttack = c("Yes", "Yes", "No", "No"),
+  Death = c("Yes", "No", "Yes", "No"),
+  n = c(10, 35, 5, 39))
+
+mortality$HeartAttack <- factor(mortality$HeartAttack,
+                                levels = c("Yes", "No"))
+
+mortality$Death <- factor(mortality$Death,
+                                levels = c("Yes", "No"))
+
+contTables(data = mortality,
+           rows = HeartAttack, cols = Death,
+           counts = n,
+           pcRow = TRUE, relRisk = TRUE)
+```

@@ -141,7 +141,7 @@
 
 \title{PHCM9795 Foundations of Biostatistics}
 \author{Learning activity solutions: R version}
-\date{21 June, 2022}
+\date{04 July, 2022}
 
 \begin{document}
 \maketitle
@@ -163,6 +163,24 @@ This is the first year that R has been offered as an option. I am keen to receiv
 \hypertarget{changelog}{%
 \subsection*{Changelog}\label{changelog}}
 \addcontentsline{toc}{subsection}{Changelog}
+
+\textbf{2022-07-04}
+{[}Added{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Module 6: Initial release
+\end{itemize}
+
+\textbf{2022-06-21}
+{[}Added{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Module 5: Initial release
+\end{itemize}
 
 \textbf{2022-06-12}
 {[}Added{]}
@@ -3092,6 +3110,623 @@ In a paired design, each subject serves as their own control (here by comparing 
 
 \CommentTok{\# Using t.test}
 \FunctionTok{t.test}\NormalTok{(babies}\SpecialCharTok{$}\NormalTok{week\_12, babies}\SpecialCharTok{$}\NormalTok{baseline, }\AttributeTok{paired=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{module-6-solutions-to-learning-activities}{%
+\chapter*{Module 6: Solutions to Learning Activities}\label{module-6-solutions-to-learning-activities}}
+\addcontentsline{toc}{chapter}{Module 6: Solutions to Learning Activities}
+
+\hypertarget{activity-6.1}{%
+\subsection*{Activity 6.1}\label{activity-6.1}}
+\addcontentsline{toc}{subsection}{Activity 6.1}
+
+In a clinical trial involving a dietary intervention, 150 adult volunteers agreed to participate. The investigator wanted to know whether this sample was representative of the general population. One interesting finding was that 90 of the participants drink alcohol regularly compared to 70\% of the general population.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  State the null hypothesis
+\end{enumerate}
+
+\begin{quote}
+Null hypothesis: The proportion of volunteers who consume alcohol regularly is the same as the proportion who consume alcohol regularly in the general population.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Calculate the 95\% CI for the proportion of regular drinkers in the sample using R.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DescTools)}
+
+\CommentTok{\# BinomCI from DescTools calculates a Wilson confidence interval:}
+\FunctionTok{BinomCI}\NormalTok{(}\DecValTok{90}\NormalTok{, }\AttributeTok{n=}\DecValTok{150}\NormalTok{, }\AttributeTok{method=}\StringTok{"wilson"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      est    lwr.ci    upr.ci
+## [1,] 0.6 0.5200492 0.6749568
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# The default binom.test calculates a Wald confidence interval}
+\FunctionTok{binom.test}\NormalTok{(}\DecValTok{90}\NormalTok{, }\AttributeTok{n=}\DecValTok{150}\NormalTok{, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Exact binomial test
+## 
+## data:  90 and 150
+## number of successes = 90, number of trials = 150, p-value = 0.009553
+## alternative hypothesis: true probability of success is not equal to 0.7
+## 95 percent confidence interval:
+##  0.5169313 0.6790370
+## sample estimates:
+## probability of success 
+##                    0.6
+\end{verbatim}
+
+\begin{quote}
+The proportion of volunteers who drink alcohol regularly is estimated as 60\%, with a 95\% confidence interval from 52\% to 67\%. The 95\% confidence interval can be interpreted as: we are 95\% confident that the true prevalence of alcohol drinkers in the population from where the sample was drawn lies between 52\% and 67\%. Note that the prevalence of regular drinkers in the general population is 70\%, which does not fall within the 95\% CI calculated from the sample. This may be because the participants were not randomly selected from the general population; they volunteered to participate in the study.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Use the R file Activity\_S6.1.rds to decide if the sample of volunteers is representative of the population.
+\end{enumerate}
+
+\begin{quote}
+We have stated the null hypothesis in part (a):
+\end{quote}
+
+\begin{quote}
+Null hypothesis: The proportion of volunteers who consume alcohol regularly is the same as the proportion who consume alcohol regularly in the general population.
+\end{quote}
+
+\begin{quote}
+The one-sample proportion test has been calculated with the \texttt{binom.test} command in (a). If we only had individual data (i.e.~did not have the summary results above), we would need to tabulate the data first:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alcohol }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S6.1.rds"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(alcohol}\SpecialCharTok{$}\NormalTok{Drinking\_Status)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Non-drinker     Drinker 
+##          60          90
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{binom.test}\NormalTok{(}\DecValTok{90}\NormalTok{, }\AttributeTok{n=}\DecValTok{150}\NormalTok{, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Exact binomial test
+## 
+## data:  90 and 150
+## number of successes = 90, number of trials = 150, p-value = 0.009553
+## alternative hypothesis: true probability of success is not equal to 0.7
+## 95 percent confidence interval:
+##  0.5169313 0.6790370
+## sample estimates:
+## probability of success 
+##                    0.6
+\end{verbatim}
+
+The R output gives the P-value from a two-sided test of 0.0096. Thus, we can conclude that there is strong evidence that the proportion of drinkers among the sample population of the dietary intervention group (60\%) is lower than that (70\%) in the general population.
+
+\hypertarget{activity-6.2}{%
+\subsection*{Activity 6.2}\label{activity-6.2}}
+\addcontentsline{toc}{subsection}{Activity 6.2}
+
+A survey was conducted of a random sample of upper primary school children to measure the prevalence of asthma using questionnaires completed by the parents. A total of 514 children were enrolled. Use the R dataset Activity\_S6.2.rds for this activity.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Calculate the relative risk and odds ratio with 95\% confidence interval using Stata for children to have asthma symptoms if they are male? Which risk estimate would be the correct statistic to report?
+\end{enumerate}
+
+\begin{quote}
+Before we begin analysing any binary data, we must ensure that the binary variables of interest are coded as factors, with the positive exposure and outcomes ordered first. We can check this using the \texttt{summary()} function:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(jmv)}
+\NormalTok{asthma }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S6.2.rds"}\NormalTok{)}
+
+\FunctionTok{summary}\NormalTok{(asthma}\SpecialCharTok{$}\NormalTok{Asthma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Yes  No 
+## 119 395
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(asthma}\SpecialCharTok{$}\NormalTok{Gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Male Female   NA's 
+##    258    242     14
+\end{verbatim}
+
+\begin{quote}
+Here, Asthma is coded with ``Yes'' as the first level, as required. Gender is coded with ``Male'' as the first level, which means that R will produce summaries of male vs female. Note that there are 14 missing values for gender, indicated as NA.
+\end{quote}
+
+\begin{quote}
+The relative risk of asthma can be calculated using the \texttt{contTables()} function within the \texttt{jmv} library. The relative risk is calculated using \texttt{relRisk\ =\ TRUE}, and the proportion of asthma within each sex calculated using \texttt{pcRow\ =\ TRUE}:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{asthma, }\AttributeTok{rows=}\NormalTok{Gender, }\AttributeTok{cols=}\NormalTok{Asthma,}
+          \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    Gender                    Yes          No           Total       
+##  ───────────────────────────────────────────────────────────────── 
+##    Male      Observed               70          188          258   
+##              % within row     27.13178     72.86822    100.00000   
+##                                                                    
+##    Female    Observed               46          196          242   
+##              % within row     19.00826     80.99174    100.00000   
+##                                                                    
+##    Total     Observed              116          384          500   
+##              % within row     23.20000     76.80000    100.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                    
+##  ─────────────────────────────────────────────────────── 
+##                     Value         Lower       Upper      
+##  ─────────────────────────────────────────────────────── 
+##    Relative risk    1.427368 ᵃ    1.028159    1.981579   
+##  ─────────────────────────────────────────────────────── 
+##    ᵃ Rows compared
+\end{verbatim}
+
+\begin{quote}
+From the output we can see that the relative risk of Asthma for males compared to females is 1.43 (95\% CI: 1.03 to 1.98).
+\end{quote}
+
+\begin{quote}
+To calculate the odds ratio, we use \texttt{odds\ =\ TRUE}:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{asthma, }\AttributeTok{rows=}\NormalTok{Gender, }\AttributeTok{cols=}\NormalTok{Asthma,}
+          \AttributeTok{odds =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                
+##  ───────────────────────────────── 
+##    Gender    Yes    No     Total   
+##  ───────────────────────────────── 
+##    Male       70    188      258   
+##    Female     46    196      242   
+##    Total     116    384      500   
+##  ───────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                               
+##  ────────────────────────────────────────────────── 
+##                  Value       Lower       Upper      
+##  ────────────────────────────────────────────────── 
+##    Odds ratio    1.586494    1.039904    2.420381   
+##  ──────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{quote}
+The OR of Asthma 1.59 (95\% CI: 1.04 to 2.42) for males compared to females.
+\end{quote}
+
+\begin{quote}
+The relative risk is the correct risk estimate to use as this a cross-sectional study. The relative risk is a direct comparison of the proportion with asthma symptoms in each exposure group. The odds ratio is only appropriate for a case-control study.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Use the tabulated data on the frequency of cases and exposure you obtained in R output in part a to calculate RR and OR with their 95\% confidence interval using R.
+\end{enumerate}
+
+\begin{quote}
+This question assumes we are only given the values of the four cells in the cross-tabulation. We can re-write this table as follows to explain the process of entering summarised data:
+\end{quote}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Gender & Asthma & Number \\
+\midrule
+\endhead
+Male & Yes & 70 \\
+Male & No & 188 \\
+Female & Yes & 46 \\
+Female & No & 196 \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+We can enter these data in a dataframe, comprising three vectors, as follows:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{asthma\_summary }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Gender =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{, }\StringTok{"Female"}\NormalTok{),}
+  \AttributeTok{Asthma =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+  \AttributeTok{Number =} \FunctionTok{c}\NormalTok{(}\DecValTok{70}\NormalTok{, }\DecValTok{188}\NormalTok{, }\DecValTok{46}\NormalTok{, }\DecValTok{196}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+We need to define Gender and Asthma as factors. Here we must define the \texttt{levels} \textbf{in the order we want the categories to appear in the table}. Note that as Gender and Asthma are entered as text variables, we can omit \texttt{labels} command when defining the factors, and the factor will be labelled using the text entry:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{asthma\_summary}\SpecialCharTok{$}\NormalTok{Gender }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(asthma\_summary}\SpecialCharTok{$}\NormalTok{Gender,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{))}
+
+\NormalTok{asthma\_summary}\SpecialCharTok{$}\NormalTok{Asthma }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(asthma\_summary}\SpecialCharTok{$}\NormalTok{Asthma,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the \texttt{counts} command:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{asthma\_summary,}
+           \AttributeTok{rows =}\NormalTok{ Gender, }\AttributeTok{cols =}\NormalTok{ Asthma,}
+           \AttributeTok{counts =}\NormalTok{ Number,}
+           \AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                
+##  ───────────────────────────────── 
+##    Gender    Yes    No     Total   
+##  ───────────────────────────────── 
+##    Male       70    188      258   
+##    Female     46    196      242   
+##    Total     116    384      500   
+##  ───────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                    
+##  ─────────────────────────────────────────────────────── 
+##                     Value         Lower       Upper      
+##  ─────────────────────────────────────────────────────── 
+##    Relative risk    1.427368 ᵃ    1.028159    1.981579   
+##  ─────────────────────────────────────────────────────── 
+##    ᵃ Rows compared
+\end{verbatim}
+
+\begin{quote}
+The output from the summarised data is identical to the output of the individual-level data.
+\end{quote}
+
+\hypertarget{activity-6.3}{%
+\subsection*{Activity 6.3}\label{activity-6.3}}
+\addcontentsline{toc}{subsection}{Activity 6.3}
+
+In a study to determine the cause of mortality, 89 people were followed up for 5 years. The participants are classified into two groups of those who did or did not have a heart attack. At the end of the follow-up 15 people died among them 10 had a heart attack. Among the 74 survivors 35 had a heart attack. Present the data on a 2x2 table and calculate relative risk of death from heart attack with 95\% confidence interval using R.
+
+\begin{quote}
+The cross-tabulation of heart attack and mortality is given in Table 6.1.
+\end{quote}
+
+\begin{longtable}[]{@{}lllc@{}}
+\toprule
+HeartAttack & Death & & Total \\
+\midrule
+\endhead
+& Yes & No & \\
+Yes & 10 & 35 & 45 \\
+No & 5 & 39 & 44 \\
+Total & 15 & 74 & 89 \\
+\bottomrule
+\end{longtable}
+
+\begin{quote}
+To calculate relative risk using the information from Table 6.1, we enter first enter the summarised data into a new dataframe:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mortality }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{HeartAttack =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+  \AttributeTok{Death =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+  \AttributeTok{n =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{39}\NormalTok{))}
+
+\NormalTok{mortality}\SpecialCharTok{$}\NormalTok{HeartAttack }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(mortality}\SpecialCharTok{$}\NormalTok{HeartAttack,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+
+\NormalTok{mortality}\SpecialCharTok{$}\NormalTok{Death }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(mortality}\SpecialCharTok{$}\NormalTok{Death,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+We then estimate the relative risk using the \texttt{contTables()} function:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mortality,}
+           \AttributeTok{rows =}\NormalTok{ HeartAttack, }\AttributeTok{cols =}\NormalTok{ Death,}
+           \AttributeTok{counts =}\NormalTok{ n,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                     
+##  ────────────────────────────────────────────────────────────────────── 
+##    HeartAttack                    Yes          No           Total       
+##  ────────────────────────────────────────────────────────────────────── 
+##    Yes            Observed               10           35           45   
+##                   % within row     22.22222     77.77778    100.00000   
+##                                                                         
+##    No             Observed                5           39           44   
+##                   % within row     11.36364     88.63636    100.00000   
+##                                                                         
+##    Total          Observed               15           74           89   
+##                   % within row     16.85393     83.14607    100.00000   
+##  ────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    1.871883     1    0.1712595   
+##    N           89                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                     
+##  ──────────────────────────────────────────────────────── 
+##                     Value         Lower        Upper      
+##  ──────────────────────────────────────────────────────── 
+##    Relative risk    1.955556 ᵃ    0.7267615    5.261971   
+##  ──────────────────────────────────────────────────────── 
+##    ᵃ Rows compared
+\end{verbatim}
+
+From the output we can see that the relative risk of death from heart attack is 1.96 (95\% CI: 0.73 to 5.26).
+
+\hypertarget{activity-6.4}{%
+\subsection*{Activity 6.4}\label{activity-6.4}}
+\addcontentsline{toc}{subsection}{Activity 6.4}
+
+A study is conducted to test the hypothesis that the observed frequency of a certain health outcome is 30\%. If the results yield a CI around the sample proportion that extends from 23.8 to 30.2, what can you say about the evidence against the null hypothesis?
+
+\begin{quote}
+As the 95\% confidence interval includes the hypothesised population proportion, we can infer that the P-value of the study will be greater than 0.05. Hence, this study provides weak to no evidence against the null hypothesis.
+\end{quote}
+
+\hypertarget{activity-6.5}{%
+\subsection*{Activity 6.5}\label{activity-6.5}}
+\addcontentsline{toc}{subsection}{Activity 6.5}
+
+In an experiment to test the effect of vitamin C on IQ scores, the following confidence intervals were estimated around the percentage of people with improved scores for five different populations:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Population & \% with improved IQ & 95\% confidence interval \\
+\midrule
+\endhead
+1 & 35.0 & 32.0 to 38.0 \\
+2 & 29.5 & 25.0 to 34.0 \\
+3 & 43.5 & 42.0 to 45.0 \\
+4 & 30.5 & 20.0 to 41.0 \\
+5 & 24.5 & 21.0 to 28.0 \\
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Which CI is the most precise?
+\end{enumerate}
+
+\begin{quote}
+Population 3. This has the smallest interval which is 3 (42 - 45).
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Which CI implies the largest sample size?
+\end{enumerate}
+
+\begin{quote}
+Population 3. The larger the sample size, the smaller the standard error and hence narrower the confidence interval. Therefore the largest sample size will have the narrowest confidence interval provided that the frequency is the same.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\item
+  Which CI is the least precise?
+  \textgreater{} Population 4. This has the widest interval which is 21 (41 - 20), thus is less precise than the others.
+\item
+  Which CI most strongly supports the conclusion that vitamin C increases IQ score and why?
+\end{enumerate}
+
+\begin{quote}
+Population 3. This has the narrowest confidence interval where the lower bound is higher than the upper bound of all others.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Which would most likely to stimulate the investigator to conduct an additional experiment using a larger sample size?
+\end{enumerate}
+
+\begin{quote}
+Population 4. This estimate is the least precise. By increasing sample size, the estimate of frequency as shown by the 95\% CI would become narrower.
+\end{quote}
+
+\hypertarget{module-6-full-script}{%
+\chapter*{Module 6: Full script}\label{module-6-full-script}}
+\addcontentsline{toc}{chapter}{Module 6: Full script}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Author: Timothy Dobbins}
+\CommentTok{\# Date: June, 2022}
+\CommentTok{\# Purpose: Learning activities for Module 6}
+
+\CommentTok{\# Activity 6.1}
+
+\FunctionTok{library}\NormalTok{(DescTools)}
+
+\CommentTok{\# BinomCI from DescTools calculates a Wilson confidence interval:}
+\FunctionTok{BinomCI}\NormalTok{(}\DecValTok{90}\NormalTok{, }\AttributeTok{n=}\DecValTok{150}\NormalTok{, }\AttributeTok{method=}\StringTok{"wilson"}\NormalTok{)}
+
+\CommentTok{\# The default binom.test calculates a Wald confidence interval}
+\FunctionTok{binom.test}\NormalTok{(}\DecValTok{90}\NormalTok{, }\AttributeTok{n=}\DecValTok{150}\NormalTok{, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{)}
+
+\NormalTok{alcohol }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S6.1.rds"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(alcohol}\SpecialCharTok{$}\NormalTok{Drinking\_Status)}
+
+\FunctionTok{binom.test}\NormalTok{(}\DecValTok{90}\NormalTok{, }\AttributeTok{n=}\DecValTok{150}\NormalTok{, }\AttributeTok{p=}\FloatTok{0.7}\NormalTok{)}
+
+\CommentTok{\# Activity 6.2}
+
+\FunctionTok{library}\NormalTok{(jmv)}
+\NormalTok{asthma }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S6.2.rds"}\NormalTok{)}
+
+\FunctionTok{summary}\NormalTok{(asthma}\SpecialCharTok{$}\NormalTok{Asthma)}
+\FunctionTok{summary}\NormalTok{(asthma}\SpecialCharTok{$}\NormalTok{Gender)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{asthma, }\AttributeTok{rows=}\NormalTok{Gender, }\AttributeTok{cols=}\NormalTok{Asthma,}
+          \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{asthma, }\AttributeTok{rows=}\NormalTok{Gender, }\AttributeTok{cols=}\NormalTok{Asthma,}
+          \AttributeTok{odds =} \ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{asthma\_summary }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Gender =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{, }\StringTok{"Female"}\NormalTok{),}
+  \AttributeTok{Asthma =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+  \AttributeTok{Number =} \FunctionTok{c}\NormalTok{(}\DecValTok{70}\NormalTok{, }\DecValTok{188}\NormalTok{, }\DecValTok{46}\NormalTok{, }\DecValTok{196}\NormalTok{))}
+
+\NormalTok{asthma\_summary}\SpecialCharTok{$}\NormalTok{Gender }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(asthma\_summary}\SpecialCharTok{$}\NormalTok{Gender,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{))}
+
+\NormalTok{asthma\_summary}\SpecialCharTok{$}\NormalTok{Asthma }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(asthma\_summary}\SpecialCharTok{$}\NormalTok{Asthma,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{asthma\_summary,}
+           \AttributeTok{rows =}\NormalTok{ Gender, }\AttributeTok{cols =}\NormalTok{ Asthma,}
+           \AttributeTok{counts =}\NormalTok{ Number,}
+           \AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+
+
+\CommentTok{\# Activity 6.3}
+\NormalTok{mortality }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{HeartAttack =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+  \AttributeTok{Death =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{),}
+  \AttributeTok{n =} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{39}\NormalTok{))}
+
+\NormalTok{mortality}\SpecialCharTok{$}\NormalTok{HeartAttack }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(mortality}\SpecialCharTok{$}\NormalTok{HeartAttack,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+
+\NormalTok{mortality}\SpecialCharTok{$}\NormalTok{Death }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(mortality}\SpecialCharTok{$}\NormalTok{Death,}
+                                \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Yes"}\NormalTok{, }\StringTok{"No"}\NormalTok{))}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mortality,}
+           \AttributeTok{rows =}\NormalTok{ HeartAttack, }\AttributeTok{cols =}\NormalTok{ Death,}
+           \AttributeTok{counts =}\NormalTok{ n,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

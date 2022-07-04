@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 6: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 6: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 6: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 6: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-5-full-script.html"/>
+<link rel="next" href="module-6-full-script.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-5-solutions-to-learning-activities.html"><a href="module-5-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 5: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-5-full-script.html"><a href="module-5-full-script.html"><i class="fa fa-check"></i>Module 5: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-6-solutions-to-learning-activities.html"><a href="module-6-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 6: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-6-full-script.html"><a href="module-6-full-script.html"><i class="fa fa-check"></i>Module 6: Full script</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-6-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 6: Solutions to Learning Activities<a href="module-6-solutions-to-learning-activities.html#module-6-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-6.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 6.1<a href="module-6-solutions-to-learning-activities.html#activity-6.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In a clinical trial involving a dietary intervention, 150 adult volunteers agreed to participate. The investigator wanted to know whether this sample was representative of the general population. One interesting finding was that 90 of the participants drink alcohol regularly compared to 70% of the general population.</p>
+<ol style="list-style-type: lower-alpha">
+<li>State the null hypothesis</li>
+</ol>
+<blockquote>
+<p>Null hypothesis: The proportion of volunteers who consume alcohol regularly is the same as the proportion who consume alcohol regularly in the general population.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Calculate the 95% CI for the proportion of regular drinkers in the sample using R.</li>
+</ol>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="module-6-solutions-to-learning-activities.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb123-2"><a href="module-6-solutions-to-learning-activities.html#cb123-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-3"><a href="module-6-solutions-to-learning-activities.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="co"># BinomCI from DescTools calculates a Wilson confidence interval:</span></span>
+<span id="cb123-4"><a href="module-6-solutions-to-learning-activities.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">BinomCI</span>(<span class="dv">90</span>, <span class="at">n=</span><span class="dv">150</span>, <span class="at">method=</span><span class="st">&quot;wilson&quot;</span>)</span></code></pre></div>
+<pre><code>##      est    lwr.ci    upr.ci
+## [1,] 0.6 0.5200492 0.6749568</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="module-6-solutions-to-learning-activities.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The default binom.test calculates a Wald confidence interval</span></span>
+<span id="cb125-2"><a href="module-6-solutions-to-learning-activities.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="dv">90</span>, <span class="at">n=</span><span class="dv">150</span>, <span class="at">p=</span><span class="fl">0.7</span>)</span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  90 and 150
+## number of successes = 90, number of trials = 150, p-value = 0.009553
+## alternative hypothesis: true probability of success is not equal to 0.7
+## 95 percent confidence interval:
+##  0.5169313 0.6790370
+## sample estimates:
+## probability of success 
+##                    0.6</code></pre>
+<blockquote>
+<p>The proportion of volunteers who drink alcohol regularly is estimated as 60%, with a 95% confidence interval from 52% to 67%. The 95% confidence interval can be interpreted as: we are 95% confident that the true prevalence of alcohol drinkers in the population from where the sample was drawn lies between 52% and 67%. Note that the prevalence of regular drinkers in the general population is 70%, which does not fall within the 95% CI calculated from the sample. This may be because the participants were not randomly selected from the general population; they volunteered to participate in the study.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Use the R file Activity_S6.1.rds to decide if the sample of volunteers is representative of the population.</li>
+</ol>
+<blockquote>
+<p>We have stated the null hypothesis in part (a):</p>
+</blockquote>
+<blockquote>
+<p>Null hypothesis: The proportion of volunteers who consume alcohol regularly is the same as the proportion who consume alcohol regularly in the general population.</p>
+</blockquote>
+<blockquote>
+<p>The one-sample proportion test has been calculated with the <code>binom.test</code> command in (a). If we only had individual data (i.e. did not have the summary results above), we would need to tabulate the data first:</p>
+</blockquote>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="module-6-solutions-to-learning-activities.html#cb127-1" aria-hidden="true" tabindex="-1"></a>alcohol <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S6.1.rds&quot;</span>)</span>
+<span id="cb127-2"><a href="module-6-solutions-to-learning-activities.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(alcohol<span class="sc">$</span>Drinking_Status)</span></code></pre></div>
+<pre><code>## 
+## Non-drinker     Drinker 
+##          60          90</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="module-6-solutions-to-learning-activities.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="dv">90</span>, <span class="at">n=</span><span class="dv">150</span>, <span class="at">p=</span><span class="fl">0.7</span>)</span></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  90 and 150
+## number of successes = 90, number of trials = 150, p-value = 0.009553
+## alternative hypothesis: true probability of success is not equal to 0.7
+## 95 percent confidence interval:
+##  0.5169313 0.6790370
+## sample estimates:
+## probability of success 
+##                    0.6</code></pre>
+<p>The R output gives the P-value from a two-sided test of 0.0096. Thus, we can conclude that there is strong evidence that the proportion of drinkers among the sample population of the dietary intervention group (60%) is lower than that (70%) in the general population.</p>
+</div>
+<div id="activity-6.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 6.2<a href="module-6-solutions-to-learning-activities.html#activity-6.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A survey was conducted of a random sample of upper primary school children to measure the prevalence of asthma using questionnaires completed by the parents. A total of 514 children were enrolled. Use the R dataset Activity_S6.2.rds for this activity.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Calculate the relative risk and odds ratio with 95% confidence interval using Stata for children to have asthma symptoms if they are male? Which risk estimate would be the correct statistic to report?</li>
+</ol>
+<blockquote>
+<p>Before we begin analysing any binary data, we must ensure that the binary variables of interest are coded as factors, with the positive exposure and outcomes ordered first. We can check this using the <code>summary()</code> function:</p>
+</blockquote>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="module-6-solutions-to-learning-activities.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb131-2"><a href="module-6-solutions-to-learning-activities.html#cb131-2" aria-hidden="true" tabindex="-1"></a>asthma <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S6.2.rds&quot;</span>)</span>
+<span id="cb131-3"><a href="module-6-solutions-to-learning-activities.html#cb131-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-4"><a href="module-6-solutions-to-learning-activities.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(asthma<span class="sc">$</span>Asthma)</span></code></pre></div>
+<pre><code>## Yes  No 
+## 119 395</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="module-6-solutions-to-learning-activities.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(asthma<span class="sc">$</span>Gender)</span></code></pre></div>
+<pre><code>##   Male Female   NA&#39;s 
+##    258    242     14</code></pre>
+<blockquote>
+<p>Here, Asthma is coded with “Yes” as the first level, as required. Gender is coded with “Male” as the first level, which means that R will produce summaries of male vs female. Note that there are 14 missing values for gender, indicated as NA.</p>
+</blockquote>
+<blockquote>
+<p>The relative risk of asthma can be calculated using the <code>contTables()</code> function within the <code>jmv</code> library. The relative risk is calculated using <code>relRisk = TRUE</code>, and the proportion of asthma within each sex calculated using <code>pcRow = TRUE</code>:</p>
+</blockquote>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="module-6-solutions-to-learning-activities.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>asthma, <span class="at">rows=</span>Gender, <span class="at">cols=</span>Asthma,</span>
+<span id="cb135-2"><a href="module-6-solutions-to-learning-activities.html#cb135-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">pcRow =</span> <span class="cn">TRUE</span>, <span class="at">relRisk =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    Gender                    Yes          No           Total       
+##  ───────────────────────────────────────────────────────────────── 
+##    Male      Observed               70          188          258   
+##              % within row     27.13178     72.86822    100.00000   
+##                                                                    
+##    Female    Observed               46          196          242   
+##              % within row     19.00826     80.99174    100.00000   
+##                                                                    
+##    Total     Observed              116          384          500   
+##              % within row     23.20000     76.80000    100.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                    
+##  ─────────────────────────────────────────────────────── 
+##                     Value         Lower       Upper      
+##  ─────────────────────────────────────────────────────── 
+##    Relative risk    1.427368 ᵃ    1.028159    1.981579   
+##  ─────────────────────────────────────────────────────── 
+##    ᵃ Rows compared</code></pre>
+<blockquote>
+<p>From the output we can see that the relative risk of Asthma for males compared to females is 1.43 (95% CI: 1.03 to 1.98).</p>
+</blockquote>
+<blockquote>
+<p>To calculate the odds ratio, we use <code>odds = TRUE</code>:</p>
+</blockquote>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="module-6-solutions-to-learning-activities.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>asthma, <span class="at">rows=</span>Gender, <span class="at">cols=</span>Asthma,</span>
+<span id="cb137-2"><a href="module-6-solutions-to-learning-activities.html#cb137-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">odds =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                
+##  ───────────────────────────────── 
+##    Gender    Yes    No     Total   
+##  ───────────────────────────────── 
+##    Male       70    188      258   
+##    Female     46    196      242   
+##    Total     116    384      500   
+##  ───────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                               
+##  ────────────────────────────────────────────────── 
+##                  Value       Lower       Upper      
+##  ────────────────────────────────────────────────── 
+##    Odds ratio    1.586494    1.039904    2.420381   
+##  ──────────────────────────────────────────────────</code></pre>
+<blockquote>
+<p>The OR of Asthma 1.59 (95% CI: 1.04 to 2.42) for males compared to females.</p>
+</blockquote>
+<blockquote>
+<p>The relative risk is the correct risk estimate to use as this a cross-sectional study. The relative risk is a direct comparison of the proportion with asthma symptoms in each exposure group. The odds ratio is only appropriate for a case-control study.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use the tabulated data on the frequency of cases and exposure you obtained in R output in part a to calculate RR and OR with their 95% confidence interval using R.</li>
+</ol>
+<blockquote>
+<p>This question assumes we are only given the values of the four cells in the cross-tabulation. We can re-write this table as follows to explain the process of entering summarised data:</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Gender</th>
+<th align="center">Asthma</th>
+<th align="center">Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Male</td>
+<td align="center">Yes</td>
+<td align="center">70</td>
+</tr>
+<tr class="even">
+<td align="center">Male</td>
+<td align="center">No</td>
+<td align="center">188</td>
+</tr>
+<tr class="odd">
+<td align="center">Female</td>
+<td align="center">Yes</td>
+<td align="center">46</td>
+</tr>
+<tr class="even">
+<td align="center">Female</td>
+<td align="center">No</td>
+<td align="center">196</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>We can enter these data in a dataframe, comprising three vectors, as follows:</p>
+</blockquote>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="module-6-solutions-to-learning-activities.html#cb139-1" aria-hidden="true" tabindex="-1"></a>asthma_summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb139-2"><a href="module-6-solutions-to-learning-activities.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gender =</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Female&quot;</span>),</span>
+<span id="cb139-3"><a href="module-6-solutions-to-learning-activities.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Asthma =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb139-4"><a href="module-6-solutions-to-learning-activities.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Number =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">188</span>, <span class="dv">46</span>, <span class="dv">196</span>))</span></code></pre></div>
+<blockquote>
+<p>We need to define Gender and Asthma as factors. Here we must define the <code>levels</code> <strong>in the order we want the categories to appear in the table</strong>. Note that as Gender and Asthma are entered as text variables, we can omit <code>labels</code> command when defining the factors, and the factor will be labelled using the text entry:</p>
+</blockquote>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="module-6-solutions-to-learning-activities.html#cb140-1" aria-hidden="true" tabindex="-1"></a>asthma_summary<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(asthma_summary<span class="sc">$</span>Gender,</span>
+<span id="cb140-2"><a href="module-6-solutions-to-learning-activities.html#cb140-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>))</span>
+<span id="cb140-3"><a href="module-6-solutions-to-learning-activities.html#cb140-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-4"><a href="module-6-solutions-to-learning-activities.html#cb140-4" aria-hidden="true" tabindex="-1"></a>asthma_summary<span class="sc">$</span>Asthma <span class="ot">&lt;-</span> <span class="fu">factor</span>(asthma_summary<span class="sc">$</span>Asthma,</span>
+<span id="cb140-5"><a href="module-6-solutions-to-learning-activities.html#cb140-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span></code></pre></div>
+<blockquote>
+<p>We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the <code>counts</code> command:</p>
+</blockquote>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="module-6-solutions-to-learning-activities.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>asthma_summary,</span>
+<span id="cb141-2"><a href="module-6-solutions-to-learning-activities.html#cb141-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> Gender, <span class="at">cols =</span> Asthma,</span>
+<span id="cb141-3"><a href="module-6-solutions-to-learning-activities.html#cb141-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">counts =</span> Number,</span>
+<span id="cb141-4"><a href="module-6-solutions-to-learning-activities.html#cb141-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">relRisk =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                
+##  ───────────────────────────────── 
+##    Gender    Yes    No     Total   
+##  ───────────────────────────────── 
+##    Male       70    188      258   
+##    Female     46    196      242   
+##    Total     116    384      500   
+##  ───────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                    
+##  ─────────────────────────────────────────────────────── 
+##                     Value         Lower       Upper      
+##  ─────────────────────────────────────────────────────── 
+##    Relative risk    1.427368 ᵃ    1.028159    1.981579   
+##  ─────────────────────────────────────────────────────── 
+##    ᵃ Rows compared</code></pre>
+<blockquote>
+<p>The output from the summarised data is identical to the output of the individual-level data.</p>
+</blockquote>
+</div>
+<div id="activity-6.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 6.3<a href="module-6-solutions-to-learning-activities.html#activity-6.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In a study to determine the cause of mortality, 89 people were followed up for 5 years. The participants are classified into two groups of those who did or did not have a heart attack. At the end of the follow-up 15 people died among them 10 had a heart attack. Among the 74 survivors 35 had a heart attack. Present the data on a 2x2 table and calculate relative risk of death from heart attack with 95% confidence interval using R.</p>
+<blockquote>
+<p>The cross-tabulation of heart attack and mortality is given in Table 6.1.</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th align="left">HeartAttack</th>
+<th>Death</th>
+<th></th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td>Yes</td>
+<td>No</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Yes</td>
+<td>10</td>
+<td>35</td>
+<td align="center">45</td>
+</tr>
+<tr class="odd">
+<td align="left">No</td>
+<td>5</td>
+<td>39</td>
+<td align="center">44</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td>15</td>
+<td>74</td>
+<td align="center">89</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>To calculate relative risk using the information from Table 6.1, we enter first enter the summarised data into a new dataframe:</p>
+</blockquote>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="module-6-solutions-to-learning-activities.html#cb143-1" aria-hidden="true" tabindex="-1"></a>mortality <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb143-2"><a href="module-6-solutions-to-learning-activities.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">HeartAttack =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb143-3"><a href="module-6-solutions-to-learning-activities.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Death =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>),</span>
+<span id="cb143-4"><a href="module-6-solutions-to-learning-activities.html#cb143-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>, <span class="dv">5</span>, <span class="dv">39</span>))</span>
+<span id="cb143-5"><a href="module-6-solutions-to-learning-activities.html#cb143-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-6"><a href="module-6-solutions-to-learning-activities.html#cb143-6" aria-hidden="true" tabindex="-1"></a>mortality<span class="sc">$</span>HeartAttack <span class="ot">&lt;-</span> <span class="fu">factor</span>(mortality<span class="sc">$</span>HeartAttack,</span>
+<span id="cb143-7"><a href="module-6-solutions-to-learning-activities.html#cb143-7" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span>
+<span id="cb143-8"><a href="module-6-solutions-to-learning-activities.html#cb143-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-9"><a href="module-6-solutions-to-learning-activities.html#cb143-9" aria-hidden="true" tabindex="-1"></a>mortality<span class="sc">$</span>Death <span class="ot">&lt;-</span> <span class="fu">factor</span>(mortality<span class="sc">$</span>Death,</span>
+<span id="cb143-10"><a href="module-6-solutions-to-learning-activities.html#cb143-10" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;No&quot;</span>))</span></code></pre></div>
+<blockquote>
+<p>We then estimate the relative risk using the <code>contTables()</code> function:</p>
+</blockquote>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="module-6-solutions-to-learning-activities.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data =</span> mortality,</span>
+<span id="cb144-2"><a href="module-6-solutions-to-learning-activities.html#cb144-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> HeartAttack, <span class="at">cols =</span> Death,</span>
+<span id="cb144-3"><a href="module-6-solutions-to-learning-activities.html#cb144-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">counts =</span> n,</span>
+<span id="cb144-4"><a href="module-6-solutions-to-learning-activities.html#cb144-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">pcRow =</span> <span class="cn">TRUE</span>, <span class="at">relRisk =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                     
+##  ────────────────────────────────────────────────────────────────────── 
+##    HeartAttack                    Yes          No           Total       
+##  ────────────────────────────────────────────────────────────────────── 
+##    Yes            Observed               10           35           45   
+##                   % within row     22.22222     77.77778    100.00000   
+##                                                                         
+##    No             Observed                5           39           44   
+##                   % within row     11.36364     88.63636    100.00000   
+##                                                                         
+##    Total          Observed               15           74           89   
+##                   % within row     16.85393     83.14607    100.00000   
+##  ────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    1.871883     1    0.1712595   
+##    N           89                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                     
+##  ──────────────────────────────────────────────────────── 
+##                     Value         Lower        Upper      
+##  ──────────────────────────────────────────────────────── 
+##    Relative risk    1.955556 ᵃ    0.7267615    5.261971   
+##  ──────────────────────────────────────────────────────── 
+##    ᵃ Rows compared</code></pre>
+<p>From the output we can see that the relative risk of death from heart attack is 1.96 (95% CI: 0.73 to 5.26).</p>
+</div>
+<div id="activity-6.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 6.4<a href="module-6-solutions-to-learning-activities.html#activity-6.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A study is conducted to test the hypothesis that the observed frequency of a certain health outcome is 30%. If the results yield a CI around the sample proportion that extends from 23.8 to 30.2, what can you say about the evidence against the null hypothesis?</p>
+<blockquote>
+<p>As the 95% confidence interval includes the hypothesised population proportion, we can infer that the P-value of the study will be greater than 0.05. Hence, this study provides weak to no evidence against the null hypothesis.</p>
+</blockquote>
+</div>
+<div id="activity-6.5" class="section level3 unnumbered hasAnchor">
+<h3>Activity 6.5<a href="module-6-solutions-to-learning-activities.html#activity-6.5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In an experiment to test the effect of vitamin C on IQ scores, the following confidence intervals were estimated around the percentage of people with improved scores for five different populations:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Population</th>
+<th align="center">% with improved IQ</th>
+<th align="center">95% confidence interval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">35.0</td>
+<td align="center">32.0 to 38.0</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">29.5</td>
+<td align="center">25.0 to 34.0</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">43.5</td>
+<td align="center">42.0 to 45.0</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">30.5</td>
+<td align="center">20.0 to 41.0</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">24.5</td>
+<td align="center">21.0 to 28.0</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: lower-alpha">
+<li>Which CI is the most precise?</li>
+</ol>
+<blockquote>
+<p>Population 3. This has the smallest interval which is 3 (42 - 45).</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Which CI implies the largest sample size?</li>
+</ol>
+<blockquote>
+<p>Population 3. The larger the sample size, the smaller the standard error and hence narrower the confidence interval. Therefore the largest sample size will have the narrowest confidence interval provided that the frequency is the same.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li><p>Which CI is the least precise?
+&gt; Population 4. This has the widest interval which is 21 (41 - 20), thus is less precise than the others.</p></li>
+<li><p>Which CI most strongly supports the conclusion that vitamin C increases IQ score and why?</p></li>
+</ol>
+<blockquote>
+<p>Population 3. This has the narrowest confidence interval where the lower bound is higher than the upper bound of all others.</p>
+</blockquote>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Which would most likely to stimulate the investigator to conduct an additional experiment using a larger sample size?</li>
+</ol>
+<blockquote>
+<p>Population 4. This estimate is the least precise. By increasing sample size, the estimate of frequency as shown by the 95% CI would become narrower.</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-5-full-script.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-6-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

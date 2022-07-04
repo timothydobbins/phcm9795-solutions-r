@@ -18,30 +18,12 @@ BinomCI(90, 150, method="clopper") # Default from binom.test
 # Activity 6.2
 asthma <- readRDS("data/activities/Activity_S6.2.rds")
 
-asthma$asthma89 <- as.numeric(asthma$Asthma) + 7
-asthma$gender89 <- as.numeric(asthma$Gender) + 7
-
-#asthma$Asthma <- factor(asthma$Asthma, levels=c(1,2), labels=c("Asthma", "No asthma"))
-#asthma$Gender <- factor(asthma$Gender, levels=c(1,2), labels=c("Male", "Female"))
-
 table(asthma$Asthma)
-table(asthma$asthma89)
 table(asthma$Gender)
-table(asthma$gender89)
 
-tab <- table(asthma$Gender, asthma$Asthma)
-tab
-epi.2by2(tab) # From epiR
-
-tab89 <- table(asthma$gender89, asthma$asthma89)
-tab
-epi.2by2(tab) # From epiR
-
+table(asthma$Gender, asthma$Asthma)
 
 contTables(data=asthma, rows=Gender, cols=Asthma, 
-           odds=TRUE, relRisk = TRUE, diffProp = TRUE)
-
-contTables(data=asthma, rows=gender89, cols=asthma89, 
            odds=TRUE, relRisk = TRUE, diffProp = TRUE)
 
 

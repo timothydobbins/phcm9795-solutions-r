@@ -1,0 +1,198 @@
+# Module 6: Solutions to Learning Activities {-}
+
+### Activity 6.1 {-}
+
+In a clinical trial involving a dietary intervention, 150 adult volunteers agreed to participate. The investigator wanted to know whether this sample was representative of the general population. One interesting finding was that 90 of the participants drink alcohol regularly compared to 70% of the general population.
+
+a) State the null hypothesis
+
+> Null hypothesis: The proportion of volunteers who consume alcohol regularly is the same as the proportion who consume alcohol regularly in the general population.
+
+b) Calculate the 95% CI for the proportion of regular drinkers in the sample using R.
+
+```{r}
+library(DescTools)
+
+# BinomCI from DescTools calculates a Wilson confidence interval:
+BinomCI(90, n=150, method="wilson")
+
+# The default binom.test calculates a Wald confidence interval
+binom.test(90, n=150, p=0.7)
+```
+
+> The proportion of volunteers who drink alcohol regularly is estimated as 60%, with a 95% confidence interval from 52% to 67%. The 95% confidence interval can be interpreted as: we are 95% confident that the true prevalence of alcohol drinkers in the population from where the sample was drawn lies between 52% and 67%. Note that the prevalence of regular drinkers in the general population is 70%, which does not fall within the 95% CI calculated from the sample. This may be because the participants were not randomly selected from the general population; they volunteered to participate in the study.
+
+c) Use the R file Activity_S6.1.rds to decide if the sample of volunteers is representative of the population.
+
+> We have stated the null hypothesis in part (a): 
+
+> Null hypothesis: The proportion of volunteers who consume alcohol regularly is the same as the proportion who consume alcohol regularly in the general population.
+
+> The one-sample proportion test has been calculated with the `binom.test` command in (a). If we only had individual data (i.e. did not have the summary results above), we would need to tabulate the data first:
+
+```{r}
+alcohol <- readRDS("data/activities/Activity_S6.1.rds")
+table(alcohol$Drinking_Status)
+
+binom.test(90, n=150, p=0.7)
+```
+
+The R output gives the P-value from a two-sided test of 0.0096. Thus, we can conclude that there is strong evidence that the proportion of drinkers among the sample population of the dietary intervention group (60%) is lower than that (70%) in the general population.
+
+### Activity 6.2 {-}
+
+A survey was conducted of a random sample of upper primary school children to measure the prevalence of asthma using questionnaires completed by the parents. A total of 514 children were enrolled. Use the R dataset Activity_S6.2.rds for this activity.
+
+a) Calculate the relative risk and odds ratio with 95% confidence interval using Stata for children to have asthma symptoms if they are male? Which risk estimate would be the correct statistic to report?
+
+> Before we begin analysing any binary data, we must ensure that the binary variables of interest are coded as factors, with the positive exposure and outcomes ordered first. We can check this using the `summary()` function:
+
+```{r}
+library(jmv)
+asthma <- readRDS("data/activities/Activity_S6.2.rds")
+
+summary(asthma$Asthma)
+summary(asthma$Gender)
+```
+
+> Here, Asthma is coded with "Yes" as the first level, as required. Gender is coded with "Male" as the first level, which means that R will produce summaries of male vs female. Note that there are 14 missing values for gender, indicated as NA.
+
+> The relative risk of asthma can be calculated using the `contTables()` function within the `jmv` library. The relative risk is calculated using `relRisk = TRUE`, and the proportion of asthma within each sex calculated using `pcRow = TRUE`:
+
+```{r}
+contTables(data=asthma, rows=Gender, cols=Asthma,
+          pcRow = TRUE, relRisk = TRUE)
+```
+
+> From the output we can see that the relative risk of Asthma for males compared to females is 1.43 (95% CI: 1.03 to 1.98). 
+
+> To calculate the odds ratio, we use `odds = TRUE`:
+ 
+```{r}
+contTables(data=asthma, rows=Gender, cols=Asthma,
+          odds = TRUE)
+```
+
+> The OR of Asthma 1.59 (95% CI: 1.04 to 2.42) for males compared to females.
+
+> The relative risk is the correct risk estimate to use as this a cross-sectional study. The relative risk is a direct comparison of the proportion with asthma symptoms in each exposure group. The odds ratio is only appropriate for a case-control study.
+
+b) Use the tabulated data on the frequency of cases and exposure you obtained in R output in part a to calculate RR and OR with their 95% confidence interval using R.
+
+> This question assumes we are only given the values of the four cells in the cross-tabulation. We can re-write this table as follows to explain the process of entering summarised data:
+
+| Gender | Asthma | Number |
+|:------:|:------:|:------:|
+| Male   | Yes    | 70     |
+| Male   | No     | 188    |
+| Female | Yes    | 46     |
+| Female | No     | 196    |
+
+> We can enter these data in a dataframe, comprising three vectors, as follows:
+
+```{r}
+asthma_summary <- data.frame(
+  Gender = c("Male", "Male", "Female", "Female"),
+  Asthma = c("Yes", "No", "Yes", "No"),
+  Number = c(70, 188, 46, 196))
+```
+
+> We need to define Gender and Asthma as factors. Here we must define the `levels` **in the order we want the categories to appear in the table**. Note that as Gender and Asthma are entered as text variables, we can omit `labels` command when defining the factors, and the factor will be labelled using the text entry:
+
+```{r}
+asthma_summary$Gender <- factor(asthma_summary$Gender,
+                                levels = c("Male", "Female"))
+
+asthma_summary$Asthma <- factor(asthma_summary$Asthma,
+                                levels = c("Yes", "No"))
+```
+
+> We can calculate the relative risk using the summarised data in the same was done previously. However, we need to include the number of observations in each cell using the `counts` command:
+
+```{r}
+contTables(data=asthma_summary,
+           rows = Gender, cols = Asthma,
+           counts = Number,
+           relRisk = TRUE)
+```
+
+
+> The output from the summarised data is identical to the output of the individual-level data.
+
+### Activity 6.3 {-}
+
+In a study to determine the cause of mortality, 89 people were followed up for 5 years. The participants are classified into two groups of those who did or did not have a heart attack. At the end of the follow-up 15 people died among them 10 had a heart attack. Among the 74 survivors 35 had a heart attack. Present the data on a 2x2 table and calculate relative risk of death from heart attack with 95% confidence interval using R.
+
+> The cross-tabulation of heart attack and mortality is given in Table 6.1.
+
+| HeartAttack | Death |    | Total |
+|:------------|-------|----|:-----:|
+|             | Yes   | No |       |
+| Yes         | 10    | 35 | 45    |
+| No          | 5     | 39 | 44    |
+| Total       | 15    | 74 | 89    |
+
+> To calculate relative risk using the information from Table 6.1, we enter first enter the summarised data into a new dataframe:
+
+```{r}
+mortality <- data.frame(
+  HeartAttack = c("Yes", "Yes", "No", "No"),
+  Death = c("Yes", "No", "Yes", "No"),
+  n = c(10, 35, 5, 39))
+
+mortality$HeartAttack <- factor(mortality$HeartAttack,
+                                levels = c("Yes", "No"))
+
+mortality$Death <- factor(mortality$Death,
+                                levels = c("Yes", "No"))
+```
+
+> We then estimate the relative risk using the `contTables()` function:
+
+```{r}
+contTables(data = mortality,
+           rows = HeartAttack, cols = Death,
+           counts = n,
+           pcRow = TRUE, relRisk = TRUE)
+```
+
+From the output we can see that the relative risk of death from heart attack is 1.96 (95% CI: 0.73 to 5.26). 
+
+### Activity 6.4 {-}
+
+A study is conducted to test the hypothesis that the observed frequency of a certain health outcome is 30%. If the results yield a CI around the sample proportion that extends from 23.8 to 30.2, what can you say about the evidence against the null hypothesis?
+
+> As the 95% confidence interval includes the hypothesised population proportion, we can infer that the P-value of the study will be greater than 0.05. Hence, this study provides weak to no evidence against the null hypothesis.
+
+
+### Activity 6.5 {-}
+
+In an experiment to test the effect of vitamin C on IQ scores, the following confidence intervals were estimated around the percentage of people with improved scores for five different populations:
+
+| Population | % with improved IQ | 95% confidence interval |
+|:----------:|:------------------:|:-----------------------:|
+|      1     |        35.0        |       32.0 to 38.0      |
+|      2     |        29.5        |       25.0 to 34.0      |
+|      3     |        43.5        |       42.0 to 45.0      |
+|      4     |        30.5        |       20.0 to 41.0      |
+|      5     |        24.5        |       21.0 to 28.0      |
+
+a) Which CI is the most precise?
+
+>Population 3. This has the smallest interval which is 3 (42 - 45).
+
+b) Which CI implies the largest sample size?
+
+> Population 3. The larger the sample size, the smaller the standard error and hence narrower the confidence interval. Therefore the largest sample size will have the narrowest confidence interval provided that the frequency is the same.
+
+c) Which CI is the least precise?
+> Population 4. This has the widest interval which is 21 (41 - 20), thus is less precise than the others.
+
+d) Which CI most strongly supports the conclusion that vitamin C increases IQ score and why?
+
+> Population 3. This has the narrowest confidence interval where the lower bound is higher than the upper bound of all others. 
+
+e) Which would most likely to stimulate the investigator to conduct an additional experiment using a larger sample size?
+
+> Population 4. This estimate is the least precise. By increasing sample size, the estimate of frequency as shown by the 95% CI would become narrower.
+
