@@ -1,0 +1,228 @@
+# Module 7: Solutions to Learning Activities {-}
+
+### Activity 7.1 {-}
+
+Use the file Activity_S7.1.rds to further investigate whether there is a gender difference in asthma in a random sample of 514 upper primary school children:
+
+a) Use a contingency table (cross-tabulation) to determine the observed and expected frequencies. Which cell has the lowest expected cell count?
+
+> Here we can use the `contTables()` function within `jmv` with the option `exp = TRUE` to present the expected frequencies.
+
+```{r}
+library(jmv)
+
+children <- readRDS("data/activities/Activity_S7.1.rds")
+
+contTables(data=children, rows = gender, cols = asthma,
+           exp = TRUE)
+
+```
+
+> In the table, cell “b” (asthma symptoms among females) gives the lowest expected frequency which is 56.1 - much larger than 5. Therefore, we can conduct a Pearson’s chi-square test.
+
+b) Use a chi-squared test to evaluate the hypothesis and interpret the result. Are the assumptions for a chi-squared test met? Calculate the 95% CI of the difference in proportions.
+
+> Note the table above has asthma symptoms with the "No" level appearing first. To estimate the difference in the proportion with asthma symptoms, we should re-order the `asthma` factor so that "Yes" appears first.
+
+```{r}
+str(children$asthma)
+
+children$asthma <- relevel(children$asthma, ref="Yes")
+
+str(children$asthma)
+```
+
+> We can now request a contingency table with row-percents using `pcRow = TRUE` and `diffProp` to request the difference in proportions.
+
+```{r}
+contTables(data=children, rows = gender, cols = asthma,
+           pcRow = TRUE, diffProp = TRUE)
+```
+
+> The P value is 0.032 from the Chi-Square value of 4.62 with 1 df, which provides evidence of a difference in the proportions diagnosed with asthma between males and females.
+
+> There are four assumptions for a Pearson’s chi-squared test:
+
+> -	each observation must be independent
+-	each participant is represented in the table once only
+-	at least 80% of the expected cell counts should exceed a value of five
+-	all expected cell counts should exceed a value of one.
+
+> It is evident from the study design that the observations are independent, and each participant was presented in the table once only (asthma was measured once only). Therefore, the first two assumptions are met. From part (a), we can see that smallest expected cell count is 56.1 (>5). Thus, the last two assumptions are also met.
+
+> The proportion of asthma is 27.1% among males and 19.0% among females. There is evidence of a difference in the proportions diagnosed with asthma between males and females (chi-square=4.62 with 1 df, P=0.03). The proportion with asthma is 8.0% lower in females than males with a 95% confidence interval of 0.8% to 15.5% (read from the Risk difference).
+
+### Activity 7.2 {-}
+
+The file Activity_S7.2.rds summarises the 5-year mortality data for 89 people who did or did not have a heart attack.
+
+a) State the null hypothesis.
+
+> Null hypothesis: There is no association between having a heart attack and risk of death in the next five years
+
+b) Using Stata, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
+
+> A Pearson’s Chi-Square test is appropriate to test the null hypothesis. To check whether our data fulfils the assumptions for a Pearson’s Chi-Squared test we need to obtain the expected frequencies for the 2 × 2 table using cross-tabulation:
+
+```{r}
+heart <- readRDS("data/activities/Activity_S7.2.rds")
+
+head(heart)
+
+str(heart)
+```
+
+> We can see that each variable has been entered as a factor, but "No" is the first level. We should reorder our exposure (`heart_attack`) and outcome (`mort`) so that "yes" becomes the first level:
+
+```{r}
+heart$heart_attack <- relevel(heart$heart_attack, ref="yes")
+heart$mort <- relevel(heart$mort, ref="yes")
+
+str(heart)
+```
+
+> We can now use `contTables()` to produce the 2-by-2 table with expected values:
+
+```{r}
+contTables(data=heart, rows=heart_attack, cols=mort,
+           exp=TRUE)
+```
+
+> From the study design, it is clear that the observations are independent, and participants are represented only once in the table. Therefore, the data fulfils the first two assumptions of independence. From the above table we can see that the lowest expected frequency is 7.4, which is greater than 5. Thus, the last two assumptions are also met, and we can use the results from the Pearson’s Chi-Squared test.
+
+> The P-value from the Chi-Square test (chi-square = 1.87 with 1 df) test statistic is 0.17, that is, there is no evidence of an association between heart attack and mortality during the next 5 years.
+
+c) Estimate the appropriate risk estimate for mortality. Are the confidence intervals of the risk estimates consistent with the P value?
+
+> Because this is a follow-up study from where we can estimate incidence, the relative risk is the appropriate risk estimate:
+
+
+```{r}
+contTables(data=heart, rows=heart_attack, cols=mort,
+           pcRow = TRUE, relRisk = TRUE)
+```
+
+> The relative risk is 1.96 (95% CI: 0.73, 5.26). The confidence interval includes the null value (1) which is consistent with the P-value (P = 0.17).
+
+> Note that the risk difference would also be an acceptable measure for this study.
+
+d) Summarise your results and state your conclusion.
+
+> There is no evidence of an association between heart attack and 5-year mortality (chi-square=1.87 with 1 df, P = 0.17). The risk of dying during next 5 years for those who experienced a heart attack is 1.96 (95% CI: 0.73, 5.26) times that for those who did not experience a heart attack, but the 95% confidence interval indicates that the relative risk may be as low as 0.73 and as high as 5.26 (with 95% confidence).
+
+### Activity 7.3 {-}
+
+The effect of two penicillin allergens B and G was tested in a random sample of 500 people. All people were tested with both allergens. For each person, data were recorded for whether or not there was an allergic reaction to the allergen.
+
+Use the data set Activity_S7.3.rds to test the null hypothesis that the proportion of participants who react to allergen G is the same as the proportion who react to allergen B. Are the 95% CI around the difference consistent with the P value?
+
+> As usual, after reading the data, we should check the ordering of the factor levels for the two variables.
+
+```{r}
+study <- readRDS("data/activities/Activity_S7.3.rds")
+
+head(study)
+str(study)
+```
+
+It's a little difficult to determine the order from this output, so let's look at a table:
+
+```{r}
+table(study$React_Allergen_B)
+table(study$React_Allergen_G)
+```
+
+In both cases, "Don't react" is the first level. This should be re-ordered:
+
+```{r}
+study$React_Allergen_B <- relevel(study$React_Allergen_B, ref="React")
+study$React_Allergen_G <- relevel(study$React_Allergen_G, ref="React")
+```
+
+> Because the data are paired, McNemar’s test should be used to test the null hypothesis using the `contTablesPaired()` function:
+
+```{r}
+contTablesPaired(data=study,
+                 rows=React_Allergen_B,
+                 cols=React_Allergen_G)
+```
+
+> We use the `mcNemarDiff()` function (stored in Microsoft Teams and [here](https://gist.githubusercontent.com/timothydobbins/525d25271b04b2ea72aae70c4aac8b01/raw/6b69f5b229d50daeac4c2f4cf4331e88b0c65717/mcNemarDiff.R)) to estimate the proportions, the difference in proportions and its 95% confidence interval. We should copy the function and paste it into R. Note that when defining the variables to be summarised, the variable names must be surrounded by quotation marks.
+
+```{r}
+### Copied from Microsoft Teams
+mcNemarDiff <- function(data, var1, var2, digits = 3) {
+  if (!requireNamespace("epibasix", quietly = TRUE)) {
+    stop("This function requires epibasix to be installed")
+  }
+  
+  tab <- table(data[[var1]], data[[var2]])
+  p1 <- (tab[1, 1] + tab[1, 2]) / sum(tab)
+  p2 <- (tab[1, 1] + tab[2, 1]) / sum(tab)
+  pd <- epibasix::mcNemar(tab)$rd
+  pd.cil <- epibasix::mcNemar(tab)$rd.CIL
+  pd.ciu <- epibasix::mcNemar(tab)$rd.CIU
+  print(paste0(
+    "Proportion 1: ",
+    format(round(p1, digits = digits), nsmall = digits),
+    "; Proportion 2: ", format(round(p2, digits = digits), nsmall = digits)
+  ))
+  print(paste0(
+    "Difference in paired proportions: ",
+    format(round(pd, digits = digits), nsmall = digits),
+    "; 95% CI: ", format(round(pd.cil, digits = digits), nsmall = digits),
+    " to ", format(round(pd.ciu, digits = digits), nsmall = digits)
+  ))
+}
+### End copy
+
+mcNemarDiff(data = study, var1 = "React_Allergen_B", var2 = "React_Allergen_G", digits = 3)
+```
+
+The McNemar’s test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).
+
+The output from the `mcNemarDiff()` function shows that 13.6% of participants react to allergen B and 10.4% of participants react to allergen G, with the difference in reaction rate of 3.2% (95% CI: 0.5% to 5.9%). The 95% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.017).
+
+Therefore, we can conclude that there is evidence (P = 0.017) of a difference in the effect of penicillin allergen B and G. A total of 3.2% more patients reacted to penicillin B (13.6%) compared to penicillin G (10.4%), and we are 95% confident that the true difference in the underlying population is between 0.5% and 5.9%.
+
+### Activity 7.4 {-}
+
+We examined a survey of 200 live births in an urban region in which 2 babies were born prematurely. We also surveyed 80 live births in a rural region and found that 5 babies were born prematurely. Conduct an appropriate statistical analysis to find out whether the proportion of premature births is higher in the rural region.
+
+> Two cross-sectional surveys were conducted in two different regions (urban and rural), thus the data are independent and each participant appeared in the dataset only once. We need to check the expected frequencies in a 2x2 table to determine if a Pearson’s chi-square test or a Fisher’s exact test is appropriate. 
+
+> The data are aggregate, so we need to enter them into R. To produce the required information for the 2x2 table, we need to calculate total number of normal births in each survey by subtracting the number of premature births from the total births. Thus, in the urban area there are 200 − 2 = 198 normal births and in the rural area there are 80 – 5 = 75 normal births.  The data should be entered in the following way:
+
+```{r}
+babies <- data.frame(
+  region = c("Urban", "Urban", "Rural", "Rural"),
+  birth = c("Premature", "Not premature", "Premature", "Not premature"),
+  n = c(2, 198, 5, 75)
+)
+
+babies$region <- factor(babies$region, levels=c("Urban", "Rural"))
+babies$birth <- factor(babies$birth, levels=c("Premature", "Not premature"))
+
+babies
+```
+
+> We can use `contTables()` to calculate the expected counts in each cell. As we are using aggregate data, we must use `counts = n` to specify that the column `n` contains the counts.
+
+```{r}
+contTables(data=babies,
+           rows = region, cols = birth, counts = n,
+           exp = TRUE)
+
+```
+
+We can see from the above output that the lowest expected frequency in cell “d” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify `fisher = TRUE`. Output from the test is shown below:
+
+Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys
+```{r}
+contTables(data=babies,
+           rows = region, cols = birth, counts = n,
+           pcRow = TRUE, exp = TRUE, fisher = TRUE)
+```
+ 
+
+Here we see the proportion of premature birth in the urban area is only 1% and in the rural area it is 6%. The P-value from Fisher’s exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.

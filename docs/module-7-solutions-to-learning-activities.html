@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 7: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 7: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 7: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 7: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-6-full-script.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-5-solutions-to-learning-activities.html"><a href="module-5-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 5: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-5-full-script.html"><a href="module-5-full-script.html"><i class="fa fa-check"></i>Module 5: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-6-solutions-to-learning-activities.html"><a href="module-6-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 6: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-6-full-script.html"><a href="module-6-full-script.html"><i class="fa fa-check"></i>Module 6: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-7-solutions-to-learning-activities.html"><a href="module-7-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 7: Solutions to Learning Activities</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-7-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 7: Solutions to Learning Activities<a href="module-7-solutions-to-learning-activities.html#module-7-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-7.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 7.1<a href="module-7-solutions-to-learning-activities.html#activity-7.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Use the file Activity_S7.1.rds to further investigate whether there is a gender difference in asthma in a random sample of 514 upper primary school children:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Use a contingency table (cross-tabulation) to determine the observed and expected frequencies. Which cell has the lowest expected cell count?</li>
+</ol>
+<blockquote>
+<p>Here we can use the <code>contTables()</code> function within <code>jmv</code> with the option <code>exp = TRUE</code> to present the expected frequencies.</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-7-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb2-2"><a href="module-7-solutions-to-learning-activities.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="module-7-solutions-to-learning-activities.html#cb2-3" aria-hidden="true" tabindex="-1"></a>children <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S7.1.rds&quot;</span>)</span>
+<span id="cb2-4"><a href="module-7-solutions-to-learning-activities.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="module-7-solutions-to-learning-activities.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>children, <span class="at">rows =</span> gender, <span class="at">cols =</span> asthma,</span>
+<span id="cb2-6"><a href="module-7-solutions-to-learning-activities.html#cb2-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">exp =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                          
+##  ─────────────────────────────────────────────────────────── 
+##    gender                No          Yes          Total      
+##  ─────────────────────────────────────────────────────────── 
+##    Female    Observed         196           46         242   
+##              Expected    185.8560     56.14400    242.0000   
+##                                                              
+##    Male      Observed         188           70         258   
+##              Expected    198.1440     59.85600    258.0000   
+##                                                              
+##    Total     Observed         384          116         500   
+##              Expected    384.0000    116.00000    500.0000   
+##  ─────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ─────────────────────────────────────</code></pre>
+<blockquote>
+<p>In the table, cell “b” (asthma symptoms among females) gives the lowest expected frequency which is 56.1 - much larger than 5. Therefore, we can conduct a Pearson’s chi-square test.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use a chi-squared test to evaluate the hypothesis and interpret the result. Are the assumptions for a chi-squared test met? Calculate the 95% CI of the difference in proportions.</li>
+</ol>
+<blockquote>
+<p>Note the table above has asthma symptoms with the “No” level appearing first. To estimate the difference in the proportion with asthma symptoms, we should re-order the <code>asthma</code> factor so that “Yes” appears first.</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="module-7-solutions-to-learning-activities.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(children<span class="sc">$</span>asthma)</span></code></pre></div>
+<pre><code>##  Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 2 1 1 2 1 1 2 2 2 1 ...
+##  - attr(*, &quot;label&quot;)= chr &quot;Asthma symptoms&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="module-7-solutions-to-learning-activities.html#cb6-1" aria-hidden="true" tabindex="-1"></a>children<span class="sc">$</span>asthma <span class="ot">&lt;-</span> <span class="fu">relevel</span>(children<span class="sc">$</span>asthma, <span class="at">ref=</span><span class="st">&quot;Yes&quot;</span>)</span>
+<span id="cb6-2"><a href="module-7-solutions-to-learning-activities.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="module-7-solutions-to-learning-activities.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(children<span class="sc">$</span>asthma)</span></code></pre></div>
+<pre><code>##  Factor w/ 2 levels &quot;Yes&quot;,&quot;No&quot;: 1 2 2 1 2 2 1 1 1 2 ...</code></pre>
+<blockquote>
+<p>We can now request a contingency table with row-percents using <code>pcRow = TRUE</code> and <code>diffProp</code> to request the difference in proportions.</p>
+</blockquote>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="module-7-solutions-to-learning-activities.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>children, <span class="at">rows =</span> gender, <span class="at">cols =</span> asthma,</span>
+<span id="cb8-2"><a href="module-7-solutions-to-learning-activities.html#cb8-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">pcRow =</span> <span class="cn">TRUE</span>, <span class="at">diffProp =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    gender                    Yes          No           Total       
+##  ───────────────────────────────────────────────────────────────── 
+##    Female    Observed               46          196          242   
+##              % within row     19.00826     80.99174    100.00000   
+##                                                                    
+##    Male      Observed               70          188          258   
+##              % within row     27.13178     72.86822    100.00000   
+##                                                                    
+##    Total     Observed              116          384          500   
+##              % within row     23.20000     76.80000    100.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                                           
+##  ────────────────────────────────────────────────────────────────────────────── 
+##                                   Value            Lower         Upper          
+##  ────────────────────────────────────────────────────────────────────────────── 
+##    Difference in 2 proportions    -0.08123518 ᵃ    -0.1546347    -0.007835685   
+##  ────────────────────────────────────────────────────────────────────────────── 
+##    ᵃ Rows compared</code></pre>
+<blockquote>
+<p>The P value is 0.032 from the Chi-Square value of 4.62 with 1 df, which provides evidence of a difference in the proportions diagnosed with asthma between males and females.</p>
+</blockquote>
+<blockquote>
+<p>There are four assumptions for a Pearson’s chi-squared test:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>each observation must be independent</li>
+<li>each participant is represented in the table once only</li>
+<li>at least 80% of the expected cell counts should exceed a value of five</li>
+<li>all expected cell counts should exceed a value of one.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>It is evident from the study design that the observations are independent, and each participant was presented in the table once only (asthma was measured once only). Therefore, the first two assumptions are met. From part (a), we can see that smallest expected cell count is 56.1 (&gt;5). Thus, the last two assumptions are also met.</p>
+</blockquote>
+<blockquote>
+<p>The proportion of asthma is 27.1% among males and 19.0% among females. There is evidence of a difference in the proportions diagnosed with asthma between males and females (chi-square=4.62 with 1 df, P=0.03). The proportion with asthma is 8.0% lower in females than males with a 95% confidence interval of 0.8% to 15.5% (read from the Risk difference).</p>
+</blockquote>
+</div>
+<div id="activity-7.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 7.2<a href="module-7-solutions-to-learning-activities.html#activity-7.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The file Activity_S7.2.rds summarises the 5-year mortality data for 89 people who did or did not have a heart attack.</p>
+<ol style="list-style-type: lower-alpha">
+<li>State the null hypothesis.</li>
+</ol>
+<blockquote>
+<p>Null hypothesis: There is no association between having a heart attack and risk of death in the next five years</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Using Stata, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?</li>
+</ol>
+<blockquote>
+<p>A Pearson’s Chi-Square test is appropriate to test the null hypothesis. To check whether our data fulfils the assumptions for a Pearson’s Chi-Squared test we need to obtain the expected frequencies for the 2 × 2 table using cross-tabulation:</p>
+</blockquote>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="module-7-solutions-to-learning-activities.html#cb10-1" aria-hidden="true" tabindex="-1"></a>heart <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S7.2.rds&quot;</span>)</span>
+<span id="cb10-2"><a href="module-7-solutions-to-learning-activities.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="module-7-solutions-to-learning-activities.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(heart)</span></code></pre></div>
+<pre><code>##   survival heart_attack mort
+## 1       No          yes  yes
+## 2       No          yes  yes
+## 3       No          yes  yes
+## 4       No          yes  yes
+## 5       No          yes  yes
+## 6       No          yes  yes</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="module-7-solutions-to-learning-activities.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(heart)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    89 obs. of  3 variables:
+##  $ survival    : Factor w/ 2 levels &quot;No&quot;,&quot;yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Survival&quot;
+##  $ heart_attack: Factor w/ 2 levels &quot;No&quot;,&quot;yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Heart_attack&quot;
+##  $ mort        : Factor w/ 2 levels &quot;No&quot;,&quot;yes&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Death&quot;</code></pre>
+<blockquote>
+<p>We can see that each variable has been entered as a factor, but “No” is the first level. We should reorder our exposure (<code>heart_attack</code>) and outcome (<code>mort</code>) so that “yes” becomes the first level:</p>
+</blockquote>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="module-7-solutions-to-learning-activities.html#cb14-1" aria-hidden="true" tabindex="-1"></a>heart<span class="sc">$</span>heart_attack <span class="ot">&lt;-</span> <span class="fu">relevel</span>(heart<span class="sc">$</span>heart_attack, <span class="at">ref=</span><span class="st">&quot;yes&quot;</span>)</span>
+<span id="cb14-2"><a href="module-7-solutions-to-learning-activities.html#cb14-2" aria-hidden="true" tabindex="-1"></a>heart<span class="sc">$</span>mort <span class="ot">&lt;-</span> <span class="fu">relevel</span>(heart<span class="sc">$</span>mort, <span class="at">ref=</span><span class="st">&quot;yes&quot;</span>)</span>
+<span id="cb14-3"><a href="module-7-solutions-to-learning-activities.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="module-7-solutions-to-learning-activities.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(heart)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    89 obs. of  3 variables:
+##  $ survival    : Factor w/ 2 levels &quot;No&quot;,&quot;yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Survival&quot;
+##  $ heart_attack: Factor w/ 2 levels &quot;yes&quot;,&quot;No&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ mort        : Factor w/ 2 levels &quot;yes&quot;,&quot;No&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<blockquote>
+<p>We can now use <code>contTables()</code> to produce the 2-by-2 table with expected values:</p>
+</blockquote>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="module-7-solutions-to-learning-activities.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>heart, <span class="at">rows=</span>heart_attack, <span class="at">cols=</span>mort,</span>
+<span id="cb16-2"><a href="module-7-solutions-to-learning-activities.html#cb16-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">exp=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    heart_attack                yes          No          Total      
+##  ───────────────────────────────────────────────────────────────── 
+##    yes             Observed           10          35          45   
+##                    Expected     7.584270    37.41573    45.00000   
+##                                                                    
+##    No              Observed            5          39          44   
+##                    Expected     7.415730    36.58427    44.00000   
+##                                                                    
+##    Total           Observed           15          74          89   
+##                    Expected    15.000000    74.00000    89.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    1.871883     1    0.1712595   
+##    N           89                      
+##  ─────────────────────────────────────</code></pre>
+<blockquote>
+<p>From the study design, it is clear that the observations are independent, and participants are represented only once in the table. Therefore, the data fulfils the first two assumptions of independence. From the above table we can see that the lowest expected frequency is 7.4, which is greater than 5. Thus, the last two assumptions are also met, and we can use the results from the Pearson’s Chi-Squared test.</p>
+</blockquote>
+<blockquote>
+<p>The P-value from the Chi-Square test (chi-square = 1.87 with 1 df) test statistic is 0.17, that is, there is no evidence of an association between heart attack and mortality during the next 5 years.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Estimate the appropriate risk estimate for mortality. Are the confidence intervals of the risk estimates consistent with the P value?</li>
+</ol>
+<blockquote>
+<p>Because this is a follow-up study from where we can estimate incidence, the relative risk is the appropriate risk estimate:</p>
+</blockquote>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="module-7-solutions-to-learning-activities.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>heart, <span class="at">rows=</span>heart_attack, <span class="at">cols=</span>mort,</span>
+<span id="cb18-2"><a href="module-7-solutions-to-learning-activities.html#cb18-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">pcRow =</span> <span class="cn">TRUE</span>, <span class="at">relRisk =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                      
+##  ─────────────────────────────────────────────────────────────────────── 
+##    heart_attack                    yes          No           Total       
+##  ─────────────────────────────────────────────────────────────────────── 
+##    yes             Observed               10           35           45   
+##                    % within row     22.22222     77.77778    100.00000   
+##                                                                          
+##    No              Observed                5           39           44   
+##                    % within row     11.36364     88.63636    100.00000   
+##                                                                          
+##    Total           Observed               15           74           89   
+##                    % within row     16.85393     83.14607    100.00000   
+##  ─────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    1.871883     1    0.1712595   
+##    N           89                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                     
+##  ──────────────────────────────────────────────────────── 
+##                     Value         Lower        Upper      
+##  ──────────────────────────────────────────────────────── 
+##    Relative risk    1.955556 ᵃ    0.7267615    5.261971   
+##  ──────────────────────────────────────────────────────── 
+##    ᵃ Rows compared</code></pre>
+<blockquote>
+<p>The relative risk is 1.96 (95% CI: 0.73, 5.26). The confidence interval includes the null value (1) which is consistent with the P-value (P = 0.17).</p>
+</blockquote>
+<blockquote>
+<p>Note that the risk difference would also be an acceptable measure for this study.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Summarise your results and state your conclusion.</li>
+</ol>
+<blockquote>
+<p>There is no evidence of an association between heart attack and 5-year mortality (chi-square=1.87 with 1 df, P = 0.17). The risk of dying during next 5 years for those who experienced a heart attack is 1.96 (95% CI: 0.73, 5.26) times that for those who did not experience a heart attack, but the 95% confidence interval indicates that the relative risk may be as low as 0.73 and as high as 5.26 (with 95% confidence).</p>
+</blockquote>
+</div>
+<div id="activity-7.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 7.3<a href="module-7-solutions-to-learning-activities.html#activity-7.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The effect of two penicillin allergens B and G was tested in a random sample of 500 people. All people were tested with both allergens. For each person, data were recorded for whether or not there was an allergic reaction to the allergen.</p>
+<p>Use the data set Activity_S7.3.rds to test the null hypothesis that the proportion of participants who react to allergen G is the same as the proportion who react to allergen B. Are the 95% CI around the difference consistent with the P value?</p>
+<blockquote>
+<p>As usual, after reading the data, we should check the ordering of the factor levels for the two variables.</p>
+</blockquote>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="module-7-solutions-to-learning-activities.html#cb20-1" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S7.3.rds&quot;</span>)</span>
+<span id="cb20-2"><a href="module-7-solutions-to-learning-activities.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="module-7-solutions-to-learning-activities.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(study)</span></code></pre></div>
+<pre><code>##   React_Allergen_G React_Allergen_B
+## 1            React            React
+## 2            React            React
+## 3            React            React
+## 4            React            React
+## 5            React            React
+## 6            React            React</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="module-7-solutions-to-learning-activities.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(study)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    500 obs. of  2 variables:
+##  $ React_Allergen_G: Factor w/ 2 levels &quot;Don&#39;t react&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Reacts to allergen G&quot;
+##  $ React_Allergen_B: Factor w/ 2 levels &quot;Don&#39;t react&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Reacts to allergen B&quot;</code></pre>
+<p>It’s a little difficult to determine the order from this output, so let’s look at a table:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="module-7-solutions-to-learning-activities.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(study<span class="sc">$</span>React_Allergen_B)</span></code></pre></div>
+<pre><code>## 
+## Don&#39;t react       React 
+##         432          68</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="module-7-solutions-to-learning-activities.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(study<span class="sc">$</span>React_Allergen_G)</span></code></pre></div>
+<pre><code>## 
+## Don&#39;t react       React 
+##         448          52</code></pre>
+<p>In both cases, “Don’t react” is the first level. This should be re-ordered:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="module-7-solutions-to-learning-activities.html#cb28-1" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>React_Allergen_B <span class="ot">&lt;-</span> <span class="fu">relevel</span>(study<span class="sc">$</span>React_Allergen_B, <span class="at">ref=</span><span class="st">&quot;React&quot;</span>)</span>
+<span id="cb28-2"><a href="module-7-solutions-to-learning-activities.html#cb28-2" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>React_Allergen_G <span class="ot">&lt;-</span> <span class="fu">relevel</span>(study<span class="sc">$</span>React_Allergen_G, <span class="at">ref=</span><span class="st">&quot;React&quot;</span>)</span></code></pre></div>
+<blockquote>
+<p>Because the data are paired, McNemar’s test should be used to test the null hypothesis using the <code>contTablesPaired()</code> function:</p>
+</blockquote>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="module-7-solutions-to-learning-activities.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTablesPaired</span>(<span class="at">data=</span>study,</span>
+<span id="cb29-2"><a href="module-7-solutions-to-learning-activities.html#cb29-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">rows=</span>React_Allergen_B,</span>
+<span id="cb29-3"><a href="module-7-solutions-to-learning-activities.html#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">cols=</span>React_Allergen_G)</span></code></pre></div>
+<pre><code>## 
+##  PAIRED SAMPLES CONTINGENCY TABLES
+## 
+##  Contingency Tables                                    
+##  ───────────────────────────────────────────────────── 
+##    React_Allergen_B    React    Don&#39;t react    Total   
+##  ───────────────────────────────────────────────────── 
+##    React                  40             28       68   
+##    Don&#39;t react            12            420      432   
+##    Total                  52            448      500   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  McNemar Test                          
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    6.400000     1    0.0114120   
+##    N          500                      
+##  ─────────────────────────────────────</code></pre>
+<blockquote>
+<p>We use the <code>mcNemarDiff()</code> function (stored in Microsoft Teams and <a href="https://gist.githubusercontent.com/timothydobbins/525d25271b04b2ea72aae70c4aac8b01/raw/6b69f5b229d50daeac4c2f4cf4331e88b0c65717/mcNemarDiff.R">here</a>) to estimate the proportions, the difference in proportions and its 95% confidence interval. We should copy the function and paste it into R. Note that when defining the variables to be summarised, the variable names must be surrounded by quotation marks.</p>
+</blockquote>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="module-7-solutions-to-learning-activities.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Copied from Microsoft Teams</span></span>
+<span id="cb31-2"><a href="module-7-solutions-to-learning-activities.html#cb31-2" aria-hidden="true" tabindex="-1"></a>mcNemarDiff <span class="ot">&lt;-</span> <span class="cf">function</span>(data, var1, var2, <span class="at">digits =</span> <span class="dv">3</span>) {</span>
+<span id="cb31-3"><a href="module-7-solutions-to-learning-activities.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;epibasix&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb31-4"><a href="module-7-solutions-to-learning-activities.html#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;This function requires epibasix to be installed&quot;</span>)</span>
+<span id="cb31-5"><a href="module-7-solutions-to-learning-activities.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-6"><a href="module-7-solutions-to-learning-activities.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb31-7"><a href="module-7-solutions-to-learning-activities.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(data[[var1]], data[[var2]])</span>
+<span id="cb31-8"><a href="module-7-solutions-to-learning-activities.html#cb31-8" aria-hidden="true" tabindex="-1"></a>  p1 <span class="ot">&lt;-</span> (tab[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">+</span> tab[<span class="dv">1</span>, <span class="dv">2</span>]) <span class="sc">/</span> <span class="fu">sum</span>(tab)</span>
+<span id="cb31-9"><a href="module-7-solutions-to-learning-activities.html#cb31-9" aria-hidden="true" tabindex="-1"></a>  p2 <span class="ot">&lt;-</span> (tab[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">+</span> tab[<span class="dv">2</span>, <span class="dv">1</span>]) <span class="sc">/</span> <span class="fu">sum</span>(tab)</span>
+<span id="cb31-10"><a href="module-7-solutions-to-learning-activities.html#cb31-10" aria-hidden="true" tabindex="-1"></a>  pd <span class="ot">&lt;-</span> epibasix<span class="sc">::</span><span class="fu">mcNemar</span>(tab)<span class="sc">$</span>rd</span>
+<span id="cb31-11"><a href="module-7-solutions-to-learning-activities.html#cb31-11" aria-hidden="true" tabindex="-1"></a>  pd.cil <span class="ot">&lt;-</span> epibasix<span class="sc">::</span><span class="fu">mcNemar</span>(tab)<span class="sc">$</span>rd.CIL</span>
+<span id="cb31-12"><a href="module-7-solutions-to-learning-activities.html#cb31-12" aria-hidden="true" tabindex="-1"></a>  pd.ciu <span class="ot">&lt;-</span> epibasix<span class="sc">::</span><span class="fu">mcNemar</span>(tab)<span class="sc">$</span>rd.CIU</span>
+<span id="cb31-13"><a href="module-7-solutions-to-learning-activities.html#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(</span>
+<span id="cb31-14"><a href="module-7-solutions-to-learning-activities.html#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Proportion 1: &quot;</span>,</span>
+<span id="cb31-15"><a href="module-7-solutions-to-learning-activities.html#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format</span>(<span class="fu">round</span>(p1, <span class="at">digits =</span> digits), <span class="at">nsmall =</span> digits),</span>
+<span id="cb31-16"><a href="module-7-solutions-to-learning-activities.html#cb31-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;; Proportion 2: &quot;</span>, <span class="fu">format</span>(<span class="fu">round</span>(p2, <span class="at">digits =</span> digits), <span class="at">nsmall =</span> digits)</span>
+<span id="cb31-17"><a href="module-7-solutions-to-learning-activities.html#cb31-17" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb31-18"><a href="module-7-solutions-to-learning-activities.html#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(</span>
+<span id="cb31-19"><a href="module-7-solutions-to-learning-activities.html#cb31-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Difference in paired proportions: &quot;</span>,</span>
+<span id="cb31-20"><a href="module-7-solutions-to-learning-activities.html#cb31-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">format</span>(<span class="fu">round</span>(pd, <span class="at">digits =</span> digits), <span class="at">nsmall =</span> digits),</span>
+<span id="cb31-21"><a href="module-7-solutions-to-learning-activities.html#cb31-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;; 95% CI: &quot;</span>, <span class="fu">format</span>(<span class="fu">round</span>(pd.cil, <span class="at">digits =</span> digits), <span class="at">nsmall =</span> digits),</span>
+<span id="cb31-22"><a href="module-7-solutions-to-learning-activities.html#cb31-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot; to &quot;</span>, <span class="fu">format</span>(<span class="fu">round</span>(pd.ciu, <span class="at">digits =</span> digits), <span class="at">nsmall =</span> digits)</span>
+<span id="cb31-23"><a href="module-7-solutions-to-learning-activities.html#cb31-23" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb31-24"><a href="module-7-solutions-to-learning-activities.html#cb31-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-25"><a href="module-7-solutions-to-learning-activities.html#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="do">### End copy</span></span>
+<span id="cb31-26"><a href="module-7-solutions-to-learning-activities.html#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-27"><a href="module-7-solutions-to-learning-activities.html#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="fu">mcNemarDiff</span>(<span class="at">data =</span> study, <span class="at">var1 =</span> <span class="st">&quot;React_Allergen_B&quot;</span>, <span class="at">var2 =</span> <span class="st">&quot;React_Allergen_G&quot;</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Proportion 1: 0.136; Proportion 2: 0.104&quot;
+## [1] &quot;Difference in paired proportions: 0.032; 95% CI: 0.005 to 0.059&quot;</code></pre>
+<p>The McNemar’s test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).</p>
+<p>The output from the <code>mcNemarDiff()</code> function shows that 13.6% of participants react to allergen B and 10.4% of participants react to allergen G, with the difference in reaction rate of 3.2% (95% CI: 0.5% to 5.9%). The 95% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.017).</p>
+<p>Therefore, we can conclude that there is evidence (P = 0.017) of a difference in the effect of penicillin allergen B and G. A total of 3.2% more patients reacted to penicillin B (13.6%) compared to penicillin G (10.4%), and we are 95% confident that the true difference in the underlying population is between 0.5% and 5.9%.</p>
+</div>
+<div id="activity-7.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 7.4<a href="module-7-solutions-to-learning-activities.html#activity-7.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We examined a survey of 200 live births in an urban region in which 2 babies were born prematurely. We also surveyed 80 live births in a rural region and found that 5 babies were born prematurely. Conduct an appropriate statistical analysis to find out whether the proportion of premature births is higher in the rural region.</p>
+<blockquote>
+<p>Two cross-sectional surveys were conducted in two different regions (urban and rural), thus the data are independent and each participant appeared in the dataset only once. We need to check the expected frequencies in a 2x2 table to determine if a Pearson’s chi-square test or a Fisher’s exact test is appropriate.</p>
+</blockquote>
+<blockquote>
+<p>The data are aggregate, so we need to enter them into R. To produce the required information for the 2x2 table, we need to calculate total number of normal births in each survey by subtracting the number of premature births from the total births. Thus, in the urban area there are 200 − 2 = 198 normal births and in the rural area there are 80 – 5 = 75 normal births. The data should be entered in the following way:</p>
+</blockquote>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="module-7-solutions-to-learning-activities.html#cb33-1" aria-hidden="true" tabindex="-1"></a>babies <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb33-2"><a href="module-7-solutions-to-learning-activities.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;Urban&quot;</span>, <span class="st">&quot;Urban&quot;</span>, <span class="st">&quot;Rural&quot;</span>, <span class="st">&quot;Rural&quot;</span>),</span>
+<span id="cb33-3"><a href="module-7-solutions-to-learning-activities.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">birth =</span> <span class="fu">c</span>(<span class="st">&quot;Premature&quot;</span>, <span class="st">&quot;Not premature&quot;</span>, <span class="st">&quot;Premature&quot;</span>, <span class="st">&quot;Not premature&quot;</span>),</span>
+<span id="cb33-4"><a href="module-7-solutions-to-learning-activities.html#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">198</span>, <span class="dv">5</span>, <span class="dv">75</span>)</span>
+<span id="cb33-5"><a href="module-7-solutions-to-learning-activities.html#cb33-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-6"><a href="module-7-solutions-to-learning-activities.html#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="module-7-solutions-to-learning-activities.html#cb33-7" aria-hidden="true" tabindex="-1"></a>babies<span class="sc">$</span>region <span class="ot">&lt;-</span> <span class="fu">factor</span>(babies<span class="sc">$</span>region, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Urban&quot;</span>, <span class="st">&quot;Rural&quot;</span>))</span>
+<span id="cb33-8"><a href="module-7-solutions-to-learning-activities.html#cb33-8" aria-hidden="true" tabindex="-1"></a>babies<span class="sc">$</span>birth <span class="ot">&lt;-</span> <span class="fu">factor</span>(babies<span class="sc">$</span>birth, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;Premature&quot;</span>, <span class="st">&quot;Not premature&quot;</span>))</span>
+<span id="cb33-9"><a href="module-7-solutions-to-learning-activities.html#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="module-7-solutions-to-learning-activities.html#cb33-10" aria-hidden="true" tabindex="-1"></a>babies</span></code></pre></div>
+<pre><code>##   region         birth   n
+## 1  Urban     Premature   2
+## 2  Urban Not premature 198
+## 3  Rural     Premature   5
+## 4  Rural Not premature  75</code></pre>
+<blockquote>
+<p>We can use <code>contTables()</code> to calculate the expected counts in each cell. As we are using aggregate data, we must use <code>counts = n</code> to specify that the column <code>n</code> contains the counts.</p>
+</blockquote>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="module-7-solutions-to-learning-activities.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>babies,</span>
+<span id="cb35-2"><a href="module-7-solutions-to-learning-activities.html#cb35-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> region, <span class="at">cols =</span> birth, <span class="at">counts =</span> n,</span>
+<span id="cb35-3"><a href="module-7-solutions-to-learning-activities.html#cb35-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">exp =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    region                Premature    Not premature    Total       
+##  ───────────────────────────────────────────────────────────────── 
+##    Urban     Observed            2              198          200   
+##              Expected     5.000000        195.00000    200.00000   
+##                                                                    
+##    Rural     Observed            5               75           80   
+##              Expected     2.000000         78.00000     80.00000   
+##                                                                    
+##    Total     Observed            7              273          280   
+##              Expected     7.000000        273.00000    280.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    6.461538     1    0.0110234   
+##    N          280                      
+##  ─────────────────────────────────────</code></pre>
+<p>We can see from the above output that the lowest expected frequency in cell “d” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify <code>fisher = TRUE</code>. Output from the test is shown below:</p>
+<p>Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="module-7-solutions-to-learning-activities.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>babies,</span>
+<span id="cb37-2"><a href="module-7-solutions-to-learning-activities.html#cb37-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> region, <span class="at">cols =</span> birth, <span class="at">counts =</span> n,</span>
+<span id="cb37-3"><a href="module-7-solutions-to-learning-activities.html#cb37-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pcRow =</span> <span class="cn">TRUE</span>, <span class="at">exp =</span> <span class="cn">TRUE</span>, <span class="at">fisher =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                    
+##  ───────────────────────────────────────────────────────────────────── 
+##    region                    Premature    Not premature    Total       
+##  ───────────────────────────────────────────────────────────────────── 
+##    Urban     Observed                2              198          200   
+##              Expected         5.000000        195.00000    200.00000   
+##              % within row      1.00000         99.00000    100.00000   
+##                                                                        
+##    Rural     Observed                5               75           80   
+##              Expected         2.000000         78.00000     80.00000   
+##              % within row      6.25000         93.75000    100.00000   
+##                                                                        
+##    Total     Observed                7              273          280   
+##              Expected         7.000000        273.00000    280.00000   
+##              % within row      2.50000         97.50000    100.00000   
+##  ───────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                                               
+##  ────────────────────────────────────────────────────── 
+##                           Value       df    p           
+##  ────────────────────────────────────────────────────── 
+##    χ²                     6.461538     1    0.0110234   
+##    Fisher&#39;s exact test                      0.0218217   
+##    N                           280                      
+##  ──────────────────────────────────────────────────────</code></pre>
+<p>Here we see the proportion of premature birth in the urban area is only 1% and in the rural area it is 6%. The P-value from Fisher’s exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-6-full-script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
