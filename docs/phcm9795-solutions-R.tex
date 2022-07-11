@@ -141,7 +141,7 @@
 
 \title{PHCM9795 Foundations of Biostatistics}
 \author{Learning activity solutions: R version}
-\date{06 July, 2022}
+\date{11 July, 2022}
 
 \begin{document}
 \maketitle
@@ -163,6 +163,15 @@ This is the first year that R has been offered as an option. I am keen to receiv
 \hypertarget{changelog}{%
 \subsection*{Changelog}\label{changelog}}
 \addcontentsline{toc}{subsection}{Changelog}
+
+\textbf{2022-07-11}
+{[}Added{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Module 7: Initial release
+\end{itemize}
 
 \textbf{2022-07-04}
 {[}Added{]}
@@ -3727,6 +3736,786 @@ Population 4. This estimate is the least precise. By increasing sample size, the
            \AttributeTok{rows =}\NormalTok{ HeartAttack, }\AttributeTok{cols =}\NormalTok{ Death,}
            \AttributeTok{counts =}\NormalTok{ n,}
            \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{module-7-solutions-to-learning-activities}{%
+\chapter*{Module 7: Solutions to Learning Activities}\label{module-7-solutions-to-learning-activities}}
+\addcontentsline{toc}{chapter}{Module 7: Solutions to Learning Activities}
+
+\hypertarget{activity-7.1}{%
+\subsection*{Activity 7.1}\label{activity-7.1}}
+\addcontentsline{toc}{subsection}{Activity 7.1}
+
+Use the file Activity\_S7.1.rds to further investigate whether there is a gender difference in asthma in a random sample of 514 upper primary school children:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Use a contingency table (cross-tabulation) to determine the observed and expected frequencies. Which cell has the lowest expected cell count?
+\end{enumerate}
+
+\begin{quote}
+Here we can use the \texttt{contTables()} function within \texttt{jmv} with the option \texttt{exp\ =\ TRUE} to present the expected frequencies.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(jmv)}
+
+\NormalTok{children }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S7.1.rds"}\NormalTok{)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{children, }\AttributeTok{rows =}\NormalTok{ gender, }\AttributeTok{cols =}\NormalTok{ asthma,}
+           \AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                          
+##  ─────────────────────────────────────────────────────────── 
+##    gender                No          Yes          Total      
+##  ─────────────────────────────────────────────────────────── 
+##    Female    Observed         196           46         242   
+##              Expected    185.8560     56.14400    242.0000   
+##                                                              
+##    Male      Observed         188           70         258   
+##              Expected    198.1440     59.85600    258.0000   
+##                                                              
+##    Total     Observed         384          116         500   
+##              Expected    384.0000    116.00000    500.0000   
+##  ─────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ─────────────────────────────────────
+\end{verbatim}
+
+\begin{quote}
+In the table, cell ``b'' (asthma symptoms among females) gives the lowest expected frequency which is 56.1 - much larger than 5. Therefore, we can conduct a Pearson's chi-square test.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Use a chi-squared test to evaluate the hypothesis and interpret the result. Are the assumptions for a chi-squared test met? Calculate the 95\% CI of the difference in proportions.
+\end{enumerate}
+
+\begin{quote}
+Note the table above has asthma symptoms with the ``No'' level appearing first. To estimate the difference in the proportion with asthma symptoms, we should re-order the \texttt{asthma} factor so that ``Yes'' appears first.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(children}\SpecialCharTok{$}\NormalTok{asthma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Factor w/ 2 levels "No","Yes": 2 1 1 2 1 1 2 2 2 1 ...
+##  - attr(*, "label")= chr "Asthma symptoms"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{children}\SpecialCharTok{$}\NormalTok{asthma }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(children}\SpecialCharTok{$}\NormalTok{asthma, }\AttributeTok{ref=}\StringTok{"Yes"}\NormalTok{)}
+
+\FunctionTok{str}\NormalTok{(children}\SpecialCharTok{$}\NormalTok{asthma)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Factor w/ 2 levels "Yes","No": 1 2 2 1 2 2 1 1 1 2 ...
+\end{verbatim}
+
+\begin{quote}
+We can now request a contingency table with row-percents using \texttt{pcRow\ =\ TRUE} and \texttt{diffProp} to request the difference in proportions.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{children, }\AttributeTok{rows =}\NormalTok{ gender, }\AttributeTok{cols =}\NormalTok{ asthma,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{diffProp =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    gender                    Yes          No           Total       
+##  ───────────────────────────────────────────────────────────────── 
+##    Female    Observed               46          196          242   
+##              % within row     19.00826     80.99174    100.00000   
+##                                                                    
+##    Male      Observed               70          188          258   
+##              % within row     27.13178     72.86822    100.00000   
+##                                                                    
+##    Total     Observed              116          384          500   
+##              % within row     23.20000     76.80000    100.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    4.624920     1    0.0315107   
+##    N          500                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                                           
+##  ────────────────────────────────────────────────────────────────────────────── 
+##                                   Value            Lower         Upper          
+##  ────────────────────────────────────────────────────────────────────────────── 
+##    Difference in 2 proportions    -0.08123518 ᵃ    -0.1546347    -0.007835685   
+##  ────────────────────────────────────────────────────────────────────────────── 
+##    ᵃ Rows compared
+\end{verbatim}
+
+\begin{quote}
+The P value is 0.032 from the Chi-Square value of 4.62 with 1 df, which provides evidence of a difference in the proportions diagnosed with asthma between males and females.
+\end{quote}
+
+\begin{quote}
+There are four assumptions for a Pearson's chi-squared test:
+\end{quote}
+
+\begin{quote}
+\begin{itemize}
+\tightlist
+\item
+  each observation must be independent
+\item
+  each participant is represented in the table once only
+\item
+  at least 80\% of the expected cell counts should exceed a value of five
+\item
+  all expected cell counts should exceed a value of one.
+\end{itemize}
+\end{quote}
+
+\begin{quote}
+It is evident from the study design that the observations are independent, and each participant was presented in the table once only (asthma was measured once only). Therefore, the first two assumptions are met. From part (a), we can see that smallest expected cell count is 56.1 (\textgreater5). Thus, the last two assumptions are also met.
+\end{quote}
+
+\begin{quote}
+The proportion of asthma is 27.1\% among males and 19.0\% among females. There is evidence of a difference in the proportions diagnosed with asthma between males and females (chi-square=4.62 with 1 df, P=0.03). The proportion with asthma is 8.0\% lower in females than males with a 95\% confidence interval of 0.8\% to 15.5\% (read from the Risk difference).
+\end{quote}
+
+\hypertarget{activity-7.2}{%
+\subsection*{Activity 7.2}\label{activity-7.2}}
+\addcontentsline{toc}{subsection}{Activity 7.2}
+
+The file Activity\_S7.2.rds summarises the 5-year mortality data for 89 people who did or did not have a heart attack.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  State the null hypothesis.
+\end{enumerate}
+
+\begin{quote}
+Null hypothesis: There is no association between having a heart attack and risk of death in the next five years
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Using R, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
+\end{enumerate}
+
+\begin{quote}
+A Pearson's Chi-Square test is appropriate to test the null hypothesis. To check whether our data fulfils the assumptions for a Pearson's Chi-Squared test we need to obtain the expected frequencies for the 2 × 2 table using cross-tabulation:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heart }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S7.2.rds"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(heart)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   survival heart_attack mort
+## 1       No          yes  yes
+## 2       No          yes  yes
+## 3       No          yes  yes
+## 4       No          yes  yes
+## 5       No          yes  yes
+## 6       No          yes  yes
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(heart)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    89 obs. of  3 variables:
+##  $ survival    : Factor w/ 2 levels "No","yes": 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, "label")= chr "Survival"
+##  $ heart_attack: Factor w/ 2 levels "No","yes": 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, "label")= chr "Heart_attack"
+##  $ mort        : Factor w/ 2 levels "No","yes": 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, "label")= chr "Death"
+\end{verbatim}
+
+\begin{quote}
+We can see that each variable has been entered as a factor, but ``No'' is the first level. We should reorder our exposure (\texttt{heart\_attack}) and outcome (\texttt{mort}) so that ``yes'' becomes the first level:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{heart}\SpecialCharTok{$}\NormalTok{heart\_attack }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(heart}\SpecialCharTok{$}\NormalTok{heart\_attack, }\AttributeTok{ref=}\StringTok{"yes"}\NormalTok{)}
+\NormalTok{heart}\SpecialCharTok{$}\NormalTok{mort }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(heart}\SpecialCharTok{$}\NormalTok{mort, }\AttributeTok{ref=}\StringTok{"yes"}\NormalTok{)}
+
+\FunctionTok{str}\NormalTok{(heart)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    89 obs. of  3 variables:
+##  $ survival    : Factor w/ 2 levels "No","yes": 1 1 1 1 1 1 1 1 1 1 ...
+##   ..- attr(*, "label")= chr "Survival"
+##  $ heart_attack: Factor w/ 2 levels "yes","No": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ mort        : Factor w/ 2 levels "yes","No": 1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+
+\begin{quote}
+We can now use \texttt{contTables()} to produce the 2-by-2 table with expected values:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{heart, }\AttributeTok{rows=}\NormalTok{heart\_attack, }\AttributeTok{cols=}\NormalTok{mort,}
+           \AttributeTok{exp=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    heart_attack                yes          No          Total      
+##  ───────────────────────────────────────────────────────────────── 
+##    yes             Observed           10          35          45   
+##                    Expected     7.584270    37.41573    45.00000   
+##                                                                    
+##    No              Observed            5          39          44   
+##                    Expected     7.415730    36.58427    44.00000   
+##                                                                    
+##    Total           Observed           15          74          89   
+##                    Expected    15.000000    74.00000    89.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    1.871883     1    0.1712595   
+##    N           89                      
+##  ─────────────────────────────────────
+\end{verbatim}
+
+\begin{quote}
+From the study design, it is clear that the observations are independent, and participants are represented only once in the table. Therefore, the data fulfils the first two assumptions of independence. From the above table we can see that the lowest expected frequency is 7.4, which is greater than 5. Thus, the last two assumptions are also met, and we can use the results from the Pearson's Chi-Squared test.
+\end{quote}
+
+\begin{quote}
+The P-value from the Chi-Square test (chi-square = 1.87 with 1 df) test statistic is 0.17, that is, there is no evidence of an association between heart attack and mortality during the next 5 years.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Estimate the appropriate risk estimate for mortality. Are the confidence intervals of the risk estimates consistent with the P value?
+\end{enumerate}
+
+\begin{quote}
+Because this is a follow-up study from where we can estimate incidence, the relative risk is the appropriate risk estimate:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{heart, }\AttributeTok{rows=}\NormalTok{heart\_attack, }\AttributeTok{cols=}\NormalTok{mort,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                      
+##  ─────────────────────────────────────────────────────────────────────── 
+##    heart_attack                    yes          No           Total       
+##  ─────────────────────────────────────────────────────────────────────── 
+##    yes             Observed               10           35           45   
+##                    % within row     22.22222     77.77778    100.00000   
+##                                                                          
+##    No              Observed                5           39           44   
+##                    % within row     11.36364     88.63636    100.00000   
+##                                                                          
+##    Total           Observed               15           74           89   
+##                    % within row     16.85393     83.14607    100.00000   
+##  ─────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    1.871883     1    0.1712595   
+##    N           89                      
+##  ───────────────────────────────────── 
+## 
+## 
+##  Comparative Measures                                     
+##  ──────────────────────────────────────────────────────── 
+##                     Value         Lower        Upper      
+##  ──────────────────────────────────────────────────────── 
+##    Relative risk    1.955556 ᵃ    0.7267615    5.261971   
+##  ──────────────────────────────────────────────────────── 
+##    ᵃ Rows compared
+\end{verbatim}
+
+\begin{quote}
+The relative risk is 1.96 (95\% CI: 0.73, 5.26). The confidence interval includes the null value (1) which is consistent with the P-value (P = 0.17).
+\end{quote}
+
+\begin{quote}
+Note that the risk difference would also be an acceptable measure for this study.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Summarise your results and state your conclusion.
+\end{enumerate}
+
+\begin{quote}
+There is no evidence of an association between heart attack and 5-year mortality (chi-square=1.87 with 1 df, P = 0.17). The risk of dying during next 5 years for those who experienced a heart attack is 1.96 (95\% CI: 0.73, 5.26) times that for those who did not experience a heart attack, but the 95\% confidence interval indicates that the relative risk may be as low as 0.73 and as high as 5.26 (with 95\% confidence).
+\end{quote}
+
+\hypertarget{activity-7.3}{%
+\subsection*{Activity 7.3}\label{activity-7.3}}
+\addcontentsline{toc}{subsection}{Activity 7.3}
+
+The effect of two penicillin allergens B and G was tested in a random sample of 500 people. All people were tested with both allergens. For each person, data were recorded for whether or not there was an allergic reaction to the allergen.
+
+Use the data set Activity\_S7.3.rds to test the null hypothesis that the proportion of participants who react to allergen G is the same as the proportion who react to allergen B. Are the 95\% CI around the difference consistent with the P value?
+
+\begin{quote}
+As usual, after reading the data, we should check the ordering of the factor levels for the two variables.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{study }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S7.3.rds"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(study)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   React_Allergen_G React_Allergen_B
+## 1            React            React
+## 2            React            React
+## 3            React            React
+## 4            React            React
+## 5            React            React
+## 6            React            React
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(study)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    500 obs. of  2 variables:
+##  $ React_Allergen_G: Factor w/ 2 levels "Don't react",..: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, "label")= chr "Reacts to allergen G"
+##  $ React_Allergen_B: Factor w/ 2 levels "Don't react",..: 2 2 2 2 2 2 2 2 2 2 ...
+##   ..- attr(*, "label")= chr "Reacts to allergen B"
+\end{verbatim}
+
+It's a little difficult to determine the order from this output, so let's look at a table:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_B)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Don't react       React 
+##         432          68
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_G)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Don't react       React 
+##         448          52
+\end{verbatim}
+
+In both cases, ``Don't react'' is the first level. This should be re-ordered:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_B }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_B, }\AttributeTok{ref=}\StringTok{"React"}\NormalTok{)}
+\NormalTok{study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_G }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_G, }\AttributeTok{ref=}\StringTok{"React"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+Because the data are paired, McNemar's test should be used to test the null hypothesis using the \texttt{contTablesPaired()} function:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTablesPaired}\NormalTok{(}\AttributeTok{data=}\NormalTok{study,}
+                 \AttributeTok{rows=}\NormalTok{React\_Allergen\_B,}
+                 \AttributeTok{cols=}\NormalTok{React\_Allergen\_G)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  PAIRED SAMPLES CONTINGENCY TABLES
+## 
+##  Contingency Tables                                    
+##  ───────────────────────────────────────────────────── 
+##    React_Allergen_B    React    Don't react    Total   
+##  ───────────────────────────────────────────────────── 
+##    React                  40             28       68   
+##    Don't react            12            420      432   
+##    Total                  52            448      500   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  McNemar Test                          
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    6.400000     1    0.0114120   
+##    N          500                      
+##  ─────────────────────────────────────
+\end{verbatim}
+
+\begin{quote}
+We use the \texttt{mcNemarDiff()} function (stored in Microsoft Teams and \href{https://gist.githubusercontent.com/timothydobbins/525d25271b04b2ea72aae70c4aac8b01/raw/6b69f5b229d50daeac4c2f4cf4331e88b0c65717/mcNemarDiff.R}{here}) to estimate the proportions, the difference in proportions and its 95\% confidence interval. We should copy the function and paste it into R. Note that when defining the variables to be summarised, the variable names must be surrounded by quotation marks.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Copied from Microsoft Teams}
+\NormalTok{mcNemarDiff }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, var1, var2, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"epibasix"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+    \FunctionTok{stop}\NormalTok{(}\StringTok{"This function requires epibasix to be installed"}\NormalTok{)}
+\NormalTok{  \}}
+  
+\NormalTok{  tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(data[[var1]], data[[var2]])}
+\NormalTok{  p1 }\OtherTok{\textless{}{-}}\NormalTok{ (tab[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ tab[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(tab)}
+\NormalTok{  p2 }\OtherTok{\textless{}{-}}\NormalTok{ (tab[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ tab[}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(tab)}
+\NormalTok{  pd }\OtherTok{\textless{}{-}}\NormalTok{ epibasix}\SpecialCharTok{::}\FunctionTok{mcNemar}\NormalTok{(tab)}\SpecialCharTok{$}\NormalTok{rd}
+\NormalTok{  pd.cil }\OtherTok{\textless{}{-}}\NormalTok{ epibasix}\SpecialCharTok{::}\FunctionTok{mcNemar}\NormalTok{(tab)}\SpecialCharTok{$}\NormalTok{rd.CIL}
+\NormalTok{  pd.ciu }\OtherTok{\textless{}{-}}\NormalTok{ epibasix}\SpecialCharTok{::}\FunctionTok{mcNemar}\NormalTok{(tab)}\SpecialCharTok{$}\NormalTok{rd.CIU}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+    \StringTok{"Proportion 1: "}\NormalTok{,}
+    \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(p1, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits),}
+    \StringTok{"; Proportion 2: "}\NormalTok{, }\FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(p2, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits)}
+\NormalTok{  ))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+    \StringTok{"Difference in paired proportions: "}\NormalTok{,}
+    \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(pd, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits),}
+    \StringTok{"; 95\% CI: "}\NormalTok{, }\FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(pd.cil, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits),}
+    \StringTok{" to "}\NormalTok{, }\FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(pd.ciu, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits)}
+\NormalTok{  ))}
+\NormalTok{\}}
+\DocumentationTok{\#\#\# End copy}
+
+\FunctionTok{mcNemarDiff}\NormalTok{(}\AttributeTok{data =}\NormalTok{ study, }\AttributeTok{var1 =} \StringTok{"React\_Allergen\_B"}\NormalTok{, }\AttributeTok{var2 =} \StringTok{"React\_Allergen\_G"}\NormalTok{, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Proportion 1: 0.136; Proportion 2: 0.104"
+## [1] "Difference in paired proportions: 0.032; 95% CI: 0.005 to 0.059"
+\end{verbatim}
+
+The McNemar's test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).
+
+The output from the \texttt{mcNemarDiff()} function shows that 13.6\% of participants react to allergen B and 10.4\% of participants react to allergen G, with the difference in reaction rate of 3.2\% (95\% CI: 0.5\% to 5.9\%). The 95\% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.017).
+
+Therefore, we can conclude that there is evidence (P = 0.017) of a difference in the effect of penicillin allergen B and G. A total of 3.2\% more patients reacted to penicillin B (13.6\%) compared to penicillin G (10.4\%), and we are 95\% confident that the true difference in the underlying population is between 0.5\% and 5.9\%.
+
+\hypertarget{activity-7.4}{%
+\subsection*{Activity 7.4}\label{activity-7.4}}
+\addcontentsline{toc}{subsection}{Activity 7.4}
+
+We examined a survey of 200 live births in an urban region in which 2 babies were born prematurely. We also surveyed 80 live births in a rural region and found that 5 babies were born prematurely. Conduct an appropriate statistical analysis to find out whether the proportion of premature births is higher in the rural region.
+
+\begin{quote}
+Two cross-sectional surveys were conducted in two different regions (urban and rural), thus the data are independent and each participant appeared in the dataset only once. We need to check the expected frequencies in a 2x2 table to determine if a Pearson's chi-square test or a Fisher's exact test is appropriate.
+\end{quote}
+
+\begin{quote}
+The data are aggregate, so we need to enter them into R. To produce the required information for the 2x2 table, we need to calculate total number of normal births in each survey by subtracting the number of premature births from the total births. Thus, in the urban area there are 200 − 2 = 198 normal births and in the rural area there are 80 -- 5 = 75 normal births. The data should be entered in the following way:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{babies }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{region =} \FunctionTok{c}\NormalTok{(}\StringTok{"Urban"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{, }\StringTok{"Rural"}\NormalTok{, }\StringTok{"Rural"}\NormalTok{),}
+  \AttributeTok{birth =} \FunctionTok{c}\NormalTok{(}\StringTok{"Premature"}\NormalTok{, }\StringTok{"Not premature"}\NormalTok{, }\StringTok{"Premature"}\NormalTok{, }\StringTok{"Not premature"}\NormalTok{),}
+  \AttributeTok{n =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{198}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{75}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{babies}\SpecialCharTok{$}\NormalTok{region }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(babies}\SpecialCharTok{$}\NormalTok{region, }\AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Urban"}\NormalTok{, }\StringTok{"Rural"}\NormalTok{))}
+\NormalTok{babies}\SpecialCharTok{$}\NormalTok{birth }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(babies}\SpecialCharTok{$}\NormalTok{birth, }\AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Premature"}\NormalTok{, }\StringTok{"Not premature"}\NormalTok{))}
+
+\NormalTok{babies}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   region         birth   n
+## 1  Urban     Premature   2
+## 2  Urban Not premature 198
+## 3  Rural     Premature   5
+## 4  Rural Not premature  75
+\end{verbatim}
+
+\begin{quote}
+We can use \texttt{contTables()} to calculate the expected counts in each cell. As we are using aggregate data, we must use \texttt{counts\ =\ n} to specify that the column \texttt{n} contains the counts.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{babies,}
+           \AttributeTok{rows =}\NormalTok{ region, }\AttributeTok{cols =}\NormalTok{ birth, }\AttributeTok{counts =}\NormalTok{ n,}
+           \AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                
+##  ───────────────────────────────────────────────────────────────── 
+##    region                Premature    Not premature    Total       
+##  ───────────────────────────────────────────────────────────────── 
+##    Urban     Observed            2              198          200   
+##              Expected     5.000000        195.00000    200.00000   
+##                                                                    
+##    Rural     Observed            5               75           80   
+##              Expected     2.000000         78.00000     80.00000   
+##                                                                    
+##    Total     Observed            7              273          280   
+##              Expected     7.000000        273.00000    280.00000   
+##  ───────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                              
+##  ───────────────────────────────────── 
+##          Value       df    p           
+##  ───────────────────────────────────── 
+##    χ²    6.461538     1    0.0110234   
+##    N          280                      
+##  ─────────────────────────────────────
+\end{verbatim}
+
+We can see from the above output that the lowest expected frequency in cell ``c'' (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson's chi-square test is not appropriate and we should conduct Fisher's exact test. For doing this test, we should specify \texttt{fisher\ =\ TRUE}. Output from the test is shown below:
+
+Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{babies,}
+           \AttributeTok{rows =}\NormalTok{ region, }\AttributeTok{cols =}\NormalTok{ birth, }\AttributeTok{counts =}\NormalTok{ n,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{fisher =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  CONTINGENCY TABLES
+## 
+##  Contingency Tables                                                    
+##  ───────────────────────────────────────────────────────────────────── 
+##    region                    Premature    Not premature    Total       
+##  ───────────────────────────────────────────────────────────────────── 
+##    Urban     Observed                2              198          200   
+##              Expected         5.000000        195.00000    200.00000   
+##              % within row      1.00000         99.00000    100.00000   
+##                                                                        
+##    Rural     Observed                5               75           80   
+##              Expected         2.000000         78.00000     80.00000   
+##              % within row      6.25000         93.75000    100.00000   
+##                                                                        
+##    Total     Observed                7              273          280   
+##              Expected         7.000000        273.00000    280.00000   
+##              % within row      2.50000         97.50000    100.00000   
+##  ───────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  χ² Tests                                               
+##  ────────────────────────────────────────────────────── 
+##                           Value       df    p           
+##  ────────────────────────────────────────────────────── 
+##    χ²                     6.461538     1    0.0110234   
+##    Fisher's exact test                      0.0218217   
+##    N                           280                      
+##  ──────────────────────────────────────────────────────
+\end{verbatim}
+
+Here we see the proportion of premature birth in the urban area is only 1\% and in the rural area it is 6\%. The P-value from Fisher's exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.
+
+\hypertarget{module-7-full-script}{%
+\chapter*{Module 7: Full script}\label{module-7-full-script}}
+\addcontentsline{toc}{chapter}{Module 7: Full script}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Author: Timothy Dobbins}
+\CommentTok{\# Date: July, 2022}
+\CommentTok{\# Purpose: Learning activities for Module 7}
+
+\CommentTok{\# Activity 7.1}
+
+\FunctionTok{library}\NormalTok{(jmv)}
+
+\NormalTok{children }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S7.1.rds"}\NormalTok{)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{children, }\AttributeTok{rows =}\NormalTok{ gender, }\AttributeTok{cols =}\NormalTok{ asthma,}
+           \AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Check levels of outcome variable}
+\FunctionTok{str}\NormalTok{(children}\SpecialCharTok{$}\NormalTok{asthma)}
+\NormalTok{children}\SpecialCharTok{$}\NormalTok{asthma }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(children}\SpecialCharTok{$}\NormalTok{asthma, }\AttributeTok{ref=}\StringTok{"Yes"}\NormalTok{)}
+\FunctionTok{str}\NormalTok{(children}\SpecialCharTok{$}\NormalTok{asthma)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{children, }\AttributeTok{rows =}\NormalTok{ gender, }\AttributeTok{cols =}\NormalTok{ asthma,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{diffProp =} \ConstantTok{TRUE}\NormalTok{)}
+
+
+\CommentTok{\# Activity 7.2}
+\NormalTok{heart }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S7.2.rds"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(heart)}
+\FunctionTok{str}\NormalTok{(heart)}
+
+\NormalTok{heart}\SpecialCharTok{$}\NormalTok{heart\_attack }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(heart}\SpecialCharTok{$}\NormalTok{heart\_attack, }\AttributeTok{ref=}\StringTok{"yes"}\NormalTok{)}
+\NormalTok{heart}\SpecialCharTok{$}\NormalTok{mort }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(heart}\SpecialCharTok{$}\NormalTok{mort, }\AttributeTok{ref=}\StringTok{"yes"}\NormalTok{)}
+\FunctionTok{str}\NormalTok{(heart)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{heart, }\AttributeTok{rows=}\NormalTok{heart\_attack, }\AttributeTok{cols=}\NormalTok{mort,}
+           \AttributeTok{exp=}\ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{heart, }\AttributeTok{rows=}\NormalTok{heart\_attack, }\AttributeTok{cols=}\NormalTok{mort,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{relRisk =} \ConstantTok{TRUE}\NormalTok{)}
+
+
+\CommentTok{\# Activity 7.3}
+\NormalTok{study }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S7.3.rds"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(study)}
+\FunctionTok{str}\NormalTok{(study)}
+
+\FunctionTok{table}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_B)}
+\FunctionTok{table}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_G)}
+
+\NormalTok{study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_B }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_B, }\AttributeTok{ref=}\StringTok{"React"}\NormalTok{)}
+\NormalTok{study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_G }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(study}\SpecialCharTok{$}\NormalTok{React\_Allergen\_G, }\AttributeTok{ref=}\StringTok{"React"}\NormalTok{)}
+
+\FunctionTok{contTablesPaired}\NormalTok{(}\AttributeTok{data=}\NormalTok{study,}
+                 \AttributeTok{rows=}\NormalTok{React\_Allergen\_B,}
+                 \AttributeTok{cols=}\NormalTok{React\_Allergen\_G)}
+
+\DocumentationTok{\#\#\# Copied from Microsoft Teams}
+\NormalTok{mcNemarDiff }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, var1, var2, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"epibasix"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+    \FunctionTok{stop}\NormalTok{(}\StringTok{"This function requires epibasix to be installed"}\NormalTok{)}
+\NormalTok{  \}}
+  
+\NormalTok{  tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(data[[var1]], data[[var2]])}
+\NormalTok{  p1 }\OtherTok{\textless{}{-}}\NormalTok{ (tab[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ tab[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(tab)}
+\NormalTok{  p2 }\OtherTok{\textless{}{-}}\NormalTok{ (tab[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ tab[}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{]) }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(tab)}
+\NormalTok{  pd }\OtherTok{\textless{}{-}}\NormalTok{ epibasix}\SpecialCharTok{::}\FunctionTok{mcNemar}\NormalTok{(tab)}\SpecialCharTok{$}\NormalTok{rd}
+\NormalTok{  pd.cil }\OtherTok{\textless{}{-}}\NormalTok{ epibasix}\SpecialCharTok{::}\FunctionTok{mcNemar}\NormalTok{(tab)}\SpecialCharTok{$}\NormalTok{rd.CIL}
+\NormalTok{  pd.ciu }\OtherTok{\textless{}{-}}\NormalTok{ epibasix}\SpecialCharTok{::}\FunctionTok{mcNemar}\NormalTok{(tab)}\SpecialCharTok{$}\NormalTok{rd.CIU}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+    \StringTok{"Proportion 1: "}\NormalTok{,}
+    \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(p1, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits),}
+    \StringTok{"; Proportion 2: "}\NormalTok{, }\FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(p2, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits)}
+\NormalTok{  ))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}
+    \StringTok{"Difference in paired proportions: "}\NormalTok{,}
+    \FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(pd, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits),}
+    \StringTok{"; 95\% CI: "}\NormalTok{, }\FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(pd.cil, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits),}
+    \StringTok{" to "}\NormalTok{, }\FunctionTok{format}\NormalTok{(}\FunctionTok{round}\NormalTok{(pd.ciu, }\AttributeTok{digits =}\NormalTok{ digits), }\AttributeTok{nsmall =}\NormalTok{ digits)}
+\NormalTok{  ))}
+\NormalTok{\}}
+\DocumentationTok{\#\#\# End copy}
+
+\FunctionTok{mcNemarDiff}\NormalTok{(}\AttributeTok{data =}\NormalTok{ study, }\AttributeTok{var1 =} \StringTok{"React\_Allergen\_B"}\NormalTok{, }\AttributeTok{var2 =} \StringTok{"React\_Allergen\_G"}\NormalTok{, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{)}
+
+
+\CommentTok{\# Activity 7.4}
+\NormalTok{babies }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{region =} \FunctionTok{c}\NormalTok{(}\StringTok{"Urban"}\NormalTok{, }\StringTok{"Urban"}\NormalTok{, }\StringTok{"Rural"}\NormalTok{, }\StringTok{"Rural"}\NormalTok{),}
+  \AttributeTok{birth =} \FunctionTok{c}\NormalTok{(}\StringTok{"Premature"}\NormalTok{, }\StringTok{"Not premature"}\NormalTok{, }\StringTok{"Premature"}\NormalTok{, }\StringTok{"Not premature"}\NormalTok{),}
+  \AttributeTok{n =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{198}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{75}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{babies}\SpecialCharTok{$}\NormalTok{region }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(babies}\SpecialCharTok{$}\NormalTok{region, }\AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Urban"}\NormalTok{, }\StringTok{"Rural"}\NormalTok{))}
+\NormalTok{babies}\SpecialCharTok{$}\NormalTok{birth }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(babies}\SpecialCharTok{$}\NormalTok{birth, }\AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Premature"}\NormalTok{, }\StringTok{"Not premature"}\NormalTok{))}
+
+\NormalTok{babies}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{babies,}
+           \AttributeTok{rows =}\NormalTok{ region, }\AttributeTok{cols =}\NormalTok{ birth, }\AttributeTok{counts =}\NormalTok{ n,}
+           \AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{babies,}
+           \AttributeTok{rows =}\NormalTok{ region, }\AttributeTok{cols =}\NormalTok{ birth, }\AttributeTok{counts =}\NormalTok{ n,}
+           \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{fisher =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

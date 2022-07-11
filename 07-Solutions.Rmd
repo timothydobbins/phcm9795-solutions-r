@@ -60,7 +60,7 @@ a) State the null hypothesis.
 
 > Null hypothesis: There is no association between having a heart attack and risk of death in the next five years
 
-b) Using Stata, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
+b) Using R, carry out the appropriate significance test to evaluate the hypothesis. Do the data fulfil the assumptions of the statistical test you have used?
 
 > A Pearson’s Chi-Square test is appropriate to test the null hypothesis. To check whether our data fulfils the assumptions for a Pearson’s Chi-Squared test we need to obtain the expected frequencies for the 2 × 2 table using cross-tabulation:
 
@@ -215,7 +215,7 @@ contTables(data=babies,
 
 ```
 
-We can see from the above output that the lowest expected frequency in cell “d” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify `fisher = TRUE`. Output from the test is shown below:
+We can see from the above output that the lowest expected frequency in cell “c” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify `fisher = TRUE`. Output from the test is shown below:
 
 Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys
 ```{r}
