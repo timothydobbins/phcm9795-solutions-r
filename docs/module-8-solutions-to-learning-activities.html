@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 8: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 8: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 8: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 8: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-7-full-script.html"/>
+<link rel="next" href="module-8-full-script.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-5-solutions-to-learning-activities.html"><a href="module-5-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 5: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-5-full-script.html"><a href="module-5-full-script.html"><i class="fa fa-check"></i>Module 5: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-6-solutions-to-learning-activities.html"><a href="module-6-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 6: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-6-full-script.html"><a href="module-6-full-script.html"><i class="fa fa-check"></i>Module 6: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-7-solutions-to-learning-activities.html"><a href="module-7-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 7: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-7-full-script.html"><a href="module-7-full-script.html"><i class="fa fa-check"></i>Module 7: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-8-solutions-to-learning-activities.html"><a href="module-8-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 8: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-8-full-script.html"><a href="module-8-full-script.html"><i class="fa fa-check"></i>Module 8: Full script</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-8-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 8: Solutions to Learning Activities<a href="module-8-solutions-to-learning-activities.html#module-8-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-8.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.1<a href="module-8-solutions-to-learning-activities.html#activity-8.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To investigate the effect of body weight (kg) on blood plasma volume (mL), data were collected from 30 participants and a simple linear regression analysis was conducted. The slope of the regression was 68 (95% confidence interval 52 to 84) and the intercept was −1570 (95% confidence interval −2655 to −492).</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the outcome variable and explanatory (exposure) variable?</li>
+</ol>
+<blockquote>
+<p>Because we want to know the extent to which body weight predicts blood plasma volume, weight is the explanatory variable and blood plasma volume is the outcome.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Interpret the regression slope and its 95% CI</li>
+</ol>
+<blockquote>
+<p>The regression slope is 68 which means that for every 1 kg increase in body weight, blood plasma volume is predicted to increase by 68 mL. The 95% confidence interval indicates that we are 95% confident that the true increase in blood plasma volume per 1 kg in body weight lies between 52 mL and 84 mL.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Write the regression equation</li>
+</ol>
+<blockquote>
+<p>The estimated regression equation is: Blood plasma volume (mL) = − 1570 + 68 × Body weight (kg)</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>If we randomly sampled a person from the population and found that their weight is 80kg, what would be the predicted value of plasma volume for this person?</li>
+</ol>
+<blockquote>
+<p>By substituting the value of 80 kg into the above equation we can predict that the person’s blood plasma level will be: Blood plasma volume = − 1570 + (68 × 80) = 3870 mL.</p>
+</blockquote>
+<blockquote>
+<p>Therefore, the predicted plasma volume of a person who is 80 kg is 3870 mL.</p>
+</blockquote>
+</div>
+<div id="activity-8.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.2<a href="module-8-solutions-to-learning-activities.html#activity-8.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To examine whether age predicts IQ, data were collected on 104 people. Use the data in the Stata file Activity_8.2.dta to answer the following questions.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What are the outcome variable and the explanatory variable?</li>
+</ol>
+<blockquote>
+<p>We are examining whether age predicts IQ, not the other way around. Therefore, age is the explanatory variable and IQ is the outcome variable.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Create a scatter plot with the two variables. What can you infer from the scatter plot?</li>
+</ol>
+<blockquote>
+<p>The plot shows that as age increases, IQ decreases. In other words, there is a negative relationship between the two variables. The relationship appears roughly linear, but is not strong (the points are quite scattered around the line of best fit).</p>
+</blockquote>
+<p><strong>Figure 1: Scatter plot of IQ against age (years)</strong></p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="module-8-solutions-to-learning-activities.html#cb185-1" aria-hidden="true" tabindex="-1"></a>iq <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S8.2.rds&quot;</span>)</span>
+<span id="cb185-2"><a href="module-8-solutions-to-learning-activities.html#cb185-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="module-8-solutions-to-learning-activities.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iq<span class="sc">$</span>age, iq<span class="sc">$</span>iq, </span>
+<span id="cb185-4"><a href="module-8-solutions-to-learning-activities.html#cb185-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Scatter plot of IQ against age&quot;</span>,</span>
+<span id="cb185-5"><a href="module-8-solutions-to-learning-activities.html#cb185-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Age (years)&quot;</span>,</span>
+<span id="cb185-6"><a href="module-8-solutions-to-learning-activities.html#cb185-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;IQ&quot;</span>)</span>
+<span id="cb185-7"><a href="module-8-solutions-to-learning-activities.html#cb185-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-8"><a href="module-8-solutions-to-learning-activities.html#cb185-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(iq<span class="sc">$</span>iq <span class="sc">~</span> iq<span class="sc">$</span>age))</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Using R, obtain the correlation coefficient between age and IQ and interpret it.</li>
+</ol>
+<blockquote>
+<p>To obtain the correlation coefficient, we use the <code>cor.test()</code> function:</p>
+</blockquote>
+<p><strong>R Output 1: Correlation coefficient between IQ and age</strong></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="module-8-solutions-to-learning-activities.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(iq<span class="sc">$</span>age, iq<span class="sc">$</span>iq)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  iq$age and iq$iq
+## t = -6.2429, df = 102, p-value = 9.952e-09
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.6523298 -0.3707534
+## sample estimates:
+##        cor 
+## -0.5257982</code></pre>
+<blockquote>
+<p>The correlation coefficient is −0.526 indicating that as age increases, IQ decreases, which is consistent with the scatter plot. The P value is &lt;0.0001, indicating that there is very strong evidence of a negative linear association between IQ and age, and the strength of that relationship is fair (based on the descriptions given in Section 8.2.1 of the course notes).</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Conduct a simple linear regression using R and report the relationship between the two variables including the interpretation of the R-squared value. Are the assumptions for linear regression met in this model?</li>
+</ol>
+<blockquote>
+<p>We use the <code>lm()</code> function to regress <code>iq</code> (as the outcome variable) on <code>age</code> (the explanatory variable). To obtain more descriptive output, we save the model as an object, called <code>model</code> here, and then use the <code>summary()</code> function. Finally, confidence intervals for the intercept and slopes are obtained using the <code>confint()</code> function.</p>
+</blockquote>
+<p><strong>R Output 2: Simple linear regression of IQ on Age</strong></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="module-8-solutions-to-learning-activities.html#cb188-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(iq<span class="sc">$</span>iq <span class="sc">~</span> iq<span class="sc">$</span>age)</span>
+<span id="cb188-2"><a href="module-8-solutions-to-learning-activities.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = iq$iq ~ iq$age)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.1164 -1.9364  0.2843  2.0367  9.3070 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 107.32431    2.57770  41.636  &lt; 2e-16 ***
+## iq$age       -0.42344    0.06783  -6.243 9.95e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.255 on 102 degrees of freedom
+## Multiple R-squared:  0.2765, Adjusted R-squared:  0.2694 
+## F-statistic: 38.97 on 1 and 102 DF,  p-value: 9.952e-09</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="module-8-solutions-to-learning-activities.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model)</span></code></pre></div>
+<pre><code>##                   2.5 %      97.5 %
+## (Intercept) 102.2114610 112.4371606
+## iq$age       -0.5579735  -0.2889048</code></pre>
+<blockquote>
+<p>The Model Summary table shows the R-squared value of 0.2765. This indicates that 27.6% of the variation in IQ in the sample can be explained by variability in age.</p>
+</blockquote>
+<blockquote>
+<p>The coefficients section provides the regression coefficients: an estimated intercept of 107.324 and an estimated slope of -0.423.</p>
+</blockquote>
+<blockquote>
+<p>The equation is estimated as: IQ = 107.324 + (−0.423 × age)</p>
+</blockquote>
+<blockquote>
+<p>The assumptions for simple linear regression are:</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>the observations are independent of one another;</li>
+<li>the relation between the explanatory variable and the outcome variable is linear;</li>
+<li>the residuals are normally distributed.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Information on the first assumption come from the study design. It is not mentioned in the study description that the data were collected on more than one occasion from each participant or that the participants are related to one another in any ways. Therefore, the observations are independent of one another.</p>
+</blockquote>
+<blockquote>
+<p>Evidence on the second assumption of a linear relationship between the outcome and explanatory variables is obtained from the scatterplot. Figure 1 demonstrates a linear relationship between age and IQ and so this assumption is also satisfied.</p>
+</blockquote>
+<blockquote>
+<p>To check the third assumption, that the residuals are normally distributed, we need to first generate and save the residuals in a new object. In R, we can save the residuals using the <code>resid()</code> function:</p>
+</blockquote>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="module-8-solutions-to-learning-activities.html#cb192-1" aria-hidden="true" tabindex="-1"></a>resids <span class="ot">&lt;-</span> <span class="fu">resid</span>(model)</span></code></pre></div>
+<blockquote>
+<p>To check the assumption, we need to examine the distribution of the residuals using a histogram. The histogram is shown in Figure 2. The histogram shows that the residuals are fairly normally distributed without any remarkable outliers. Therefore, the third assumption is also met.</p>
+</blockquote>
+<p>Figure 2: Distribution of residuals from the regression of IQ on age</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="module-8-solutions-to-learning-activities.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resids, <span class="at">probability =</span><span class="cn">TRUE</span>,</span>
+<span id="cb193-2"><a href="module-8-solutions-to-learning-activities.html#cb193-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histogram of residuals&quot;</span>)</span>
+<span id="cb193-3"><a href="module-8-solutions-to-learning-activities.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x,</span>
+<span id="cb193-4"><a href="module-8-solutions-to-learning-activities.html#cb193-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean=</span><span class="fu">mean</span>(resids),</span>
+<span id="cb193-5"><a href="module-8-solutions-to-learning-activities.html#cb193-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(resids)), <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>What could you infer about the association between age and IQ in the population, based on the results of the regression analysis in this sample?</li>
+</ol>
+<blockquote>
+<p>This study provides very strong evidence that IQ is negatively associated with age (t=–6.24 with 102 df, P&lt;0.001). For every year increase in age, we predict a 0.42 unit decrease in IQ and we are 95% confident that the true decrease in IQ lies between 0.29 to 0.56 units. Variability in age explains 27.6% of the variability in IQ.</p>
+</blockquote>
+</div>
+<div id="activity-8.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.3<a href="module-8-solutions-to-learning-activities.html#activity-8.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Which of the following correlation coefficients indicates the weakest relationship and why?
+a) r=0.72
+b) r=0.41
+c) r=0.13
+d) r = −0.33
+e) r = −0.84</p>
+<blockquote>
+<p>Answer: c.</p>
+</blockquote>
+<blockquote>
+<p>r = 0.13 which is closest to 0. Note that this only relates to the strength of a linear relationship.</p>
+</blockquote>
+</div>
+<div id="activity-8.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 8.4<a href="module-8-solutions-to-learning-activities.html#activity-8.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Are the following statements true or false?</p>
+<ol style="list-style-type: lower-alpha">
+<li>If a correlation coefficient is closer to 1.00 than to 0.00, this indicates that the outcome is caused by the exposure.</li>
+</ol>
+<blockquote>
+<p>False: Correlation cannot tell you about causation; it can only tell you if a relationship or association exists between 2 variables.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>If a researcher has data on two variables, there will be a higher correlation if the two means are close together and a lower correlation if the two means are far apart.</li>
+</ol>
+<blockquote>
+<p>False: Correlation is not determined by the means of the variables. Correlation only indicates whether the value of one variable increases as the value of the other variable increases or decreases (in a linear way).</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-7-full-script.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="module-8-full-script.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

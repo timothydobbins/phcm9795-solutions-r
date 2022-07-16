@@ -141,7 +141,7 @@
 
 \title{PHCM9795 Foundations of Biostatistics}
 \author{Learning activity solutions: R version}
-\date{11 July, 2022}
+\date{16 July, 2022}
 
 \begin{document}
 \maketitle
@@ -163,6 +163,15 @@ This is the first year that R has been offered as an option. I am keen to receiv
 \hypertarget{changelog}{%
 \subsection*{Changelog}\label{changelog}}
 \addcontentsline{toc}{subsection}{Changelog}
+
+\textbf{2022-07-16}
+{[}Added{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Module 8: Initial release
+\end{itemize}
 
 \textbf{2022-07-11}
 {[}Added{]}
@@ -4516,6 +4525,366 @@ Here we see the proportion of premature birth in the urban area is only 1\% and 
 \FunctionTok{contTables}\NormalTok{(}\AttributeTok{data=}\NormalTok{babies,}
            \AttributeTok{rows =}\NormalTok{ region, }\AttributeTok{cols =}\NormalTok{ birth, }\AttributeTok{counts =}\NormalTok{ n,}
            \AttributeTok{pcRow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{exp =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{fisher =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{module-8-solutions-to-learning-activities}{%
+\chapter*{Module 8: Solutions to Learning Activities}\label{module-8-solutions-to-learning-activities}}
+\addcontentsline{toc}{chapter}{Module 8: Solutions to Learning Activities}
+
+\hypertarget{activity-8.1}{%
+\subsection*{Activity 8.1}\label{activity-8.1}}
+\addcontentsline{toc}{subsection}{Activity 8.1}
+
+To investigate the effect of body weight (kg) on blood plasma volume (mL), data were collected from 30 participants and a simple linear regression analysis was conducted. The slope of the regression was 68 (95\% confidence interval 52 to 84) and the intercept was −1570 (95\% confidence interval −2655 to −492).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  What is the outcome variable and explanatory (exposure) variable?
+\end{enumerate}
+
+\begin{quote}
+Because we want to know the extent to which body weight predicts blood plasma volume, weight is the explanatory variable and blood plasma volume is the outcome.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Interpret the regression slope and its 95\% CI
+\end{enumerate}
+
+\begin{quote}
+The regression slope is 68 which means that for every 1 kg increase in body weight, blood plasma volume is predicted to increase by 68 mL. The 95\% confidence interval indicates that we are 95\% confident that the true increase in blood plasma volume per 1 kg in body weight lies between 52 mL and 84 mL.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Write the regression equation
+\end{enumerate}
+
+\begin{quote}
+The estimated regression equation is: Blood plasma volume (mL) = − 1570 + 68 × Body weight (kg)
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  If we randomly sampled a person from the population and found that their weight is 80kg, what would be the predicted value of plasma volume for this person?
+\end{enumerate}
+
+\begin{quote}
+By substituting the value of 80 kg into the above equation we can predict that the person's blood plasma level will be: Blood plasma volume = − 1570 + (68 × 80) = 3870 mL.
+\end{quote}
+
+\begin{quote}
+Therefore, the predicted plasma volume of a person who is 80 kg is 3870 mL.
+\end{quote}
+
+\hypertarget{activity-8.2}{%
+\subsection*{Activity 8.2}\label{activity-8.2}}
+\addcontentsline{toc}{subsection}{Activity 8.2}
+
+To examine whether age predicts IQ, data were collected on 104 people. Use the data in the Stata file Activity\_8.2.dta to answer the following questions.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  What are the outcome variable and the explanatory variable?
+\end{enumerate}
+
+\begin{quote}
+We are examining whether age predicts IQ, not the other way around. Therefore, age is the explanatory variable and IQ is the outcome variable.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Create a scatter plot with the two variables. What can you infer from the scatter plot?
+\end{enumerate}
+
+\begin{quote}
+The plot shows that as age increases, IQ decreases. In other words, there is a negative relationship between the two variables. The relationship appears roughly linear, but is not strong (the points are quite scattered around the line of best fit).
+\end{quote}
+
+\textbf{Figure 1: Scatter plot of IQ against age (years)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iq }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S8.2.rds"}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{age, iq}\SpecialCharTok{$}\NormalTok{iq, }
+     \AttributeTok{main=}\StringTok{"Scatter plot of IQ against age"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Age (years)"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"IQ"}\NormalTok{)}
+
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{iq }\SpecialCharTok{\textasciitilde{}}\NormalTok{ iq}\SpecialCharTok{$}\NormalTok{age))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phcm9795-solutions-R_files/figure-latex/unnamed-chunk-81-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Using R, obtain the correlation coefficient between age and IQ and interpret it.
+\end{enumerate}
+
+\begin{quote}
+To obtain the correlation coefficient, we use the \texttt{cor.test()} function:
+\end{quote}
+
+\textbf{R Output 1: Correlation coefficient between IQ and age}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor.test}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{age, iq}\SpecialCharTok{$}\NormalTok{iq)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  iq$age and iq$iq
+## t = -6.2429, df = 102, p-value = 9.952e-09
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.6523298 -0.3707534
+## sample estimates:
+##        cor 
+## -0.5257982
+\end{verbatim}
+
+\begin{quote}
+The correlation coefficient is −0.526 indicating that as age increases, IQ decreases, which is consistent with the scatter plot. The P value is \textless0.0001, indicating that there is very strong evidence of a negative linear association between IQ and age, and the strength of that relationship is fair (based on the descriptions given in Section 8.2.1 of the course notes).
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Conduct a simple linear regression using R and report the relationship between the two variables including the interpretation of the R-squared value. Are the assumptions for linear regression met in this model?
+\end{enumerate}
+
+\begin{quote}
+We use the \texttt{lm()} function to regress \texttt{iq} (as the outcome variable) on \texttt{age} (the explanatory variable). To obtain more descriptive output, we save the model as an object, called \texttt{model} here, and then use the \texttt{summary()} function. Finally, confidence intervals for the intercept and slopes are obtained using the \texttt{confint()} function.
+\end{quote}
+
+\textbf{R Output 2: Simple linear regression of IQ on Age}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{iq }\SpecialCharTok{\textasciitilde{}}\NormalTok{ iq}\SpecialCharTok{$}\NormalTok{age)}
+\FunctionTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = iq$iq ~ iq$age)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -7.1164 -1.9364  0.2843  2.0367  9.3070 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 107.32431    2.57770  41.636  < 2e-16 ***
+## iq$age       -0.42344    0.06783  -6.243 9.95e-09 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 3.255 on 102 degrees of freedom
+## Multiple R-squared:  0.2765, Adjusted R-squared:  0.2694 
+## F-statistic: 38.97 on 1 and 102 DF,  p-value: 9.952e-09
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{confint}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   2.5 %      97.5 %
+## (Intercept) 102.2114610 112.4371606
+## iq$age       -0.5579735  -0.2889048
+\end{verbatim}
+
+\begin{quote}
+The Model Summary table shows the R-squared value of 0.2765. This indicates that 27.6\% of the variation in IQ in the sample can be explained by variability in age.
+\end{quote}
+
+\begin{quote}
+The coefficients section provides the regression coefficients: an estimated intercept of 107.324 and an estimated slope of -0.423.
+\end{quote}
+
+\begin{quote}
+The equation is estimated as: IQ = 107.324 + (−0.423 × age)
+\end{quote}
+
+\begin{quote}
+The assumptions for simple linear regression are:
+\end{quote}
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the observations are independent of one another;
+\item
+  the relation between the explanatory variable and the outcome variable is linear;
+\item
+  the residuals are normally distributed.
+\end{enumerate}
+\end{quote}
+
+\begin{quote}
+Information on the first assumption come from the study design. It is not mentioned in the study description that the data were collected on more than one occasion from each participant or that the participants are related to one another in any ways. Therefore, the observations are independent of one another.
+\end{quote}
+
+\begin{quote}
+Evidence on the second assumption of a linear relationship between the outcome and explanatory variables is obtained from the scatterplot. Figure 1 demonstrates a linear relationship between age and IQ and so this assumption is also satisfied.
+\end{quote}
+
+\begin{quote}
+To check the third assumption, that the residuals are normally distributed, we need to first generate and save the residuals in a new object. In R, we can save the residuals using the \texttt{resid()} function:
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resids }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+To check the assumption, we need to examine the distribution of the residuals using a histogram. The histogram is shown in Figure 2. The histogram shows that the residuals are fairly normally distributed without any remarkable outliers. Therefore, the third assumption is also met.
+\end{quote}
+
+Figure 2: Distribution of residuals from the regression of IQ on age
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(resids, }\AttributeTok{probability =}\ConstantTok{TRUE}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Histogram of residuals"}\NormalTok{)}
+\FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x,}
+            \AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(resids),}
+            \AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(resids)), }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phcm9795-solutions-R_files/figure-latex/unnamed-chunk-85-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  What could you infer about the association between age and IQ in the population, based on the results of the regression analysis in this sample?
+\end{enumerate}
+
+\begin{quote}
+This study provides very strong evidence that IQ is negatively associated with age (t=--6.24 with 102 df, P\textless0.001). For every year increase in age, we predict a 0.42 unit decrease in IQ and we are 95\% confident that the true decrease in IQ lies between 0.29 to 0.56 units. Variability in age explains 27.6\% of the variability in IQ.
+\end{quote}
+
+\hypertarget{activity-8.3}{%
+\subsection*{Activity 8.3}\label{activity-8.3}}
+\addcontentsline{toc}{subsection}{Activity 8.3}
+
+Which of the following correlation coefficients indicates the weakest relationship and why?
+a) r=0.72
+b) r=0.41
+c) r=0.13
+d) r = −0.33
+e) r = −0.84
+
+\begin{quote}
+Answer: c.
+\end{quote}
+
+\begin{quote}
+r = 0.13 which is closest to 0. Note that this only relates to the strength of a linear relationship.
+\end{quote}
+
+\hypertarget{activity-8.4}{%
+\subsection*{Activity 8.4}\label{activity-8.4}}
+\addcontentsline{toc}{subsection}{Activity 8.4}
+
+Are the following statements true or false?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  If a correlation coefficient is closer to 1.00 than to 0.00, this indicates that the outcome is caused by the exposure.
+\end{enumerate}
+
+\begin{quote}
+False: Correlation cannot tell you about causation; it can only tell you if a relationship or association exists between 2 variables.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  If a researcher has data on two variables, there will be a higher correlation if the two means are close together and a lower correlation if the two means are far apart.
+\end{enumerate}
+
+\begin{quote}
+False: Correlation is not determined by the means of the variables. Correlation only indicates whether the value of one variable increases as the value of the other variable increases or decreases (in a linear way).
+\end{quote}
+
+\hypertarget{module-8-full-script}{%
+\chapter*{Module 8: Full script}\label{module-8-full-script}}
+\addcontentsline{toc}{chapter}{Module 8: Full script}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Author: Timothy Dobbins}
+\CommentTok{\# Date: July, 2022}
+\CommentTok{\# Purpose: Learning activities for Module 8}
+
+\CommentTok{\# Activity 8.1}
+\NormalTok{iq }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S8.2.rds"}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{age, iq}\SpecialCharTok{$}\NormalTok{iq, }
+     \AttributeTok{main=}\StringTok{"Scatter plot of IQ against age"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Age (years)"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"IQ"}\NormalTok{)}
+
+\FunctionTok{abline}\NormalTok{(}\FunctionTok{lm}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{iq }\SpecialCharTok{\textasciitilde{}}\NormalTok{ iq}\SpecialCharTok{$}\NormalTok{age))}
+
+\FunctionTok{cor.test}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{age, iq}\SpecialCharTok{$}\NormalTok{iq)}
+
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(iq}\SpecialCharTok{$}\NormalTok{iq }\SpecialCharTok{\textasciitilde{}}\NormalTok{ iq}\SpecialCharTok{$}\NormalTok{age)}
+\FunctionTok{summary}\NormalTok{(model)}
+\FunctionTok{confint}\NormalTok{(model)}
+
+\NormalTok{resids }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(model)}
+
+\FunctionTok{hist}\NormalTok{(resids, }\AttributeTok{probability =}\ConstantTok{TRUE}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Histogram of residuals"}\NormalTok{)}
+\FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x,}
+            \AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(resids),}
+            \AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(resids)), }\AttributeTok{add =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
