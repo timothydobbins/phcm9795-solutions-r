@@ -1,0 +1,54 @@
+# Module 9: Solutions to Learning Activities {-}
+
+### Activity 9.1 {-}
+
+```{r}
+library(jmv)
+
+diet <- readRDS("data/activities/Activity_S9.1.rds")
+
+head(diet)
+
+hall <- subset(diet, dint=="Living and dining in hall")
+home <- subset(diet, dint=="Living and dining at home")
+
+# Set the graphics parameters to plot 2 rows and 2 columns:
+par(mfrow=c(2,2))
+
+# Specify each plot separately
+hist(hall$ascorb, xlab="Ascorbic acid (mg / 3 hr)",
+     xlim=c(0, 400), main="Living and dining in hall")
+hist(home$ascorb, xlab="Ascorbic acid (mg / 3 hr)", main="Living and dining at home")
+
+boxplot(hall$ascorb, ylab="Ascorbic acid (mg / 3 hr)", 
+        ylim=c(0, 400), main="Living and dining in hall")
+boxplot(home$ascorb, ylab="Ascorbic acid (mg / 3 hr)", main="Living and dining at home")
+
+par(mfrow=c(1,1))
+
+```
+
+```{r}
+wilcox.test(ascorb ~ dint, data=diet)
+```
+
+```{r}
+descriptives(data=diet, vars=ascorb, splitBy = dint,
+          pc=TRUE)   
+```
+
+```{r}
+bp <- readRDS("data/activities/Activity_S9.2.rds")
+head(bp)
+
+hist(bp$difference)
+# Note - histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).
+```
+
+```{r}
+wilcox.test(bp$bp_before_mmhg, bp$bp_after_mmhg, paired=TRUE)
+
+descriptives(data=bp, vars=c(bp_before_mmhg, bp_after_mmhg),
+             pc=TRUE)
+```
+
