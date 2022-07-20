@@ -2,6 +2,10 @@
 
 ### Activity 9.1 {-}
 
+There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given as ActivityS9.1.rds.
+
+a) Examine the distribution of the data using a box-plot and histogram.
+
 ```{r}
 library(jmv)
 
@@ -28,14 +32,35 @@ par(mfrow=c(1,1))
 
 ```
 
+> By examining the box plots and histograms we can say that ascorbic acid data for both of the student groups are highly positively skewed as well as highly peaked with some outliers that are biologically plausible.
+
+b) Which statistical test would be appropriate to test the hypothesis mentioned in the question and why?
+
+> Following the decision tree, the response variable is continuous (concentration of urinary ascorbic acid) and the explanatory variable is categorical (residential and dining status of the students) with two groups (binary). The two groups are independent as students either live at home or at university, not both. As evident from (a) the distribution of the response variable for both of the groups is highly positively skewed and peaked. Therefore, a distribution free (non-parametric) test would be appropriate to analyse the data. Because the distribution of both of the groups (Hall and Home) are positively skewed, that is they are of the same shape, the Wilcoxon rank-sum test would be appropriate to test the difference in medians.
+
+c) State the hypothesis appropriate to the analytical method you mentioned in (b)?
+
+> Null hypothesis: The median concentration of urinary ascorbic acid among the students who live and dine in the university hall is the same as that of the students who live and dine at home.
+> Alternative hypothesis: The median concentration of urinary ascorbic acid among the students who live and dine in the university hall is not same as that of the students who live and dine at home.
+
+d) Use R to carry out the statistical test you have mentioned in (b) and write your conclusion.
+
+> We can use the `wilcox.test()` function to carry out the Wilcoxon rank-sum test.
+
 ```{r}
 wilcox.test(ascorb ~ dint, data=diet)
 ```
+
+> The P-value from the test is 0.007, which indicates that there is strong evidence of a difference between the median values of urinary ascorbic acid between the two student groups. The Wilcoxon rank-sum test does not report median values of the individual groups as part of the output. To include median values in the conclusion, we need to run the `descriptives()` command as shown below.
 
 ```{r}
 descriptives(data=diet, vars=ascorb, splitBy = dint,
           pc=TRUE)   
 ```
+
+> **Conclusion:** There is strong evidence from Mann-Whitney U test (exact P = 0.007) that the median concentration of urinary ascorbic acid among the university students who live and dine at home (83 mg per 3 hours, interquartile range: 47 to 163) is higher than that of the students who live and dine in the university hall (28 mg per 3 hours, interquartile range: 20 to 38).
+
+### Activity 9.2 {-}
 
 ```{r}
 bp <- readRDS("data/activities/Activity_S9.2.rds")
