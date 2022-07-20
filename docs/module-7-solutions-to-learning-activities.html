@@ -152,6 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="module-7-full-script.html"><a href="module-7-full-script.html"><i class="fa fa-check"></i>Module 7: Full script</a></li>
 <li class="chapter" data-level="" data-path="module-8-solutions-to-learning-activities.html"><a href="module-8-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 8: Solutions to Learning Activities</a></li>
 <li class="chapter" data-level="" data-path="module-8-full-script.html"><a href="module-8-full-script.html"><i class="fa fa-check"></i>Module 8: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-9-solutions-to-learning-activities.html"><a href="module-9-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 9: Solutions to Learning Activities</a></li>
 </ul>
 
       </nav>
@@ -446,7 +447,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   ..- attr(*, &quot;label&quot;)= chr &quot;Reacts to allergen G&quot;
 ##  $ React_Allergen_B: Factor w/ 2 levels &quot;Don&#39;t react&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
 ##   ..- attr(*, &quot;label&quot;)= chr &quot;Reacts to allergen B&quot;</code></pre>
+<blockquote>
 <p>It’s a little difficult to determine the order from this output, so let’s look at a table:</p>
+</blockquote>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="module-7-solutions-to-learning-activities.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(study<span class="sc">$</span>React_Allergen_B)</span></code></pre></div>
 <pre><code>## 
 ## Don&#39;t react       React 
@@ -455,7 +458,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## 
 ## Don&#39;t react       React 
 ##         448          52</code></pre>
+<blockquote>
 <p>In both cases, “Don’t react” is the first level. This should be re-ordered:</p>
+</blockquote>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="module-7-solutions-to-learning-activities.html#cb173-1" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>React_Allergen_B <span class="ot">&lt;-</span> <span class="fu">relevel</span>(study<span class="sc">$</span>React_Allergen_B, <span class="at">ref=</span><span class="st">&quot;React&quot;</span>)</span>
 <span id="cb173-2"><a href="module-7-solutions-to-learning-activities.html#cb173-2" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>React_Allergen_G <span class="ot">&lt;-</span> <span class="fu">relevel</span>(study<span class="sc">$</span>React_Allergen_G, <span class="at">ref=</span><span class="st">&quot;React&quot;</span>)</span></code></pre></div>
 <blockquote>
@@ -516,9 +521,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb176-27"><a href="module-7-solutions-to-learning-activities.html#cb176-27" aria-hidden="true" tabindex="-1"></a><span class="fu">mcNemarDiff</span>(<span class="at">data =</span> study, <span class="at">var1 =</span> <span class="st">&quot;React_Allergen_B&quot;</span>, <span class="at">var2 =</span> <span class="st">&quot;React_Allergen_G&quot;</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Proportion 1: 0.136; Proportion 2: 0.104&quot;
 ## [1] &quot;Difference in paired proportions: 0.032; 95% CI: 0.005 to 0.059&quot;</code></pre>
+<blockquote>
 <p>The McNemar’s test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).</p>
-<p>The output from the <code>mcNemarDiff()</code> function shows that 13.6% of participants react to allergen B and 10.4% of participants react to allergen G, with the difference in reaction rate of 3.2% (95% CI: 0.5% to 5.9%). The 95% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.017).</p>
-<p>Therefore, we can conclude that there is evidence (P = 0.017) of a difference in the effect of penicillin allergen B and G. A total of 3.2% more patients reacted to penicillin B (13.6%) compared to penicillin G (10.4%), and we are 95% confident that the true difference in the underlying population is between 0.5% and 5.9%.</p>
+</blockquote>
+<blockquote>
+<p>The output from the <code>mcNemarDiff()</code> function shows that 13.6% of participants react to allergen B and 10.4% of participants react to allergen G, with the difference in reaction rate of 3.2% (95% CI: 0.5% to 5.9%). The 95% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.011).</p>
+</blockquote>
+<blockquote>
+<p>Therefore, we can conclude that there is evidence (chi-square=6.40 with 1 df, P = 0.011) of a difference in the effect of penicillin allergen B and G. A total of 3.2% more patients reacted to penicillin B (13.6%) compared to penicillin G (10.4%), and we are 95% confident that the true difference in the underlying population is between 0.5% and 5.9%.</p>
+</blockquote>
 </div>
 <div id="activity-7.4" class="section level3 unnumbered hasAnchor">
 <h3>Activity 7.4<a href="module-7-solutions-to-learning-activities.html#activity-7.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -575,8 +586,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##    χ²    6.461538     1    0.0110234   
 ##    N          280                      
 ##  ─────────────────────────────────────</code></pre>
+<blockquote>
 <p>We can see from the above output that the lowest expected frequency in cell “c” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify <code>fisher = TRUE</code>. Output from the test is shown below:</p>
-<p>Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys</p>
+</blockquote>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="module-7-solutions-to-learning-activities.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="fu">contTables</span>(<span class="at">data=</span>babies,</span>
 <span id="cb182-2"><a href="module-7-solutions-to-learning-activities.html#cb182-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">rows =</span> region, <span class="at">cols =</span> birth, <span class="at">counts =</span> n,</span>
 <span id="cb182-3"><a href="module-7-solutions-to-learning-activities.html#cb182-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">pcRow =</span> <span class="cn">TRUE</span>, <span class="at">exp =</span> <span class="cn">TRUE</span>, <span class="at">fisher =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
@@ -609,7 +621,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##    Fisher&#39;s exact test                      0.0218217   
 ##    N                           280                      
 ##  ──────────────────────────────────────────────────────</code></pre>
+<blockquote>
 <p>Here we see the proportion of premature birth in the urban area is only 1% and in the rural area it is 6%. The P-value from Fisher’s exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.</p>
+</blockquote>
 
 </div>
 </div>

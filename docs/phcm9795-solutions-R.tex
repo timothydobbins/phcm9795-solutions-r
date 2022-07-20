@@ -141,7 +141,7 @@
 
 \title{PHCM9795 Foundations of Biostatistics}
 \author{Learning activity solutions: R version}
-\date{16 July, 2022}
+\date{20 July, 2022}
 
 \begin{document}
 \maketitle
@@ -163,6 +163,15 @@ This is the first year that R has been offered as an option. I am keen to receiv
 \hypertarget{changelog}{%
 \subsection*{Changelog}\label{changelog}}
 \addcontentsline{toc}{subsection}{Changelog}
+
+\textbf{2022-07-22}
+{[}Changed{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Module 7: Remove exact P-value (from Stata) from Activity 7.3, and replace with the McNemar chi-squared test statistic and P-value calculated by R.
+\end{itemize}
 
 \textbf{2022-07-16}
 {[}Added{]}
@@ -4176,7 +4185,9 @@ As usual, after reading the data, we should check the ordering of the factor lev
 ##   ..- attr(*, "label")= chr "Reacts to allergen B"
 \end{verbatim}
 
+\begin{quote}
 It's a little difficult to determine the order from this output, so let's look at a table:
+\end{quote}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4202,7 +4213,9 @@ It's a little difficult to determine the order from this output, so let's look a
 ##         448          52
 \end{verbatim}
 
+\begin{quote}
 In both cases, ``Don't react'' is the first level. This should be re-ordered:
+\end{quote}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4287,11 +4300,17 @@ We use the \texttt{mcNemarDiff()} function (stored in Microsoft Teams and \href{
 ## [1] "Difference in paired proportions: 0.032; 95% CI: 0.005 to 0.059"
 \end{verbatim}
 
+\begin{quote}
 The McNemar's test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).
+\end{quote}
 
-The output from the \texttt{mcNemarDiff()} function shows that 13.6\% of participants react to allergen B and 10.4\% of participants react to allergen G, with the difference in reaction rate of 3.2\% (95\% CI: 0.5\% to 5.9\%). The 95\% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.017).
+\begin{quote}
+The output from the \texttt{mcNemarDiff()} function shows that 13.6\% of participants react to allergen B and 10.4\% of participants react to allergen G, with the difference in reaction rate of 3.2\% (95\% CI: 0.5\% to 5.9\%). The 95\% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.011).
+\end{quote}
 
-Therefore, we can conclude that there is evidence (P = 0.017) of a difference in the effect of penicillin allergen B and G. A total of 3.2\% more patients reacted to penicillin B (13.6\%) compared to penicillin G (10.4\%), and we are 95\% confident that the true difference in the underlying population is between 0.5\% and 5.9\%.
+\begin{quote}
+Therefore, we can conclude that there is evidence (chi-square=6.40 with 1 df, P = 0.011) of a difference in the effect of penicillin allergen B and G. A total of 3.2\% more patients reacted to penicillin B (13.6\%) compared to penicillin G (10.4\%), and we are 95\% confident that the true difference in the underlying population is between 0.5\% and 5.9\%.
+\end{quote}
 
 \hypertarget{activity-7.4}{%
 \subsection*{Activity 7.4}\label{activity-7.4}}
@@ -4370,9 +4389,9 @@ We can use \texttt{contTables()} to calculate the expected counts in each cell. 
 ##  ─────────────────────────────────────
 \end{verbatim}
 
+\begin{quote}
 We can see from the above output that the lowest expected frequency in cell ``c'' (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson's chi-square test is not appropriate and we should conduct Fisher's exact test. For doing this test, we should specify \texttt{fisher\ =\ TRUE}. Output from the test is shown below:
-
-Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys
+\end{quote}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4414,7 +4433,9 @@ Stata output 7.8: Cross-tabulation to compare the proportion of premature birth 
 ##  ──────────────────────────────────────────────────────
 \end{verbatim}
 
+\begin{quote}
 Here we see the proportion of premature birth in the urban area is only 1\% and in the rural area it is 6\%. The P-value from Fisher's exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.
+\end{quote}
 
 \hypertarget{module-7-full-script}{%
 \chapter*{Module 7: Full script}\label{module-7-full-script}}
@@ -4888,5 +4909,258 @@ False: Correlation is not determined by the means of the variables. Correlation 
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{module-9-solutions-to-learning-activities}{%
+\chapter*{Module 9: Solutions to Learning Activities}\label{module-9-solutions-to-learning-activities}}
+\addcontentsline{toc}{chapter}{Module 9: Solutions to Learning Activities}
+
+\hypertarget{activity-9.1}{%
+\subsection*{Activity 9.1}\label{activity-9.1}}
+\addcontentsline{toc}{subsection}{Activity 9.1}
+
+There is a hypothesis that university students who live and dine in the university hall consume less vitamin C than the students who live and dine at home. To test the hypothesis, 30 students were randomly selected and their urinary ascorbic acid level was measured in mg over 3 hours. Urinary excretion of ascorbic acid is a measure of vitamin C nutrition in humans. The data is given as ActivityS9.1.rds.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Examine the distribution of the data using a box-plot and histogram.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(jmv)}
+
+\NormalTok{diet }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S9.1.rds"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(diet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                        dint ascorb
+## 1 Living and dining in hall      7
+## 2 Living and dining at home     22
+## 3 Living and dining in hall      9
+## 4 Living and dining at home     25
+## 5 Living and dining in hall     14
+## 6 Living and dining at home     30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hall }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(diet, dint}\SpecialCharTok{==}\StringTok{"Living and dining in hall"}\NormalTok{)}
+\NormalTok{home }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(diet, dint}\SpecialCharTok{==}\StringTok{"Living and dining at home"}\NormalTok{)}
+
+\CommentTok{\# Set the graphics parameters to plot 2 rows and 2 columns:}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\# Specify each plot separately}
+\FunctionTok{hist}\NormalTok{(hall}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{xlab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{,}
+     \AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{400}\NormalTok{), }\AttributeTok{main=}\StringTok{"Living and dining in hall"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(home}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{xlab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{, }\AttributeTok{main=}\StringTok{"Living and dining at home"}\NormalTok{)}
+
+\FunctionTok{boxplot}\NormalTok{(hall}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{ylab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{, }
+        \AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{400}\NormalTok{), }\AttributeTok{main=}\StringTok{"Living and dining in hall"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(home}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{ylab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{, }\AttributeTok{main=}\StringTok{"Living and dining at home"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phcm9795-solutions-R_files/figure-latex/unnamed-chunk-87-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{quote}
+By examining the box plots and histograms we can say that ascorbic acid data for both of the student groups are highly positively skewed as well as highly peaked with some outliers that are biologically plausible.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Which statistical test would be appropriate to test the hypothesis mentioned in the question and why?
+\end{enumerate}
+
+\begin{quote}
+Following the decision tree, the response variable is continuous (concentration of urinary ascorbic acid) and the explanatory variable is categorical (residential and dining status of the students) with two groups (binary). The two groups are independent as students either live at home or at university, not both. As evident from (a) the distribution of the response variable for both of the groups is highly positively skewed and peaked. Therefore, a distribution free (non-parametric) test would be appropriate to analyse the data. Because the distribution of both of the groups (Hall and Home) are positively skewed, that is they are of the same shape, the Wilcoxon rank-sum test would be appropriate to test the difference in medians.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  State the hypothesis appropriate to the analytical method you mentioned in (b)?
+\end{enumerate}
+
+\begin{quote}
+Null hypothesis: The median concentration of urinary ascorbic acid among the students who live and dine in the university hall is the same as that of the students who live and dine at home.
+Alternative hypothesis: The median concentration of urinary ascorbic acid among the students who live and dine in the university hall is not same as that of the students who live and dine at home.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Use R to carry out the statistical test you have mentioned in (b) and write your conclusion.
+\end{enumerate}
+
+\begin{quote}
+We can use the \texttt{wilcox.test()} function to carry out the Wilcoxon rank-sum test.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wilcox.test}\NormalTok{(ascorb }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dint, }\AttributeTok{data=}\NormalTok{diet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
+## compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  ascorb by dint
+## W = 45.5, p-value = 0.006927
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\begin{quote}
+The P-value from the test is 0.007, which indicates that there is strong evidence of a difference between the median values of urinary ascorbic acid between the two student groups. The Wilcoxon rank-sum test does not report median values of the individual groups as part of the output. To include median values in the conclusion, we need to run the \texttt{descriptives()} command as shown below.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(}\AttributeTok{data=}\NormalTok{diet, }\AttributeTok{vars=}\NormalTok{ascorb, }\AttributeTok{splitBy =}\NormalTok{ dint,}
+          \AttributeTok{pc=}\ConstantTok{TRUE}\NormalTok{)   }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                                                    
+##  ─────────────────────────────────────────────────────────────── 
+##                          dint                         ascorb     
+##  ─────────────────────────────────────────────────────────────── 
+##    N                     Living and dining in hall          17   
+##                          Living and dining at home          13   
+##    Missing               Living and dining in hall           0   
+##                          Living and dining at home           0   
+##    Mean                  Living and dining in hall    36.64706   
+##                          Living and dining at home    114.2308   
+##    Median                Living and dining in hall    28.00000   
+##                          Living and dining at home    83.00000   
+##    Standard deviation    Living and dining in hall    27.91044   
+##                          Living and dining at home    106.2302   
+##    Minimum               Living and dining in hall    7.000000   
+##                          Living and dining at home    22.00000   
+##    Maximum               Living and dining in hall    121.0000   
+##                          Living and dining at home    372.0000   
+##    25th percentile       Living and dining in hall    20.00000   
+##                          Living and dining at home    47.00000   
+##    50th percentile       Living and dining in hall    28.00000   
+##                          Living and dining at home    83.00000   
+##    75th percentile       Living and dining in hall    38.00000   
+##                          Living and dining at home    163.0000   
+##  ───────────────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{quote}
+\textbf{Conclusion:} There is strong evidence from Mann-Whitney U test (exact P = 0.007) that the median concentration of urinary ascorbic acid among the university students who live and dine at home (83 mg per 3 hours, interquartile range: 47 to 163) is higher than that of the students who live and dine in the university hall (28 mg per 3 hours, interquartile range: 20 to 38).
+\end{quote}
+
+\hypertarget{activity-9.2}{%
+\subsection*{Activity 9.2}\label{activity-9.2}}
+\addcontentsline{toc}{subsection}{Activity 9.2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bp }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S9.2.rds"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(bp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   id bp_before_mmhg bp_after_mmhg difference
+## 1  1            143           120        -23
+## 2  2            150           124        -26
+## 3  3            140           130        -10
+## 4  4            139           118        -21
+## 5  5            141           140         -1
+## 6  6            144           128        -16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(bp}\SpecialCharTok{$}\NormalTok{difference)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phcm9795-solutions-R_files/figure-latex/unnamed-chunk-90-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Note {-} histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wilcox.test}\NormalTok{(bp}\SpecialCharTok{$}\NormalTok{bp\_before\_mmhg, bp}\SpecialCharTok{$}\NormalTok{bp\_after\_mmhg, }\AttributeTok{paired=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in wilcox.test.default(bp$bp_before_mmhg, bp$bp_after_mmhg, paired =
+## TRUE): cannot compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Wilcoxon signed rank test with continuity correction
+## 
+## data:  bp$bp_before_mmhg and bp$bp_after_mmhg
+## V = 120, p-value = 0.0007158
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(}\AttributeTok{data=}\NormalTok{bp, }\AttributeTok{vars=}\FunctionTok{c}\NormalTok{(bp\_before\_mmhg, bp\_after\_mmhg),}
+             \AttributeTok{pc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  DESCRIPTIVES
+## 
+##  Descriptives                                              
+##  ───────────────────────────────────────────────────────── 
+##                          bp_before_mmhg    bp_after_mmhg   
+##  ───────────────────────────────────────────────────────── 
+##    N                                 15               15   
+##    Missing                            0                0   
+##    Mean                        146.4667         129.2667   
+##    Median                      144.0000         128.0000   
+##    Standard deviation          10.75617         6.902036   
+##    Minimum                     139.0000         118.0000   
+##    Maximum                     183.0000         140.0000   
+##    25th percentile             140.5000         125.5000   
+##    50th percentile             144.0000         128.0000   
+##    75th percentile             146.5000         132.5000   
+##  ─────────────────────────────────────────────────────────
+\end{verbatim}
 
 \end{document}

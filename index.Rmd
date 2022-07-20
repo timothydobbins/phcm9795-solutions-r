@@ -24,6 +24,11 @@ This is the first year that R has been offered as an option. I am keen to receiv
 
 ### Changelog {-}
 
+**2022-07-22**
+[Changed]
+
+- Module 7: Remove exact P-value (from Stata) from Activity 7.3, and replace with the McNemar chi-squared test statistic and P-value calculated by R.
+
 **2022-07-16**
 [Added]
 

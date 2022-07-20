@@ -125,14 +125,14 @@ head(study)
 str(study)
 ```
 
-It's a little difficult to determine the order from this output, so let's look at a table:
+> It's a little difficult to determine the order from this output, so let's look at a table:
 
 ```{r}
 table(study$React_Allergen_B)
 table(study$React_Allergen_G)
 ```
 
-In both cases, "Don't react" is the first level. This should be re-ordered:
+> In both cases, "Don't react" is the first level. This should be re-ordered:
 
 ```{r}
 study$React_Allergen_B <- relevel(study$React_Allergen_B, ref="React")
@@ -179,11 +179,11 @@ mcNemarDiff <- function(data, var1, var2, digits = 3) {
 mcNemarDiff(data = study, var1 = "React_Allergen_B", var2 = "React_Allergen_G", digits = 3)
 ```
 
-The McNemar’s test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).
+> The McNemar’s test result shows evidence of a difference in reactions to allergens B and G (chi-square=6.40 with 1 df, P = 0.011).
 
-The output from the `mcNemarDiff()` function shows that 13.6% of participants react to allergen B and 10.4% of participants react to allergen G, with the difference in reaction rate of 3.2% (95% CI: 0.5% to 5.9%). The 95% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.017).
+> The output from the `mcNemarDiff()` function shows that 13.6% of participants react to allergen B and 10.4% of participants react to allergen G, with the difference in reaction rate of 3.2% (95% CI: 0.5% to 5.9%). The 95% CI does not include the null value (which is 0), which is consistent with the P-value being less than 0.05 (P = 0.011).
 
-Therefore, we can conclude that there is evidence (P = 0.017) of a difference in the effect of penicillin allergen B and G. A total of 3.2% more patients reacted to penicillin B (13.6%) compared to penicillin G (10.4%), and we are 95% confident that the true difference in the underlying population is between 0.5% and 5.9%.
+> Therefore, we can conclude that there is evidence (chi-square=6.40 with 1 df, P = 0.011) of a difference in the effect of penicillin allergen B and G. A total of 3.2% more patients reacted to penicillin B (13.6%) compared to penicillin G (10.4%), and we are 95% confident that the true difference in the underlying population is between 0.5% and 5.9%.
 
 ### Activity 7.4 {-}
 
@@ -215,14 +215,12 @@ contTables(data=babies,
 
 ```
 
-We can see from the above output that the lowest expected frequency in cell “c” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify `fisher = TRUE`. Output from the test is shown below:
+> We can see from the above output that the lowest expected frequency in cell “c” (expected number of premature birth in the urban region) is 2, which is less than 5. Thus, a Pearson’s chi-square test is not appropriate and we should conduct Fisher’s exact test. For doing this test, we should specify `fisher = TRUE`. Output from the test is shown below:
 
-Stata output 7.8: Cross-tabulation to compare the proportion of premature birth from two surveys
 ```{r}
 contTables(data=babies,
            rows = region, cols = birth, counts = n,
            pcRow = TRUE, exp = TRUE, fisher = TRUE)
 ```
  
-
-Here we see the proportion of premature birth in the urban area is only 1% and in the rural area it is 6%. The P-value from Fisher’s exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.
+> Here we see the proportion of premature birth in the urban area is only 1% and in the rural area it is 6%. The P-value from Fisher’s exact test is 0.022. Thus, we can conclude that there is evidence that the proportion of premature birth in the rural area is higher than that in the urban area.
