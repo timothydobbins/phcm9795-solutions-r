@@ -62,18 +62,49 @@ descriptives(data=diet, vars=ascorb, splitBy = dint,
 
 ### Activity 9.2 {-}
 
+A drug was tested for its effect in lowering blood pressure. Fifteen women with hypertension were enrolled and had their systolic blood pressure measured before and after taking the drug. The data are available in the file Activity_S9.2.rds on Moodle.
+
+a) State the research question and the null hypothesis.
+
+> Research question: Do women with hypertension have lower systolic blood pressure after taking the test drug than before taking the drug? 
+
+> Null hypothesis: There is no change in median systolic blood pressure before and after taking the drug.
+
+b) Use R to obtain suitable summary statistics and test the null hypothesis. Describe the reason for choosing the test.
+
+> Systolic blood pressure was measured for each person twice to compare the difference in blood pressure before and after taking the drug. Therefore, the study is a paired design and, because blood pressure is a continuous measurement, a paired t-test can be considered. One of the assumptions of a paired t-test is that the differences between the measurements are normally distributed and this needs to be checked.
+
+> To check the distribution of the differences between the measurements, we first need to calculate the differences. We created a new variable ‘difference’ using the equation ‘BP_After_mmHg − BP_Before_mmHg’. The histogram of the differences is shown in Figure 2.
+
 ```{r}
 bp <- readRDS("data/activities/Activity_S9.2.rds")
 head(bp)
 
-hist(bp$difference)
+hist(bp$difference,
+     main="Figure 2: Reduction in blood pressure after taking a new drug",
+     xlab="Difference (mmHg)")
 # Note - histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).
 ```
 
+> The histogram of the differences (BP_After – BP_Before) does not approximate a normal distribution. Therefore, the paired t-test is not appropriate and its non-parametric equivalent, the Wilcoxon signed rank test, should be considered.
+The Wilcoxon signed rank test is obtained using the `wilcox.test()` function:
+
 ```{r}
 wilcox.test(bp$bp_before_mmhg, bp$bp_after_mmhg, paired=TRUE)
+```
 
-descriptives(data=bp, vars=c(bp_before_mmhg, bp_after_mmhg),
+c) Write a brief conclusion.
+
+> To include descriptive summary statistics in our conclusion we need to obtain summary statistics of the blood pressure measurements before and after taking the drug and the differences between these two measurements.
+
+
+```{r}
+descriptives(data=bp, vars=c(bp_before_mmhg, bp_after_mmhg, difference),
              pc=TRUE)
 ```
 
+> The median (IQR) SBP before and after taking the drug was 144 (140 to 147) mmHg and 128 (125 to 135) mmHg, respectively. The median (IQR) reduction in SBP is 16 (6 to 21) mmHg. There is very strong evidence that the drug lowered blood pressure in this group of hypertensive women (Exact P = 0.0001, from Wilcoxon signed rank test).
+
+d) What are the main limitations of this study? Consider both epidemiological and statistical aspects.
+
+> The samples were selected from a small patient group with particular characteristics (hypertensive females). While the results may be generalisable to hypertensive women in the population, assuming the sample is representative of hypertensive women in the population, the results may not be applicable to men. The strongest weakness is that there is no control group; the blood pressure in the women may have in fact lowered in the absence of taking the drug. This could be avoided by conducting a randomised controlled trial. 
