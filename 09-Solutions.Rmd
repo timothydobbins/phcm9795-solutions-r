@@ -103,7 +103,7 @@ descriptives(data=bp, vars=c(bp_before_mmhg, bp_after_mmhg, difference),
              pc=TRUE)
 ```
 
-> The median (IQR) SBP before and after taking the drug was 144 (140 to 147) mmHg and 128 (125 to 135) mmHg, respectively. The median (IQR) reduction in SBP is 16 (6 to 21) mmHg. There is very strong evidence that the drug lowered blood pressure in this group of hypertensive women (Exact P = 0.0001, from Wilcoxon signed rank test).
+> The median (IQR) SBP before and after taking the drug was 144 (140 to 147) mmHg and 128 (125 to 135) mmHg, respectively. The median (IQR) reduction in SBP is 16 (6 to 21) mmHg. There is very strong evidence that the drug lowered blood pressure in this group of hypertensive women (Wilcoxon P = 0.0007).
 
 d) What are the main limitations of this study? Consider both epidemiological and statistical aspects.
 
