@@ -178,11 +178,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: lower-alpha">
 <li>Examine the distribution of the data using a box-plot and histogram.</li>
 </ol>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="module-9-solutions-to-learning-activities.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
-<span id="cb195-2"><a href="module-9-solutions-to-learning-activities.html#cb195-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-3"><a href="module-9-solutions-to-learning-activities.html#cb195-3" aria-hidden="true" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S9.1.rds&quot;</span>)</span>
-<span id="cb195-4"><a href="module-9-solutions-to-learning-activities.html#cb195-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-5"><a href="module-9-solutions-to-learning-activities.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diet)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-9-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jmv)</span>
+<span id="cb2-2"><a href="module-9-solutions-to-learning-activities.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="module-9-solutions-to-learning-activities.html#cb2-3" aria-hidden="true" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S9.1.rds&quot;</span>)</span>
+<span id="cb2-4"><a href="module-9-solutions-to-learning-activities.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="module-9-solutions-to-learning-activities.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diet)</span></code></pre></div>
 <pre><code>##                        dint ascorb
 ## 1 Living and dining in hall      7
 ## 2 Living and dining at home     22
@@ -190,22 +190,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Living and dining at home     25
 ## 5 Living and dining in hall     14
 ## 6 Living and dining at home     30</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="module-9-solutions-to-learning-activities.html#cb197-1" aria-hidden="true" tabindex="-1"></a>hall <span class="ot">&lt;-</span> <span class="fu">subset</span>(diet, dint<span class="sc">==</span><span class="st">&quot;Living and dining in hall&quot;</span>)</span>
-<span id="cb197-2"><a href="module-9-solutions-to-learning-activities.html#cb197-2" aria-hidden="true" tabindex="-1"></a>home <span class="ot">&lt;-</span> <span class="fu">subset</span>(diet, dint<span class="sc">==</span><span class="st">&quot;Living and dining at home&quot;</span>)</span>
-<span id="cb197-3"><a href="module-9-solutions-to-learning-activities.html#cb197-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-4"><a href="module-9-solutions-to-learning-activities.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the graphics parameters to plot 2 rows and 2 columns:</span></span>
-<span id="cb197-5"><a href="module-9-solutions-to-learning-activities.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb197-6"><a href="module-9-solutions-to-learning-activities.html#cb197-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-7"><a href="module-9-solutions-to-learning-activities.html#cb197-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify each plot separately</span></span>
-<span id="cb197-8"><a href="module-9-solutions-to-learning-activities.html#cb197-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hall<span class="sc">$</span>ascorb, <span class="at">xlab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>,</span>
-<span id="cb197-9"><a href="module-9-solutions-to-learning-activities.html#cb197-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>), <span class="at">main=</span><span class="st">&quot;Living and dining in hall&quot;</span>)</span>
-<span id="cb197-10"><a href="module-9-solutions-to-learning-activities.html#cb197-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(home<span class="sc">$</span>ascorb, <span class="at">xlab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Living and dining at home&quot;</span>)</span>
-<span id="cb197-11"><a href="module-9-solutions-to-learning-activities.html#cb197-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-12"><a href="module-9-solutions-to-learning-activities.html#cb197-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hall<span class="sc">$</span>ascorb, <span class="at">ylab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>, </span>
-<span id="cb197-13"><a href="module-9-solutions-to-learning-activities.html#cb197-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>), <span class="at">main=</span><span class="st">&quot;Living and dining in hall&quot;</span>)</span>
-<span id="cb197-14"><a href="module-9-solutions-to-learning-activities.html#cb197-14" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(home<span class="sc">$</span>ascorb, <span class="at">ylab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Living and dining at home&quot;</span>)</span></code></pre></div>
-<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="module-9-solutions-to-learning-activities.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="module-9-solutions-to-learning-activities.html#cb4-1" aria-hidden="true" tabindex="-1"></a>hall <span class="ot">&lt;-</span> <span class="fu">subset</span>(diet, dint<span class="sc">==</span><span class="st">&quot;Living and dining in hall&quot;</span>)</span>
+<span id="cb4-2"><a href="module-9-solutions-to-learning-activities.html#cb4-2" aria-hidden="true" tabindex="-1"></a>home <span class="ot">&lt;-</span> <span class="fu">subset</span>(diet, dint<span class="sc">==</span><span class="st">&quot;Living and dining at home&quot;</span>)</span>
+<span id="cb4-3"><a href="module-9-solutions-to-learning-activities.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="module-9-solutions-to-learning-activities.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the graphics parameters to plot 2 rows and 2 columns:</span></span>
+<span id="cb4-5"><a href="module-9-solutions-to-learning-activities.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb4-6"><a href="module-9-solutions-to-learning-activities.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="module-9-solutions-to-learning-activities.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify each plot separately</span></span>
+<span id="cb4-8"><a href="module-9-solutions-to-learning-activities.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(hall<span class="sc">$</span>ascorb, <span class="at">xlab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>,</span>
+<span id="cb4-9"><a href="module-9-solutions-to-learning-activities.html#cb4-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>), <span class="at">main=</span><span class="st">&quot;Living and dining in hall&quot;</span>)</span>
+<span id="cb4-10"><a href="module-9-solutions-to-learning-activities.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(home<span class="sc">$</span>ascorb, <span class="at">xlab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Living and dining at home&quot;</span>)</span>
+<span id="cb4-11"><a href="module-9-solutions-to-learning-activities.html#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="module-9-solutions-to-learning-activities.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hall<span class="sc">$</span>ascorb, <span class="at">ylab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>, </span>
+<span id="cb4-13"><a href="module-9-solutions-to-learning-activities.html#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>), <span class="at">main=</span><span class="st">&quot;Living and dining in hall&quot;</span>)</span>
+<span id="cb4-14"><a href="module-9-solutions-to-learning-activities.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(home<span class="sc">$</span>ascorb, <span class="at">ylab=</span><span class="st">&quot;Ascorbic acid (mg / 3 hr)&quot;</span>, <span class="at">main=</span><span class="st">&quot;Living and dining at home&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="module-9-solutions-to-learning-activities.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <blockquote>
 <p>By examining the box plots and histograms we can say that ascorbic acid data for both of the student groups are highly positively skewed as well as highly peaked with some outliers that are biologically plausible.</p>
 </blockquote>
@@ -228,9 +228,9 @@ Alternative hypothesis: The median concentration of urinary ascorbic acid among 
 <blockquote>
 <p>We can use the <code>wilcox.test()</code> function to carry out the Wilcoxon rank-sum test.</p>
 </blockquote>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="module-9-solutions-to-learning-activities.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(ascorb <span class="sc">~</span> dint, <span class="at">data=</span>diet)</span></code></pre></div>
-<pre><code>## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
-## compute exact p-value with ties</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="module-9-solutions-to-learning-activities.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(ascorb <span class="sc">~</span> dint, <span class="at">data=</span>diet)</span></code></pre></div>
+<pre><code>## Warning in wilcox.test.default(x = c(7, 9, 14, 16, 20, 22, 27, 28, 28, 34, :
+## cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -240,8 +240,8 @@ Alternative hypothesis: The median concentration of urinary ascorbic acid among 
 <blockquote>
 <p>The P-value from the test is 0.007, which indicates that there is strong evidence of a difference between the median values of urinary ascorbic acid between the two student groups. The Wilcoxon rank-sum test does not report median values of the individual groups as part of the output. To include median values in the conclusion, we need to run the <code>descriptives()</code> command as shown below.</p>
 </blockquote>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="module-9-solutions-to-learning-activities.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>diet, <span class="at">vars=</span>ascorb, <span class="at">splitBy =</span> dint,</span>
-<span id="cb202-2"><a href="module-9-solutions-to-learning-activities.html#cb202-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">pc=</span><span class="cn">TRUE</span>)   </span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="module-9-solutions-to-learning-activities.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>diet, <span class="at">vars=</span>ascorb, <span class="at">splitBy =</span> dint,</span>
+<span id="cb9-2"><a href="module-9-solutions-to-learning-activities.html#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">pc=</span><span class="cn">TRUE</span>)   </span></code></pre></div>
 <pre><code>## 
 ##  DESCRIPTIVES
 ## 
@@ -276,8 +276,27 @@ Alternative hypothesis: The median concentration of urinary ascorbic acid among 
 </div>
 <div id="activity-9.2" class="section level3 unnumbered hasAnchor">
 <h3>Activity 9.2<a href="module-9-solutions-to-learning-activities.html#activity-9.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="module-9-solutions-to-learning-activities.html#cb204-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S9.2.rds&quot;</span>)</span>
-<span id="cb204-2"><a href="module-9-solutions-to-learning-activities.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bp)</span></code></pre></div>
+<p>A drug was tested for its effect in lowering blood pressure. Fifteen women with hypertension were enrolled and had their systolic blood pressure measured before and after taking the drug. The data are available in the file Activity_S9.2.rds on Moodle.</p>
+<ol style="list-style-type: lower-alpha">
+<li>State the research question and the null hypothesis.</li>
+</ol>
+<blockquote>
+<p>Research question: Do women with hypertension have lower systolic blood pressure after taking the test drug than before taking the drug?</p>
+</blockquote>
+<blockquote>
+<p>Null hypothesis: There is no change in median systolic blood pressure before and after taking the drug.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use R to obtain suitable summary statistics and test the null hypothesis. Describe the reason for choosing the test.</li>
+</ol>
+<blockquote>
+<p>Systolic blood pressure was measured for each person twice to compare the difference in blood pressure before and after taking the drug. Therefore, the study is a paired design and, because blood pressure is a continuous measurement, a paired t-test can be considered. One of the assumptions of a paired t-test is that the differences between the measurements are normally distributed and this needs to be checked.</p>
+</blockquote>
+<blockquote>
+<p>To check the distribution of the differences between the measurements, we first need to calculate the differences. We created a new variable ‘difference’ using the equation ‘BP_After_mmHg − BP_Before_mmHg’. The histogram of the differences is shown in Figure 2.</p>
+</blockquote>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="module-9-solutions-to-learning-activities.html#cb11-1" aria-hidden="true" tabindex="-1"></a>bp <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/activities/Activity_S9.2.rds&quot;</span>)</span>
+<span id="cb11-2"><a href="module-9-solutions-to-learning-activities.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bp)</span></code></pre></div>
 <pre><code>##   id bp_before_mmhg bp_after_mmhg difference
 ## 1  1            143           120        -23
 ## 2  2            150           124        -26
@@ -285,10 +304,16 @@ Alternative hypothesis: The median concentration of urinary ascorbic acid among 
 ## 4  4            139           118        -21
 ## 5  5            141           140         -1
 ## 6  6            144           128        -16</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="module-9-solutions-to-learning-activities.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bp<span class="sc">$</span>difference)</span></code></pre></div>
-<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="module-9-solutions-to-learning-activities.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note - histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).</span></span></code></pre></div>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="module-9-solutions-to-learning-activities.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(bp<span class="sc">$</span>bp_before_mmhg, bp<span class="sc">$</span>bp_after_mmhg, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="module-9-solutions-to-learning-activities.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bp<span class="sc">$</span>difference,</span>
+<span id="cb13-2"><a href="module-9-solutions-to-learning-activities.html#cb13-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Figure 2: Reduction in blood pressure after taking a new drug&quot;</span>,</span>
+<span id="cb13-3"><a href="module-9-solutions-to-learning-activities.html#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Difference (mmHg)&quot;</span>)</span></code></pre></div>
+<p><img src="phcm9795-solutions-R_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="module-9-solutions-to-learning-activities.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note - histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).</span></span></code></pre></div>
+<blockquote>
+<p>The histogram of the differences (BP_After – BP_Before) does not approximate a normal distribution. Therefore, the paired t-test is not appropriate and its non-parametric equivalent, the Wilcoxon signed rank test, should be considered.
+The Wilcoxon signed rank test is obtained using the <code>wilcox.test()</code> function:</p>
+</blockquote>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="module-9-solutions-to-learning-activities.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(bp<span class="sc">$</span>bp_before_mmhg, bp<span class="sc">$</span>bp_after_mmhg, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in wilcox.test.default(bp$bp_before_mmhg, bp$bp_after_mmhg, paired =
 ## TRUE): cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
@@ -297,26 +322,41 @@ Alternative hypothesis: The median concentration of urinary ascorbic acid among 
 ## data:  bp$bp_before_mmhg and bp$bp_after_mmhg
 ## V = 120, p-value = 0.0007158
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="module-9-solutions-to-learning-activities.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bp, <span class="at">vars=</span><span class="fu">c</span>(bp_before_mmhg, bp_after_mmhg),</span>
-<span id="cb211-2"><a href="module-9-solutions-to-learning-activities.html#cb211-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">pc=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Write a brief conclusion.</li>
+</ol>
+<blockquote>
+<p>To include descriptive summary statistics in our conclusion we need to obtain summary statistics of the blood pressure measurements before and after taking the drug and the differences between these two measurements.</p>
+</blockquote>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="module-9-solutions-to-learning-activities.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">descriptives</span>(<span class="at">data=</span>bp, <span class="at">vars=</span><span class="fu">c</span>(bp_before_mmhg, bp_after_mmhg, difference),</span>
+<span id="cb18-2"><a href="module-9-solutions-to-learning-activities.html#cb18-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">pc=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  DESCRIPTIVES
 ## 
-##  Descriptives                                              
-##  ───────────────────────────────────────────────────────── 
-##                          bp_before_mmhg    bp_after_mmhg   
-##  ───────────────────────────────────────────────────────── 
-##    N                                 15               15   
-##    Missing                            0                0   
-##    Mean                        146.4667         129.2667   
-##    Median                      144.0000         128.0000   
-##    Standard deviation          10.75617         6.902036   
-##    Minimum                     139.0000         118.0000   
-##    Maximum                     183.0000         140.0000   
-##    25th percentile             140.5000         125.5000   
-##    50th percentile             144.0000         128.0000   
-##    75th percentile             146.5000         132.5000   
-##  ─────────────────────────────────────────────────────────</code></pre>
+##  Descriptives                                                            
+##  ─────────────────────────────────────────────────────────────────────── 
+##                          bp_before_mmhg    bp_after_mmhg    difference   
+##  ─────────────────────────────────────────────────────────────────────── 
+##    N                                 15               15            15   
+##    Missing                            0                0             0   
+##    Mean                        146.4667         129.2667     -17.20000   
+##    Median                      144.0000         128.0000     -16.00000   
+##    Standard deviation          10.75617         6.902036      13.41215   
+##    Minimum                     139.0000         118.0000     -57.00000   
+##    Maximum                     183.0000         140.0000     -1.000000   
+##    25th percentile             140.5000         125.5000     -21.00000   
+##    50th percentile             144.0000         128.0000     -16.00000   
+##    75th percentile             146.5000         132.5000     -8.000000   
+##  ───────────────────────────────────────────────────────────────────────</code></pre>
+<blockquote>
+<p>The median (IQR) SBP before and after taking the drug was 144 (140 to 147) mmHg and 128 (125 to 135) mmHg, respectively. The median (IQR) reduction in SBP is 16 (6 to 21) mmHg. There is very strong evidence that the drug lowered blood pressure in this group of hypertensive women (Wilcoxon P = 0.0007).</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>What are the main limitations of this study? Consider both epidemiological and statistical aspects.</li>
+</ol>
+<blockquote>
+<p>The samples were selected from a small patient group with particular characteristics (hypertensive females). While the results may be generalisable to hypertensive women in the population, assuming the sample is representative of hypertensive women in the population, the results may not be applicable to men. The strongest weakness is that there is no control group; the blood pressure in the women may have in fact lowered in the absence of taking the drug. This could be avoided by conducting a randomised controlled trial.</p>
+</blockquote>
 
 </div>
 </div>
@@ -380,20 +420,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
