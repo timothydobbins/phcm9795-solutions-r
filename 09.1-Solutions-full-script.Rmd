@@ -1,0 +1,51 @@
+# Module 9: Full script {.unnumbered}
+
+```{r eval=FALSE, include=TRUE}
+# Author: Timothy Dobbins
+# Date: July, 2022
+# Purpose: Learning activities for Module 9
+
+# Activity 9.1
+library(jmv)
+
+diet <- readRDS("data/activities/Activity_S9.1.rds")
+
+head(diet)
+
+hall <- subset(diet, dint=="Living and dining in hall")
+home <- subset(diet, dint=="Living and dining at home")
+
+# Set the graphics parameters to plot 2 rows and 2 columns:
+par(mfrow=c(2,2))
+
+# Specify each plot separately
+hist(hall$ascorb, xlab="Ascorbic acid (mg / 3 hr)",
+     xlim=c(0, 400), main="Living and dining in hall")
+hist(home$ascorb, xlab="Ascorbic acid (mg / 3 hr)", main="Living and dining at home")
+
+boxplot(hall$ascorb, ylab="Ascorbic acid (mg / 3 hr)", 
+        ylim=c(0, 400), main="Living and dining in hall")
+boxplot(home$ascorb, ylab="Ascorbic acid (mg / 3 hr)", main="Living and dining at home")
+
+par(mfrow=c(1,1))
+
+wilcox.test(ascorb ~ dint, data=diet)
+
+descriptives(data=diet, vars=ascorb, splitBy = dint,
+          pc=TRUE)   
+
+
+# Activity 9.2
+bp <- readRDS("data/activities/Activity_S9.2.rds")
+head(bp)
+
+hist(bp$difference,
+     main="Figure 2: Reduction in blood pressure after taking a new drug",
+     xlab="Difference (mmHg)")
+# Note - histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).
+
+wilcox.test(bp$bp_before_mmhg, bp$bp_after_mmhg, paired=TRUE)
+descriptives(data=bp, vars=c(bp_before_mmhg, bp_after_mmhg, difference),
+             pc=TRUE)
+
+```

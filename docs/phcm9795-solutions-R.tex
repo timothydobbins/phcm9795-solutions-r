@@ -36,14 +36,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={PHCM9795 Foundations of Biostatistics},
-  pdfauthor={Learning activity solutions: R version},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -138,10 +130,18 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={PHCM9795 Foundations of Biostatistics},
+  pdfauthor={Learning activity solutions: R version},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{PHCM9795 Foundations of Biostatistics}
 \author{Learning activity solutions: R version}
-\date{20 July, 2022}
+\date{27 July, 2022}
 
 \begin{document}
 \maketitle
@@ -2575,18 +2575,18 @@ A study was conducted to compare haemoglobin levels in the blood of children wit
 
 \begin{longtable}[]{@{}lll@{}}
 \caption{Table 1: Summary of haemoglobin (g/dL)}\tabularnewline
-\toprule
+\toprule()
 Statistic & Children without CF & Children with CF \\
-\midrule
+\midrule()
 \endfirsthead
-\toprule
+\toprule()
 Statistic & Children without CF & Children with CF \\
-\midrule
+\midrule()
 \endhead
 n & 12 & 15 \\
 Mean & 19.9 & 13.9 \\
 SD (SE) & 5.9 (1.7) & 6.2 (1.6) \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 \begin{enumerate}
@@ -2900,7 +2900,7 @@ The results are summarised in Table 2.
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1359}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0874}}@{}}
 \caption{Table 2: Mean hematocrit levels by study group}\tabularnewline
-\toprule
+\toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Intervention
@@ -2913,9 +2913,9 @@ t, df
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 P value
 \end{minipage} \\
-\midrule
+\midrule()
 \endfirsthead
-\toprule
+\toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Intervention
@@ -2928,11 +2928,11 @@ t, df
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 P value
 \end{minipage} \\
-\midrule
+\midrule()
 \endhead
 & Mean (SD) & Mean (SD) & & & \\
 Hematocrit level (\%) & 32.44 (1.57) & 31.65 (0.99) & 0.79 (0.14, 1.44) & 2.43, 54.3df & 0.019 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 \textbf{Conclusion}
@@ -3035,12 +3035,12 @@ The code for the \texttt{ttestPS()} function is quite cumbersome. You may want t
 ## 
 ## data:  babies$week_12 and babies$baseline
 ## t = -1.9594, df = 40, p-value = 0.05706
-## alternative hypothesis: true mean difference is not equal to 0
+## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -0.81704216  0.01265192
 ## sample estimates:
-## mean difference 
-##      -0.4021951
+## mean of the differences 
+##              -0.4021951
 \end{verbatim}
 
 \begin{quote}
@@ -3424,15 +3424,15 @@ This question assumes we are only given the values of the four cells in the cros
 \end{quote}
 
 \begin{longtable}[]{@{}ccc@{}}
-\toprule
+\toprule()
 Gender & Asthma & Number \\
-\midrule
+\midrule()
 \endhead
 Male & Yes & 70 \\
 Male & No & 188 \\
 Female & Yes & 46 \\
 Female & No & 196 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 \begin{quote}
@@ -3522,15 +3522,15 @@ The cross-tabulation of heart attack and mortality is given in Table 6.1.
 \end{quote}
 
 \begin{longtable}[]{@{}lllc@{}}
-\toprule
+\toprule()
 HeartAttack & Death & & Total \\
-\midrule
+\midrule()
 \endhead
 & Yes & No & \\
 Yes & 10 & 35 & 45 \\
 No & 5 & 39 & 44 \\
 Total & 15 & 74 & 89 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 \begin{quote}
@@ -3621,16 +3621,16 @@ As the 95\% confidence interval includes the hypothesised population proportion,
 In an experiment to test the effect of vitamin C on IQ scores, the following confidence intervals were estimated around the percentage of people with improved scores for five different populations:
 
 \begin{longtable}[]{@{}ccc@{}}
-\toprule
+\toprule()
 Population & \% with improved IQ & 95\% confidence interval \\
-\midrule
+\midrule()
 \endhead
 1 & 35.0 & 32.0 to 38.0 \\
 2 & 29.5 & 25.0 to 34.0 \\
 3 & 43.5 & 42.0 to 45.0 \\
 4 & 30.5 & 20.0 to 41.0 \\
 5 & 24.5 & 21.0 to 28.0 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 \begin{enumerate}
@@ -5021,8 +5021,8 @@ We can use the \texttt{wilcox.test()} function to carry out the Wilcoxon rank-su
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
-## compute exact p-value with ties
+## Warning in wilcox.test.default(x = c(7, 9, 14, 16, 20, 22, 27, 28, 28, 34, :
+## cannot compute exact p-value with ties
 \end{verbatim}
 
 \begin{verbatim}
@@ -5084,6 +5084,39 @@ The P-value from the test is 0.007, which indicates that there is strong evidenc
 \subsection*{Activity 9.2}\label{activity-9.2}}
 \addcontentsline{toc}{subsection}{Activity 9.2}
 
+A drug was tested for its effect in lowering blood pressure. Fifteen women with hypertension were enrolled and had their systolic blood pressure measured before and after taking the drug. The data are available in the file Activity\_S9.2.rds on Moodle.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  State the research question and the null hypothesis.
+\end{enumerate}
+
+\begin{quote}
+Research question: Do women with hypertension have lower systolic blood pressure after taking the test drug than before taking the drug?
+\end{quote}
+
+\begin{quote}
+Null hypothesis: There is no change in median systolic blood pressure before and after taking the drug.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Use R to obtain suitable summary statistics and test the null hypothesis. Describe the reason for choosing the test.
+\end{enumerate}
+
+\begin{quote}
+Systolic blood pressure was measured for each person twice to compare the difference in blood pressure before and after taking the drug. Therefore, the study is a paired design and, because blood pressure is a continuous measurement, a paired t-test can be considered. One of the assumptions of a paired t-test is that the differences between the measurements are normally distributed and this needs to be checked.
+\end{quote}
+
+\begin{quote}
+To check the distribution of the differences between the measurements, we first need to calculate the differences. We created a new variable `difference' using the equation `BP\_After\_mmHg − BP\_Before\_mmHg'. The histogram of the differences is shown in Figure 2.
+\end{quote}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{bp }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S9.2.rds"}\NormalTok{)}
@@ -5103,7 +5136,9 @@ The P-value from the test is 0.007, which indicates that there is strong evidenc
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(bp}\SpecialCharTok{$}\NormalTok{difference)}
+\FunctionTok{hist}\NormalTok{(bp}\SpecialCharTok{$}\NormalTok{difference,}
+     \AttributeTok{main=}\StringTok{"Figure 2: Reduction in blood pressure after taking a new drug"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"Difference (mmHg)"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -5114,6 +5149,11 @@ The P-value from the test is 0.007, which indicates that there is strong evidenc
 \CommentTok{\# Note {-} histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{quote}
+The histogram of the differences (BP\_After -- BP\_Before) does not approximate a normal distribution. Therefore, the paired t-test is not appropriate and its non-parametric equivalent, the Wilcoxon signed rank test, should be considered.
+The Wilcoxon signed rank test is obtained using the \texttt{wilcox.test()} function:
+\end{quote}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5135,9 +5175,21 @@ The P-value from the test is 0.007, which indicates that there is strong evidenc
 ## alternative hypothesis: true location shift is not equal to 0
 \end{verbatim}
 
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Write a brief conclusion.
+\end{enumerate}
+
+\begin{quote}
+To include descriptive summary statistics in our conclusion we need to obtain summary statistics of the blood pressure measurements before and after taking the drug and the differences between these two measurements.
+\end{quote}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{descriptives}\NormalTok{(}\AttributeTok{data=}\NormalTok{bp, }\AttributeTok{vars=}\FunctionTok{c}\NormalTok{(bp\_before\_mmhg, bp\_after\_mmhg),}
+\FunctionTok{descriptives}\NormalTok{(}\AttributeTok{data=}\NormalTok{bp, }\AttributeTok{vars=}\FunctionTok{c}\NormalTok{(bp\_before\_mmhg, bp\_after\_mmhg, difference),}
              \AttributeTok{pc=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -5146,21 +5198,93 @@ The P-value from the test is 0.007, which indicates that there is strong evidenc
 ## 
 ##  DESCRIPTIVES
 ## 
-##  Descriptives                                              
-##  ───────────────────────────────────────────────────────── 
-##                          bp_before_mmhg    bp_after_mmhg   
-##  ───────────────────────────────────────────────────────── 
-##    N                                 15               15   
-##    Missing                            0                0   
-##    Mean                        146.4667         129.2667   
-##    Median                      144.0000         128.0000   
-##    Standard deviation          10.75617         6.902036   
-##    Minimum                     139.0000         118.0000   
-##    Maximum                     183.0000         140.0000   
-##    25th percentile             140.5000         125.5000   
-##    50th percentile             144.0000         128.0000   
-##    75th percentile             146.5000         132.5000   
-##  ─────────────────────────────────────────────────────────
+##  Descriptives                                                            
+##  ─────────────────────────────────────────────────────────────────────── 
+##                          bp_before_mmhg    bp_after_mmhg    difference   
+##  ─────────────────────────────────────────────────────────────────────── 
+##    N                                 15               15            15   
+##    Missing                            0                0             0   
+##    Mean                        146.4667         129.2667     -17.20000   
+##    Median                      144.0000         128.0000     -16.00000   
+##    Standard deviation          10.75617         6.902036      13.41215   
+##    Minimum                     139.0000         118.0000     -57.00000   
+##    Maximum                     183.0000         140.0000     -1.000000   
+##    25th percentile             140.5000         125.5000     -21.00000   
+##    50th percentile             144.0000         128.0000     -16.00000   
+##    75th percentile             146.5000         132.5000     -8.000000   
+##  ───────────────────────────────────────────────────────────────────────
 \end{verbatim}
+
+\begin{quote}
+The median (IQR) SBP before and after taking the drug was 144 (140 to 147) mmHg and 128 (125 to 135) mmHg, respectively. The median (IQR) reduction in SBP is 16 (6 to 21) mmHg. There is very strong evidence that the drug lowered blood pressure in this group of hypertensive women (Wilcoxon P = 0.0007).
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What are the main limitations of this study? Consider both epidemiological and statistical aspects.
+\end{enumerate}
+
+\begin{quote}
+The samples were selected from a small patient group with particular characteristics (hypertensive females). While the results may be generalisable to hypertensive women in the population, assuming the sample is representative of hypertensive women in the population, the results may not be applicable to men. The strongest weakness is that there is no control group; the blood pressure in the women may have in fact lowered in the absence of taking the drug. This could be avoided by conducting a randomised controlled trial.
+\end{quote}
+
+\hypertarget{module-9-full-script}{%
+\chapter*{Module 9: Full script}\label{module-9-full-script}}
+\addcontentsline{toc}{chapter}{Module 9: Full script}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Author: Timothy Dobbins}
+\CommentTok{\# Date: July, 2022}
+\CommentTok{\# Purpose: Learning activities for Module 9}
+
+\CommentTok{\# Activity 9.1}
+\FunctionTok{library}\NormalTok{(jmv)}
+
+\NormalTok{diet }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S9.1.rds"}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(diet)}
+
+\NormalTok{hall }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(diet, dint}\SpecialCharTok{==}\StringTok{"Living and dining in hall"}\NormalTok{)}
+\NormalTok{home }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(diet, dint}\SpecialCharTok{==}\StringTok{"Living and dining at home"}\NormalTok{)}
+
+\CommentTok{\# Set the graphics parameters to plot 2 rows and 2 columns:}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+\CommentTok{\# Specify each plot separately}
+\FunctionTok{hist}\NormalTok{(hall}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{xlab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{,}
+     \AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{400}\NormalTok{), }\AttributeTok{main=}\StringTok{"Living and dining in hall"}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(home}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{xlab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{, }\AttributeTok{main=}\StringTok{"Living and dining at home"}\NormalTok{)}
+
+\FunctionTok{boxplot}\NormalTok{(hall}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{ylab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{, }
+        \AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{400}\NormalTok{), }\AttributeTok{main=}\StringTok{"Living and dining in hall"}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(home}\SpecialCharTok{$}\NormalTok{ascorb, }\AttributeTok{ylab=}\StringTok{"Ascorbic acid (mg / 3 hr)"}\NormalTok{, }\AttributeTok{main=}\StringTok{"Living and dining at home"}\NormalTok{)}
+
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+
+\FunctionTok{wilcox.test}\NormalTok{(ascorb }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dint, }\AttributeTok{data=}\NormalTok{diet)}
+
+\FunctionTok{descriptives}\NormalTok{(}\AttributeTok{data=}\NormalTok{diet, }\AttributeTok{vars=}\NormalTok{ascorb, }\AttributeTok{splitBy =}\NormalTok{ dint,}
+          \AttributeTok{pc=}\ConstantTok{TRUE}\NormalTok{)   }
+
+
+\CommentTok{\# Activity 9.2}
+\NormalTok{bp }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"data/activities/Activity\_S9.2.rds"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(bp)}
+
+\FunctionTok{hist}\NormalTok{(bp}\SpecialCharTok{$}\NormalTok{difference,}
+     \AttributeTok{main=}\StringTok{"Figure 2: Reduction in blood pressure after taking a new drug"}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"Difference (mmHg)"}\NormalTok{)}
+\CommentTok{\# Note {-} histogram differs from Stata, as R uses intervals as (a, b], where as Stata uses [a, b).}
+
+\FunctionTok{wilcox.test}\NormalTok{(bp}\SpecialCharTok{$}\NormalTok{bp\_before\_mmhg, bp}\SpecialCharTok{$}\NormalTok{bp\_after\_mmhg, }\AttributeTok{paired=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{descriptives}\NormalTok{(}\AttributeTok{data=}\NormalTok{bp, }\AttributeTok{vars=}\FunctionTok{c}\NormalTok{(bp\_before\_mmhg, bp\_after\_mmhg, difference),}
+             \AttributeTok{pc=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 
 \end{document}
