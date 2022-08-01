@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Module 10: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics</title>
+  <meta name="description" content="Module 10: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Module 10: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Module 10: Solutions to Learning Activities | PHCM9795 Foundations of Biostatistics" />
+  
+  
+  
+
+<meta name="author" content="Learning activity solutions: R version" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="module-9-full-script.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PHCM9795 Foundations of Biostatistics - Learning activity solutions</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="module-1-solutions-to-learning-activities.html"><a href="module-1-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 1: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-1-full-script.html"><a href="module-1-full-script.html"><i class="fa fa-check"></i>Module 1: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-2-solutions-to-learning-activities.html"><a href="module-2-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 2: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-2-full-script.html"><a href="module-2-full-script.html"><i class="fa fa-check"></i>Module 2: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-3-solutions-to-learning-activities.html"><a href="module-3-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 3: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-3-full-script.html"><a href="module-3-full-script.html"><i class="fa fa-check"></i>Module 3: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-4-solutions-to-learning-activities.html"><a href="module-4-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 4: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-4-full-script.html"><a href="module-4-full-script.html"><i class="fa fa-check"></i>Module 4: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-5-solutions-to-learning-activities.html"><a href="module-5-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 5: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-5-full-script.html"><a href="module-5-full-script.html"><i class="fa fa-check"></i>Module 5: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-6-solutions-to-learning-activities.html"><a href="module-6-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 6: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-6-full-script.html"><a href="module-6-full-script.html"><i class="fa fa-check"></i>Module 6: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-7-solutions-to-learning-activities.html"><a href="module-7-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 7: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-7-full-script.html"><a href="module-7-full-script.html"><i class="fa fa-check"></i>Module 7: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-8-solutions-to-learning-activities.html"><a href="module-8-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 8: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-8-full-script.html"><a href="module-8-full-script.html"><i class="fa fa-check"></i>Module 8: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-9-solutions-to-learning-activities.html"><a href="module-9-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 9: Solutions to Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="module-9-full-script.html"><a href="module-9-full-script.html"><i class="fa fa-check"></i>Module 9: Full script</a></li>
+<li class="chapter" data-level="" data-path="module-10-solutions-to-learning-activities.html"><a href="module-10-solutions-to-learning-activities.html"><i class="fa fa-check"></i>Module 10: Solutions to Learning Activities</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PHCM9795 Foundations of Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="module-10-solutions-to-learning-activities" class="section level1 unnumbered hasAnchor">
+<h1>Module 10: Solutions to Learning Activities<a href="module-10-solutions-to-learning-activities.html#module-10-solutions-to-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="activity-10.1" class="section level3 unnumbered hasAnchor">
+<h3>Activity 10.1<a href="module-10-solutions-to-learning-activities.html#activity-10.1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are planning a study to measure the prevalence of a relatively rare condition (say approximately 5%) in children aged 0-5 years in a remote community.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What type of study would need to be conducted?</li>
+</ol>
+<blockquote>
+<p>A cross sectional survey where a sample of children aged 0-5 yrs will be randomly selected from the population.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Use the correct sample size table included in your notes to determine how many children would need to be enrolled for the confidence interval to be (i) 2% (ii) 4% around the prevalence? What would the resulting prevalence estimates and 95% CIs be?</li>
+</ol>
+<blockquote>
+<p>We can use Table 10.1 in Module 10 to estimate the sample size.</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: lower-roman">
+<li>If the prevalence in the population is 5%, we will need 457 participants to estimate the 95% CI with 2% width. The resulting 95% CI would be 3% to 7%.</li>
+<li>If the prevalence in the population is 5%, we will need 115 participants to estimate the 95% CI with 4% width. The resulting 95% CI would be 1% to 9%.</li>
+</ol>
+</blockquote>
+</div>
+<div id="activity-10.2" class="section level3 unnumbered hasAnchor">
+<h3>Activity 10.2<a href="module-10-solutions-to-learning-activities.html#activity-10.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We are planning an experimental study to test the use of a new drug to alleviate the symptoms of the common cold compared to the use of Vitamin C. Participants will be randomised to receive the new experimental drug or to receive Vitamin C. How many participants will be required in each group (power = 80%, level of significance = 5%).</p>
+<ol style="list-style-type: lower-alpha">
+<li>If the resolution of symptoms is 10% in the control group and 40% in the new treatment group?</li>
+</ol>
+<blockquote>
+<p>We can use the <code>epi.sscohortc()</code> function to estimate the sample size, specifying the resolution rate in the control group (10%, or 0.1), the resolution rate in the exposed group (40%, or 0.4) and the power of 80% (or 0.8):</p>
+</blockquote>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-10-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epiR)</span></code></pre></div>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Package epiR 2.0.46 is loaded</code></pre>
+<pre><code>## Type help(epi.about) for summary information</code></pre>
+<pre><code>## Type browseVignettes(package = &#39;epiR&#39;) to learn how to use epiR for applied epidemiological analyses</code></pre>
+<pre><code>## </code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="module-10-solutions-to-learning-activities.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.1</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 64
+## 
+## $n.exp1
+## [1] 32
+## 
+## $n.exp0
+## [1] 32
+## 
+## $power
+## [1] 0.8
+## 
+## $irr
+## [1] 4
+## 
+## $or
+## [1] 6</code></pre>
+<p>Here we see we require 32 in each group, or 64 particpants in total.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>How large will the sample size need to be if we decide to recruit two control participants to every intervention group participant?</li>
+</ol>
+<blockquote>
+<p>We can specify <code>r</code> in the <code>epi.sscohortc()</code> function which is specified as the number in the exposed group divided by the number in the unexposed group. If we want two control participants for every intervention participant, r=0.5:</p>
+</blockquote>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="module-10-solutions-to-learning-activities.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.1</span>, <span class="at">r=</span><span class="fl">0.5</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 67.5
+## 
+## $n.exp1
+## [1] 22.5
+## 
+## $n.exp0
+## [1] 45
+## 
+## $power
+## [1] 0.8
+## 
+## $irr
+## [1] 4
+## 
+## $or
+## [1] 6</code></pre>
+<blockquote>
+<p>For this situation, we are advised that we will need 22.5 participants in the intervention group and 45 in the control group, with total of 67.5 participants. Note that R has calculated that sample size in the exposed group as 0.5 times the control group. <strong>If there is a decimal in any calculated sample size it should always be rounded up.</strong></p>
+</blockquote>
+<blockquote>
+<p>Thus, we require 23 participants in the intervention group and 45 in the control group, with total of 68 participants.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>If we decide to retain a 1:1 ratio of participants in the intervention and controls groups but the resolution of symptoms is 20% in the control group and 40% in the new treatment group?</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="module-10-solutions-to-learning-activities.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 164
+## 
+## $n.exp1
+## [1] 82
+## 
+## $n.exp0
+## [1] 82
+## 
+## $power
+## [1] 0.8
+## 
+## $irr
+## [1] 2
+## 
+## $or
+## [1] 2.666667</code></pre>
+<blockquote>
+<p>We will need 82 participants in each group.</p>
+</blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>How many participants would we need to recruit (calculated in c) if a pilot study shows that 15% of people find the new treatment unpalatable and therefore do not take it?</li>
+</ol>
+<blockquote>
+<p>To accommodate 15% noncompliance in the treatment group, the study team would need to recruit 15% more in this group. That is 82/(1 − 0.15) = 82/0.85 = 96.47059, or 97 after rounding this number up. Thus, 97 participants should be recruited in the treatment group. Hence, the required total sample size would be 97 + 82 = 179 participants.</p>
+</blockquote>
+</div>
+<div id="activity-10.3" class="section level3 unnumbered hasAnchor">
+<h3>Activity 10.3<a href="module-10-solutions-to-learning-activities.html#activity-10.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In a case-control study, we plan to recruit adult males who have been exposed to fumes from an industrial stack near their home and a sample of population controls in whom we expect that 20% may also have been exposed to similar fumes through their place of residence or their work. We want to show that an odds ratio of 2.5 for having respiratory symptoms associated with exposure to fumes is statistically significant.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What statistical test will be needed to measure the association between exposure and outcome?</li>
+</ol>
+<blockquote>
+<p>In this study, the outcome variable is dichotomous (case vs. control) and the explanatory variable is also dichotomous (exposed vs. unexposed). Therefore, a Pearson chi-squared test would be appropriate to assess the significance of the association.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>How large will the sample size need to be to show that the OR of 2.5 is statistically significant at P &lt; 0.05 with 90% power if we want to recruit equal number of cases and controls?</li>
+</ol>
+<blockquote>
+<p>The proportion of the control group expected to be exposed to the study factor (explanatory variable) is 20% and the required minimum detectable OR is 2.5. In the <code>epi.sscc()</code> function, we enter 0.2 as p0, 2.5 as the odds ratio to be detected and 0.9 as the power:</p>
+</blockquote>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="module-10-solutions-to-learning-activities.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">2.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 252
+## 
+## $n.case
+## [1] 126
+## 
+## $n.control
+## [1] 126
+## 
+## $power
+## [1] 0.9
+## 
+## $OR
+## [1] 2.5</code></pre>
+<blockquote>
+<p>The required sample is 126 cases and 126 controls, in total 252 participants.</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>What would be the required sample size (calculated in b) if the minimum detectable OR were 1.5?</li>
+</ol>
+<blockquote>
+<p>The required sample size has increased to 716 cases and 716 controls; in total 1432 participants:</p>
+</blockquote>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="module-10-solutions-to-learning-activities.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 1432
+## 
+## $n.case
+## [1] 716
+## 
+## $n.control
+## [1] 716
+## 
+## $power
+## [1] 0.9
+## 
+## $OR
+## [1] 1.5</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>If there are problems recruiting cases to detect an OR of 1.5 (as calculated in c), what would the sample size need to be if the ratio of cases to controls was increased to 1:3?</li>
+</ol>
+<blockquote>
+<p>As in Question (1), 3 controls per case gives a ratio of 1/3 (=0.3333):</p>
+</blockquote>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="module-10-solutions-to-learning-activities.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>, <span class="at">r=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 1883
+## 
+## $n.case
+## [1] 1412
+## 
+## $n.control
+## [1] 471
+## 
+## $power
+## [1] 0.9
+## 
+## $OR
+## [1] 1.5</code></pre>
+<p>The output shows that we will require 471 cases and 1412 controls for the study. In total 471 + 1412 = 1883 participants.</p>
+</div>
+<div id="activity-10.4" class="section level3 unnumbered hasAnchor">
+<h3>Activity 10.4<a href="module-10-solutions-to-learning-activities.html#activity-10.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the above study to measure the effects of exposure to fumes from an industrial stack, we also want to know if the stack has an effect on lung function which can be measured as forced vital capacity in 1 minute (FEV1). This measurement is normally distributed in the population.</p>
+<ol style="list-style-type: lower-alpha">
+<li>If the research question is changed to wanting to show that the mean FEV1 in the exposed group is lower than the mean FEV1 in the control group what statistical test will now be required?</li>
+</ol>
+<blockquote>
+<p>An independent samples t-test because FEV1 is a normally distributed continuous variable, which will be compared between two independent groups (exposed and not exposed to industrial fumes).</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Population statistics show that the mean FEV1 and its SD in the general population for males are 4.40 L (SD = 1.25) which can be expected in the control group. We expect that the mean FEV1 in the cases may be 4.0 L. How many participants will be needed to show that this mean value is significantly different from the control group with P &lt; 0.05 with an 80% power if we want to recruit equal number in each group?</li>
+</ol>
+<blockquote>
+<p>The given information should be entered into the <code>epi.sscompc()</code> function in the following way:</p>
+</blockquote>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="module-10-solutions-to-learning-activities.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscompc</span>(<span class="at">treat =</span> <span class="fl">4.0</span>, <span class="at">control =</span> <span class="fl">4.4</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">sigma =</span> <span class="fl">1.25</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 308
+## 
+## $n.treat
+## [1] 154
+## 
+## $n.control
+## [1] 154
+## 
+## $power
+## [1] 0.8
+## 
+## $delta
+## [1] 0.4</code></pre>
+<blockquote>
+<p>We will require 154 participants to be recruited in each group to see the desired difference at 5% significance level with 80% power. (Note this solution is slightly different from Stata, which requires 155 participants in each group).</p>
+</blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>How much larger will the sample size need to be if the mean FEV1 in the cases is 4.20 L?</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="module-10-solutions-to-learning-activities.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscompc</span>(<span class="at">treat =</span> <span class="fl">4.2</span>, <span class="at">control =</span> <span class="fl">4.4</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">sigma =</span> <span class="fl">1.25</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## $n.total
+## [1] 1228
+## 
+## $n.treat
+## [1] 614
+## 
+## $n.control
+## [1] 614
+## 
+## $power
+## [1] 0.8
+## 
+## $delta
+## [1] 0.2</code></pre>
+<blockquote>
+<p>Changing the Experimental mean to 4.2 yields a required 614 participants in each group. (Note this solution is slightly different from Stata, which requires 615 participants in each group).</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="module-9-full-script.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["phcm9795-solutions-R.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
