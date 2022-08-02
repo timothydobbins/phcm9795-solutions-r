@@ -205,13 +205,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>We can use the <code>epi.sscohortc()</code> function to estimate the sample size, specifying the resolution rate in the control group (10%, or 0.1), the resolution rate in the exposed group (40%, or 0.4) and the power of 80% (or 0.8):</p>
 </blockquote>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="module-10-solutions-to-learning-activities.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epiR)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="module-10-solutions-to-learning-activities.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(epiR)</span></code></pre></div>
 <pre><code>## Loading required package: survival</code></pre>
+<pre><code>## 
+## Attaching package: &#39;survival&#39;</code></pre>
+<pre><code>## The following object is masked _by_ &#39;.GlobalEnv&#39;:
+## 
+##     heart</code></pre>
 <pre><code>## Package epiR 2.0.46 is loaded</code></pre>
 <pre><code>## Type help(epi.about) for summary information</code></pre>
 <pre><code>## Type browseVignettes(package = &#39;epiR&#39;) to learn how to use epiR for applied epidemiological analyses</code></pre>
 <pre><code>## </code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="module-10-solutions-to-learning-activities.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.1</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="module-10-solutions-to-learning-activities.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.1</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 64
 ## 
@@ -236,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>We can specify <code>r</code> in the <code>epi.sscohortc()</code> function which is specified as the number in the exposed group divided by the number in the unexposed group. If we want two control participants for every intervention participant, r=0.5:</p>
 </blockquote>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="module-10-solutions-to-learning-activities.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.1</span>, <span class="at">r=</span><span class="fl">0.5</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="module-10-solutions-to-learning-activities.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.1</span>, <span class="at">r=</span><span class="fl">0.5</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 67.5
 ## 
@@ -263,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" style="list-style-type: lower-alpha">
 <li>If we decide to retain a 1:1 ratio of participants in the intervention and controls groups but the resolution of symptoms is 20% in the control group and 40% in the new treatment group?</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="module-10-solutions-to-learning-activities.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="module-10-solutions-to-learning-activities.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscohortc</span>(<span class="at">irexp1=</span><span class="fl">0.4</span>, <span class="at">irexp0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 164
 ## 
@@ -306,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>The proportion of the control group expected to be exposed to the study factor (explanatory variable) is 20% and the required minimum detectable OR is 2.5. In the <code>epi.sscc()</code> function, we enter 0.2 as p0, 2.5 as the odds ratio to be detected and 0.9 as the power:</p>
 </blockquote>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="module-10-solutions-to-learning-activities.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">2.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="module-10-solutions-to-learning-activities.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">2.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 252
 ## 
@@ -330,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>The required sample size has increased to 716 cases and 716 controls; in total 1432 participants:</p>
 </blockquote>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="module-10-solutions-to-learning-activities.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="module-10-solutions-to-learning-activities.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 1432
 ## 
@@ -351,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>As in Question (1), 3 controls per case gives a ratio of 1/3 (=0.3333):</p>
 </blockquote>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="module-10-solutions-to-learning-activities.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>, <span class="at">r=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="module-10-solutions-to-learning-activities.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>, <span class="at">r=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 1883
 ## 
@@ -383,7 +388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p>The given information should be entered into the <code>epi.sscompc()</code> function in the following way:</p>
 </blockquote>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="module-10-solutions-to-learning-activities.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscompc</span>(<span class="at">treat =</span> <span class="fl">4.0</span>, <span class="at">control =</span> <span class="fl">4.4</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">sigma =</span> <span class="fl">1.25</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="module-10-solutions-to-learning-activities.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscompc</span>(<span class="at">treat =</span> <span class="fl">4.0</span>, <span class="at">control =</span> <span class="fl">4.4</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">sigma =</span> <span class="fl">1.25</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 308
 ## 
@@ -404,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" style="list-style-type: lower-alpha">
 <li>How much larger will the sample size need to be if the mean FEV1 in the cases is 4.20 L?</li>
 </ol>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="module-10-solutions-to-learning-activities.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscompc</span>(<span class="at">treat =</span> <span class="fl">4.2</span>, <span class="at">control =</span> <span class="fl">4.4</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">sigma =</span> <span class="fl">1.25</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="module-10-solutions-to-learning-activities.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscompc</span>(<span class="at">treat =</span> <span class="fl">4.2</span>, <span class="at">control =</span> <span class="fl">4.4</span>, <span class="at">n =</span> <span class="cn">NA</span>, <span class="at">sigma =</span> <span class="fl">1.25</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
 <pre><code>## $n.total
 ## [1] 1228
 ## 
@@ -485,6 +490,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
