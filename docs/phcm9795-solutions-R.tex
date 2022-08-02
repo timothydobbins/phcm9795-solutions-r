@@ -3053,12 +3053,12 @@ The code for the \texttt{ttestPS()} function is quite cumbersome. You may want t
 ## 
 ## data:  babies$week_12 and babies$baseline
 ## t = -1.9594, df = 40, p-value = 0.05706
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
 ##  -0.81704216  0.01265192
 ## sample estimates:
-## mean of the differences 
-##              -0.4021951
+## mean difference 
+##      -0.4021951
 \end{verbatim}
 
 \begin{quote}
@@ -4775,7 +4775,11 @@ The coefficients section provides the regression coefficients: an estimated inte
 \end{quote}
 
 \begin{quote}
-The equation is estimated as: IQ = 107.324 + (−0.423 × age)
+The equation is estimated as: IQ = 107 + (−0.423 × age)
+\end{quote}
+
+\begin{quote}
+(Note: the constant and slope have both been rounded to three significant figures as the outcome and explanatory variables are both measured to two significant figures).
 \end{quote}
 
 \begin{quote}
@@ -4840,7 +4844,7 @@ Figure 2: Distribution of residuals from the regression of IQ on age
 \end{enumerate}
 
 \begin{quote}
-This study provides very strong evidence that IQ is negatively associated with age (t=--6.24 with 102 df, P\textless0.001). For every year increase in age, we predict a 0.42 unit decrease in IQ and we are 95\% confident that the true decrease in IQ lies between 0.29 to 0.56 units. Variability in age explains 27.6\% of the variability in IQ.
+This study provides very strong evidence that IQ is negatively associated with age (t=--6.24 with 102 df, P\textless0.001). For every year increase in age, we predict a 0.423 unit decrease in IQ and we are 95\% confident that the true decrease in IQ lies between 0.289 to 0.558 units. Variability in age explains 27.6\% of the variability in IQ.
 \end{quote}
 
 \hypertarget{activity-8.3}{%
@@ -5039,8 +5043,8 @@ We can use the \texttt{wilcox.test()} function to carry out the Wilcoxon rank-su
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in wilcox.test.default(x = c(7, 9, 14, 16, 20, 22, 27, 28, 28, 34, :
-## cannot compute exact p-value with ties
+## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
+## compute exact p-value with ties
 \end{verbatim}
 
 \begin{verbatim}
