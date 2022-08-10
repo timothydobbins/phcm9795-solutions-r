@@ -231,8 +231,8 @@ Alternative hypothesis: The median concentration of urinary ascorbic acid among 
 <p>We can use the <code>wilcox.test()</code> function to carry out the Wilcoxon rank-sum test.</p>
 </blockquote>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="module-9-solutions-to-learning-activities.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(ascorb <span class="sc">~</span> dint, <span class="at">data=</span>diet)</span></code></pre></div>
-<pre><code>## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
-## compute exact p-value with ties</code></pre>
+<pre><code>## Warning in wilcox.test.default(x = c(7, 9, 14, 16, 20, 22, 27, 28, 28, 34, :
+## cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 

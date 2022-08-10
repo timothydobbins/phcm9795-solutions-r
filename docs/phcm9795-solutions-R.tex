@@ -141,7 +141,7 @@
 
 \title{PHCM9795 Foundations of Biostatistics}
 \author{Learning activity solutions: R version}
-\date{03 August, 2022}
+\date{10 August, 2022}
 
 \begin{document}
 \maketitle
@@ -163,6 +163,15 @@ This is the first year that R has been offered as an option. I am keen to receiv
 \hypertarget{changelog}{%
 \subsection*{Changelog}\label{changelog}}
 \addcontentsline{toc}{subsection}{Changelog}
+
+\textbf{2022-08-10}
+{[}Changed{]}
+
+\begin{itemize}
+\tightlist
+\item
+  Module 10: Corrected Activity 10.3 (d)
+\end{itemize}
 
 \textbf{2022-08-03}
 {[}Changed{]}
@@ -3062,12 +3071,12 @@ The code for the \texttt{ttestPS()} function is quite cumbersome. You may want t
 ## 
 ## data:  babies$week_12 and babies$baseline
 ## t = -1.9594, df = 40, p-value = 0.05706
-## alternative hypothesis: true mean difference is not equal to 0
+## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -0.81704216  0.01265192
 ## sample estimates:
-## mean difference 
-##      -0.4021951
+## mean of the differences 
+##              -0.4021951
 \end{verbatim}
 
 \begin{quote}
@@ -5052,8 +5061,8 @@ We can use the \texttt{wilcox.test()} function to carry out the Wilcoxon rank-su
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
-## compute exact p-value with ties
+## Warning in wilcox.test.default(x = c(7, 9, 14, 16, 20, 22, 27, 28, 28, 34, :
+## cannot compute exact p-value with ties
 \end{verbatim}
 
 \begin{verbatim}
@@ -5639,24 +5648,24 @@ The required sample size has increased to 716 cases and 716 controls; in total 1
 \end{enumerate}
 
 \begin{quote}
-As in Question (1), 3 controls per case gives a ratio of 1/3 (=0.3333):
+As in Question (1), we need to specify r. Note that for \texttt{epi.sscc()}, r represents ``the number in the control group divided by the number in the case group''. \emph{This is in contrast to r for \texttt{epi.sscohortc()} and \texttt{epi.sscompc()}.} So 3 controls per case gives a ratio of 3:
 \end{quote}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{epi.sscc}\NormalTok{(}\AttributeTok{OR=}\FloatTok{1.5}\NormalTok{, }\AttributeTok{p0=}\FloatTok{0.2}\NormalTok{, }\AttributeTok{n=}\ConstantTok{NA}\NormalTok{, }\AttributeTok{power=}\FloatTok{0.9}\NormalTok{, }\AttributeTok{r=}\DecValTok{1}\SpecialCharTok{/}\DecValTok{3}\NormalTok{)}
+\FunctionTok{epi.sscc}\NormalTok{(}\AttributeTok{OR=}\FloatTok{1.5}\NormalTok{, }\AttributeTok{p0=}\FloatTok{0.2}\NormalTok{, }\AttributeTok{n=}\ConstantTok{NA}\NormalTok{, }\AttributeTok{power=}\FloatTok{0.9}\NormalTok{, }\AttributeTok{r=}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## $n.total
-## [1] 1883
+## [1] 1928
 ## 
 ## $n.case
-## [1] 1412
+## [1] 482
 ## 
 ## $n.control
-## [1] 471
+## [1] 1446
 ## 
 ## $power
 ## [1] 0.9
@@ -5665,7 +5674,7 @@ As in Question (1), 3 controls per case gives a ratio of 1/3 (=0.3333):
 ## [1] 1.5
 \end{verbatim}
 
-The output shows that we will require 471 cases and 1412 controls for the study. In total 471 + 1412 = 1883 participants.
+The output shows that we will require 482 cases and 1446 controls for the study, or 1928 participants in total.
 
 \hypertarget{activity-10.4}{%
 \subsection*{Activity 10.4}\label{activity-10.4}}

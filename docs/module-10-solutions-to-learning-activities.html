@@ -354,24 +354,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If there are problems recruiting cases to detect an OR of 1.5 (as calculated in c), what would the sample size need to be if the ratio of cases to controls was increased to 1:3?</li>
 </ol>
 <blockquote>
-<p>As in Question (1), 3 controls per case gives a ratio of 1/3 (=0.3333):</p>
+<p>As in Question (1), we need to specify r. Note that for <code>epi.sscc()</code>, r represents “the number in the control group divided by the number in the case group”. <em>This is in contrast to r for <code>epi.sscohortc()</code> and <code>epi.sscompc()</code>.</em> So 3 controls per case gives a ratio of 3:</p>
 </blockquote>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="module-10-solutions-to-learning-activities.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>, <span class="at">r=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="module-10-solutions-to-learning-activities.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">epi.sscc</span>(<span class="at">OR=</span><span class="fl">1.5</span>, <span class="at">p0=</span><span class="fl">0.2</span>, <span class="at">n=</span><span class="cn">NA</span>, <span class="at">power=</span><span class="fl">0.9</span>, <span class="at">r=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## $n.total
-## [1] 1883
+## [1] 1928
 ## 
 ## $n.case
-## [1] 1412
+## [1] 482
 ## 
 ## $n.control
-## [1] 471
+## [1] 1446
 ## 
 ## $power
 ## [1] 0.9
 ## 
 ## $OR
 ## [1] 1.5</code></pre>
-<p>The output shows that we will require 471 cases and 1412 controls for the study. In total 471 + 1412 = 1883 participants.</p>
+<p>The output shows that we will require 482 cases and 1446 controls for the study, or 1928 participants in total.</p>
 </div>
 <div id="activity-10.4" class="section level3 unnumbered hasAnchor">
 <h3>Activity 10.4<a href="module-10-solutions-to-learning-activities.html#activity-10.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>

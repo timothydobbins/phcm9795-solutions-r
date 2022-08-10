@@ -80,13 +80,13 @@ epi.sscc(OR=1.5, p0=0.2, n=NA, power=0.9)
 
 d)	If there are problems recruiting cases to detect an OR of 1.5 (as calculated in c), what would the sample size need to be if the ratio of cases to controls was increased to 1:3? 
 
-> As in Question (1), 3 controls per case gives a ratio of 1/3 (=0.3333):
+> As in Question (1), we need to specify r. Note that for `epi.sscc()`, r represents "the number in the control group divided by the number in the case group". *This is in contrast to r for `epi.sscohortc()` and `epi.sscompc()`.* So 3 controls per case gives a ratio of 3:
 
 ```{r}
-epi.sscc(OR=1.5, p0=0.2, n=NA, power=0.9, r=1/3)
+epi.sscc(OR=1.5, p0=0.2, n=NA, power=0.9, r=3)
 ```
 
-The output shows that we will require 471 cases and 1412 controls for the study. In total 471 + 1412 = 1883 participants.
+The output shows that we will require 482 cases and 1446 controls for the study, or 1928 participants in total.
 
 ### Activity 10.4 {-}
 In the above study to measure the effects of exposure to fumes from an industrial stack, we also want to know if the stack has an effect on lung function which can be measured as forced vital capacity in 1 minute (FEV1). This measurement is normally distributed in the population.

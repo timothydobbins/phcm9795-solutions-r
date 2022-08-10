@@ -24,6 +24,11 @@ This is the first year that R has been offered as an option. I am keen to receiv
 
 ### Changelog {-}
 
+**2022-08-10**
+[Changed]
+
+- Module 10: Corrected Activity 10.3 (d)
+
 **2022-08-03**
 [Changed]
 
